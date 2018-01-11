@@ -1,0 +1,39 @@
+<app-header></app-header>
+<nav class="navbar navbar-default bg-faded">
+  <div class="container-fluid">
+    <div align="left">
+      <button [routerLink]="['/createCourse']" class="btn btn-success btn-md"> Create Course</button>
+    </div>
+    <table class="table table-striped" style="margin-top: 30px">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Public</th>
+        <th>Type</th>
+        <th>Category</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let userCourse of courses | sortBy : 'id'; let i = index">
+      <tr *ngIf="userCourse.userId == currentUser.id">
+        <!--<td>{{i+1}}</td>-->
+        <td><a (click)="click(userCourse.id)" style="cursor: pointer">{{userCourse.name}}</a></td>
+        <td>{{userCourse.price}}</td>
+        <td>{{userCourse.publicCourse}}</td>
+        <td>{{userCourse.courseType}}</td>
+        <td>{{userCourse.catagory}}</td>
+        <td>
+          <button class="btn btn-primary btn-md glyphicon glyphicon-wrench"
+                  (click)="EditCourse(userCourse.id)">
+          </button>
+        </td>
+        <td>
+          <button class="btn btn-danger glyphicon glyphicon-minus" (click)="DeleteCourse(userCourse.id)"></button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</nav>

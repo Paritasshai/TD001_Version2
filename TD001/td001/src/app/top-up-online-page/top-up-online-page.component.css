@@ -1,0 +1,22 @@
+.well {
+  margin-top: 5%;
+}
+
+.checkbox-container {
+  width: 80%;
+  margin-bottom: 5%;
+}
+
+.result-design {
+  width: 80%;
+  background-color: #8ea4bd;
+  padding: 2%;
+}
+
+.result-design-header {
+  height: 50px;
+  background-color: #879cb4;
+  border-radius: 2%;
+  align-content: center;
+  padding: 2%;
+}

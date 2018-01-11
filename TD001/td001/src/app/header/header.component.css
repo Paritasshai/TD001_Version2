@@ -1,0 +1,59 @@
+.navbar{
+  position: fixed;
+}
+
+.center {
+  margin-top: 50px;
+}
+
+.container{
+  width: 95%;
+}
+
+.modal-header {
+  padding-bottom: 3px;
+}
+
+.modal-footer {
+  padding: 0;
+}
+
+.modal-footer .btn-group button {
+  height: 40px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border: none;
+  border-right: 1px solid #ddd;
+}
+
+.modal-footer .btn-group:last-child > button {
+  border-right: 0;
+}
+
+.margin-design {
+  margin-top: 7px;
+}
+
+img {
+  margin-top: -5px;
+}
+
+li {
+  margin-right: -15px;
+}
+
+.navbar {
+  height: 40px;
+}
+
+.header-style {
+  background-color: white;
+  border: solid 2px white;
+}
+
+img{
+  width: 160px;
+  height: 25px;
+  margin: 12px 0 0 0;
+  position: relative;
+}

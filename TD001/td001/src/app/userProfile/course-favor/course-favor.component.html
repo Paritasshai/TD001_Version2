@@ -1,0 +1,65 @@
+<app-header></app-header>
+<!--<hr style="border: solid 2px #dd1d0a; font-weight: 900">-->
+<br>
+<br>
+<br>
+<div class="container-fluid">
+  <nav class="navbar navbar-default">
+    <div align="center">
+      <h1>โปรเจคที่ชื่นชอบ</h1>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div *ngFor="let user of users">
+          <div class="row" *ngIf="user.id == currentUser.id">
+
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12" style="float:left;"
+                     *ngFor="let courseHis of user?.lists | sortBy : 'id';">
+                  <div align="center">
+                    <!--<h1>{{courseHis.id}}</h1>-->
+                    <div *ngFor="let cour of courseHis?.courses | sortBy : 'id';">
+                      <!--<p>{{cour.id}}</p>-->
+                      <div *ngFor="let cou of cour?.imageCourses | sortBy : 'id';">
+                        <!--{{cou.id}}-->
+
+                        <div class="thumbnail">
+                          <div class="crop" style="border: solid 1px #e59999;">
+
+                            <img style="cursor: pointer" (click)="click(cour.id)" class="img"
+                                 src="{{ url + '/displayImage/' + cou.id}}" alt=""/>
+
+                          </div>
+                          <div align="left" [hidden]="cour.linkCourse == textNull">
+                            <a style="cursor: pointer"><span
+                              style="font-size: 20px; color: #bf2b2a; float: right; margin-top: -115px; margin-right: 5px"
+                              class="glyphicon glyphicon glyphicon-shopping-cart"></span></a>
+                          </div>
+
+                          <div class="caption" align="left">
+                            <div id="div1">{{cour.name}}</div>
+                            <h6 [hidden]="cour.price == empty" class="group inner list-group-item-heading">
+                              {{cour.price}} บาท.</h6>
+                            <h6 *ngIf="cour.price == empty"
+                                class="animated pulse infinite group inner list-group-item-heading"
+                                style="color: #bf2b2a">ฟรี</h6>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+
+      </div>
+    </div>
+  </nav>
+</div>

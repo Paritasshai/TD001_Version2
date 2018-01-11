@@ -1,0 +1,44 @@
+<app-header></app-header>
+<nav class="navbar navbar-default bg-faded" style="margin: 2%; padding: 2%">
+
+  <div align="center">
+    <div *ngFor="let user of users">
+    <span class="navbar-text" *ngIf="user.id == currentUser.id">
+       <form (ngSubmit)="user(user.id)">
+         <div class="row">
+
+          <div class="col-lg-4" *ngIf="user.userImages[0]?.id == null">
+            <br>
+            <div>
+          <input class="btn btn-danger btn-md" type="file" #fileInput/>
+          <button type="button" (click)="upload(user.id)">Upload</button>
+          </div>
+          </div>
+
+
+            <div align="center" style="width: 80%">
+              <img style="margin-left: 20%" class="img"
+                   src="data:{{user.userImages[0]?.contentType}};base64,{{user.userImages[0]?.content}}">
+              <button class="btn btn-danger btn-md" style="width: 80%; margin-left: 20%"
+                      *ngIf="user.userImages[0]?.id != null" (click)="DeleteImage(user.userImages[0]?.id)">
+          Delete
+              </button>
+            </div>
+
+      </div>
+       </form>
+    </span>
+    </div>
+  </div>
+
+  <div align="center" *ngFor="let user of users">
+    <div *ngIf="user.id == currentUser.id">
+      <textarea rows="4" cols="40" name="instructorBio" [(ngModel)]="user.instructorBio"
+                #instructorBio="ngModel">
+At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies.
+      </textarea>
+      <button type="submit" class="btn btn-danger btn-lg" (click)="update(user.instructorBio, getUserId)">Update Introduction</button>
+    </div>
+  </div>
+
+</nav>

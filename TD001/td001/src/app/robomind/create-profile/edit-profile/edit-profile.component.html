@@ -1,0 +1,221 @@
+<nav class="navbar-light" style="background-color: #dd1d0a;">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" (click)="RobomindHome()" style="cursor: pointer"> <img disabled
+                                                                                     [src]="ImgLogo"
+                                                                                     style="cursor: pointer; height: 30px; width: 110px; margin-top: -5px"></a>
+    </div>
+    <ul class="nav navbar-nav navbar-right" [hidden]="!currentUser">
+      <li><a (click)="RobomindCreate()" style="cursor: pointer"><span class="glyphicon glyphicon-new-window"></span>
+        Create Student</a></li>
+      <li><a (click)="RobomindContent()" style="cursor: pointer"><span class="glyphicon glyphicon-link"></span>
+        Create Content</a></li>
+      <li><a (click)="RoboticName()" style="cursor: pointer"><span class="glyphicon glyphicon-wrench"></span>
+        Create Robotic</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12">
+      <form class="form-horizontal" name="form" (ngSubmit)="editProfile(students.id)" novalidate>
+        <div class="col-xs-12 col-sm-6">
+          <div style="margin-top: 5%">
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Student ID</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" name="stId"
+                       [(ngModel)]="students.stId"
+                       #stId="ngModel" autofocus required/>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Nickname</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" name="stNickname"
+                       [(ngModel)]="students.stNickname"
+                       #stNickname="ngModel" autofocus required/>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Firstname</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" name="stFirstname"
+                       [(ngModel)]="students.stFirstname"
+                       #stFirstname="ngModel" autofocus required/>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Lastname</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" name="stLastname"
+                       [(ngModel)]="students.stLastname"
+                       #stLastname="ngModel" autofocus required/>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label">School</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" name="stSchool"
+                       [(ngModel)]="students.stSchool"
+                       #stSchool="ngModel" autofocus required/>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Age</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" name="stAge"
+                       [(ngModel)]="students.stAge"
+                       #stAge="ngModel" autofocus required/>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Date of Birth</label>
+              <div class="col-sm-9">
+                <input type="date" class="form-control" name="stDate"
+                       [(ngModel)]="students.stDate"
+                       #stDate="ngModel" autofocus required/>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Parent Name</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" name="stParent"
+                       [(ngModel)]="students.stParent"
+                       #stParent="ngModel" autofocus required/>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Email</label>
+              <div class="col-sm-9">
+                <input type="email" class="form-control" name="stEmail"
+                       [(ngModel)]="students.stEmail"
+                       #stEmail="ngModel" autofocus required/>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Mobile</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" name="stMobile"
+                       [(ngModel)]="students.stMobile"
+                       #stMobile="ngModel" autofocus required/>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Start</label>
+              <div class="col-sm-9">
+                <input type="date" class="form-control" name="stStart"
+                       [(ngModel)]="students.stStart"
+                       #stStart="ngModel" autofocus required/>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-sm-9 col-sm-offset-3">
+                <button type="submit" class="btn btn-danger btn-block">Save Profile</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </form>
+
+      <div class="col-xs-12 col-sm-6">
+        <div class="container">
+          <div>
+
+            <div class="col-md-4">
+              <h2>Upload Image</h2>
+              <div class="thumbnail">
+                <div class="crop" style="border: solid 1px #e59999;">
+                  <img class="img"
+                       src="{{ url + 'displayImageStudent/' + students.roboImageSet[0]?.id}}" alt=""/>
+                  <div align="center">
+                    <button class="btn btn-danger btn-md" style="width: 80%;"
+                            *ngIf="students.roboImageSet[0]?.id != null"
+                            (click)="DeleteImage(students.roboImageSet[0]?.id,students.stId)">
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div [hidden]="students.roboImageSet[0]?.fileName != null">
+                <input style="width: 250px;" class="btn btn-default" type="file" ng2FileSelect
+                       [uploader]="uploaderImage"
+                       accept="image/*"/>
+                <table class="table">
+                  <thead>
+                  <tr>
+                    <th width="50%">Name</th>
+                    <th>Status</th>
+                    <th>Progress</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let item of uploaderImage.queue">
+                    <td><strong>{{ item?.file?.name }}</strong></td>
+                    <td *ngIf="uploaderImage.isHTML5" nowrap>{{
+                      item?.file?.size/1024/1024/1024/1024/1024
+                      |
+                      number:'.5' }} MB
+                    </td>
+                    <td *ngIf="uploaderImage.isHTML5">
+                      <div class="progress" style="margin-bottom: 0;">
+                        <div class="progress-bar" role="progressbar"
+                             [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                      </div>
+                    </td>
+                    <td class="text-center">
+                      <span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                      <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                      <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                    </td>
+                    <td nowrap>
+                      <button type="button" class="btn btn-success btn-xs"
+                              (click)="item.upload()"
+                              [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                        <span class="glyphicon glyphicon-upload"></span> Upload
+                      </button>
+                      <button type="button" class="btn btn-warning btn-xs"
+                              (click)="item.cancel()" [disabled]="!item.isUploading">
+                        <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                      </button>
+                      <button type="button" class="btn btn-danger btn-xs"
+                              (click)="item.remove()">
+                        <span class="glyphicon glyphicon-trash"></span> Remove
+                      </button>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+                <div>
+                  <div>
+                    Queue progress:
+                    <div class="progress" style="">
+                      <div class="progress-bar" role="progressbar"
+                           [ngStyle]="{ 'width': uploaderImage.progress + '%' }"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div> <!-- ./container -->

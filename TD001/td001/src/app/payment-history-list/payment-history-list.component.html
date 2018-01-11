@@ -1,0 +1,38 @@
+<app-header></app-header>
+<div class="container-fluid">
+  <div align="center">
+    <div class="row content">
+      <div class="col-sm-12">
+        <div class="well">
+          <h4>ประวัติการชำระเงิน</h4>
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <!--<th></th>-->
+              <th>วันที่ชำระเงิน</th>
+              <th>เวลาชำระเงิน</th>
+              <th>ชนิด</th>
+              <th>หมายเหตุ</th>
+              <th><p align="right">จำนวนแต้ม</p></th>
+              <th><p align="right">แต้มที่คงเหลือ</p></th>
+            </tr>
+            </thead>
+            <tbody *ngFor="let paymentTran of paymentTrans| sortObject:'id'">
+            <tr *ngIf="paymentTran.users[0].id == currentUser.id">
+              <!--<td>{{paymentTran.transFlq}}</td>-->
+              <td>{{paymentTran.updateDate}}</td>
+              <td>{{paymentTran.updateTime}}</td>
+              <td>{{paymentTran.systemRemark}}</td>
+              <td>{{paymentTran.transRef}}</td>
+              <!--<td>{{paymentTran.users[0].email}}</td>-->
+              <td align="right">{{paymentTran.transFlq*paymentTran.transAmount}}</td>
+              <td align="right">{{paymentTran.transRemark}}</td>
+            </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

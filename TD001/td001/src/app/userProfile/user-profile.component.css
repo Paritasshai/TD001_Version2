@@ -1,0 +1,84 @@
+.margin-design {
+  margin-top: 5%;
+  width: 60%;
+  align-content: center;
+}
+
+/*.nav-design {*/
+  /*background-color: #5f6d7e;*/
+/*}*/
+
+.bg {
+/*position: relative;*/
+/*background: linear-gradient(to bottom, #5f6d7e 0%, #7f91a9 100%);*/
+/*width: 100%;*/
+/*min-height:100vh;*/
+margin-top: -10%;
+}
+
+/*.navbar-default {*/
+  /*border: solid 5px #5f6d7e;*/
+  /*height: 100px;*/
+/*}*/
+
+/*.navbar-brand {*/
+  /*color: white;*/
+  /*font-size: 14px;*/
+  /*border: solid 5px #5f6d7e;*/
+  /*height: 100px;*/
+/*}*/
+
+.margin-design-top {
+  margin-top: -50px;
+}
+
+.box {
+  background-color: #5f6d7e;
+  color: white;
+  font-size: 18px;
+}
+
+.bgl {
+  background-color: #6a798d;
+  margin-bottom: 2%;
+}
+
+.list-group-item {
+  border: none;
+  color: white;
+}
+
+.ex1:hover, .ex1:active {
+  color: #708095;
+  cursor: pointer;
+}
+
+.fb-profile img.fb-image-lg {
+  z-index: 0;
+  width: 100%;
+  margin-bottom: 10px;
+  height: 300px;
+  overflow: hidden;
+}
+
+.fb-image-profile {
+  margin: -90px 10px 0px 50px;
+  z-index: 9;
+  width: 20%;
+  height: 250px;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+
+  .fb-profile-text > h1 {
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  .fb-image-profile {
+    margin: -45px 10px 0px 25px;
+    z-index: 9;
+    width: 20%;
+  }
+}

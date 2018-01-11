@@ -1,0 +1,316 @@
+.container-fluid {
+  background-color: #fafafa;
+}
+
+.contain {
+  width: 100%;
+  height: 1200px;
+}
+
+.bg {
+  position: relative;
+  /*background: linear-gradient(to bottom, #8ea4bd 0%, #7f91a9 100%);*/
+  width: 100%;
+  min-height: 100vh;
+}
+
+.container-design {
+  margin-top: 2%;
+  margin-right: 10%;
+  margin-left: 10%;
+}
+
+.font-design {
+  padding: 2%;
+}
+
+.br {
+  margin-top: 8%;
+  padding: 2%;
+  position: relative;
+}
+
+.brr {
+  margin-top: 2%;
+  padding: 2%;
+  height: 200px;
+}
+
+.video-responsive {
+  width: 800px;
+  height: auto;
+}
+
+video {
+  width: 800px;
+  height: 450px;
+}
+
+.card-content {
+  width: 100%;
+  margin-left: -85px;
+}
+
+body {
+  position: relative;
+  display: block;
+}
+
+.blink_me {
+  animation: blinker 3s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+.thumbnail {
+  margin-bottom: 10px;
+  padding: 0px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+}
+
+.thumbnails {
+  margin-bottom: 10px;
+  padding: 0px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+}
+
+.img {
+  width: 800px;
+  height: 430px;
+  overflow: hidden;
+}
+
+.crop {
+  max-height: 300px;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.crop img {
+  max-height: 300px;
+  max-width: 100%;
+  margin: -15% -5% -20%;
+}
+
+.imgs {
+  width: 100%;
+  height: 235px;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.crops {
+  max-height: 300px;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.crops img {
+  max-height: 350px;
+  max-width: 100%;
+  margin: -5% 0 -5% 0;
+}
+
+.container {
+  position: fixed;
+}
+
+.container video {
+  position: fixed;
+  z-index: 0;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+/* CSS Document */
+
+marquee {
+  margin-top: 5px;
+  width: 100%;
+}
+
+.runtext-container {
+  background-repeat: repeat-x;
+  /*border: 4px solid #000000;*/
+  /*box-shadow: 0 5px 20px rgba(0, 0, 0, 0.9);*/
+  color: white;
+  font-size: 18px;
+  font-family: 'Kanit', sans-serif;
+  opacity: 0.7;
+  width: 600px;
+  overflow-x: hidden;
+  overflow-y: visible;
+  margin: 0 60px 0 30px;
+  padding: 0 3px 0 3px;
+}
+
+.main-runtext {
+  margin: 0 auto;
+  overflow: visible;
+  position: relative;
+  height: 40px;
+}
+
+.runtext-container .holder {
+  position: relative;
+  overflow: visible;
+  display: inline;
+  float: left;
+}
+
+.runtext-container .holder .text-container {
+  display: inline;
+}
+
+.profile-header-container {
+  margin: 2% auto;
+  text-align: left;
+}
+
+.profile-header-img {
+  padding: 5%;
+}
+
+.profile-header-img > img.img-circle {
+  width: 70px;
+  height: 70px;
+  border: 2px solid #51D2B7;
+}
+
+.profile-header {
+  margin-top: 10px;
+}
+
+/**
+ * Ranking component
+ */
+.rank-label-container {
+  margin-top: -19px;
+  /* z-index: 1000; */
+  text-align: center;
+}
+
+.label.label-default.rank-label {
+  background-color: rgb(81, 210, 183);
+  padding: 5px 10px 5px 10px;
+  border-radius: 27px;
+}
+
+/**
+ * Profile image component
+ */
+.profile-header-containers {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.profile-header-imgs {
+  padding: 54px;
+}
+
+.profile-header-imgs > img.img-circle {
+  width: 150px;
+  height: 150px;
+  border: 2px solid #51D2B7;
+}
+
+.profile-headers {
+  margin-top: 20px;
+}
+
+.circular--portrait {
+  margin: 2%;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.circular--portraits {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.circular--portraits img {
+  width: 100%;
+  height: auto;
+}
+
+.circular--portrait img {
+  width: 100%;
+  height: auto;
+}
+
+.profile-header-img {
+  margin-top: -7%;
+  margin-bottom: -8%;
+}
+
+.modal-body {
+  margin-top: -7%;
+}
+
+.floating-box {
+  float: left;
+  width: 150px;
+  height: 75px;
+  margin: 10px;
+  border: 3px solid #b62415;
+}
+
+.after-box {
+  clear: left;
+  border: 3px solid red;
+}
+
+.thumbnail {
+  margin-bottom: 20px;
+  padding: 0px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border: solid 2px rgba(191, 0, 0, .4);
+  border-radius: 3px;
+}
+
+.img {
+  width: 100%;
+  height: 130px;
+  /*border-radius: 10px;*/
+  overflow: hidden;
+}
+
+.crop {
+  max-height: 170px;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.crop img {
+  max-height: 200px;
+  max-width: 100%;
+  margin: -3% 0 -3% 0;
+}
+
+.carousel-control {
+  padding-top:10%;
+  width:5%;
+}

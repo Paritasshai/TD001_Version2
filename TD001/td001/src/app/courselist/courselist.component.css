@@ -1,0 +1,288 @@
+body {
+  font-family: 'Kanit', sans-serif;
+}
+
+.box-border{
+  box-shadow: 0 0 2px 2px #cfcfcf; /*THIS does not work as expected*/
+  max-height: 100%;
+  margin-bottom: -2%;
+}
+
+.container-fluid{
+  width: 100%;
+  box-shadow: 0 0 2px 2px #cfcfcf; /*THIS does not work as expected*/
+  border-radius: 2px;
+  /*margin-top: -17px;*/
+}
+
+.boxes-design {
+  border: solid 1px #818181;
+  padding: 1%;
+  margin: 1%;
+}
+
+.boxes-design-over {
+  margin-top: 1%;
+  margin-bottom: 1%;
+  padding: 1%;
+}
+
+.carousel-control {
+  background: none;
+  opacity: 0.1;
+  width: 5%;
+  color: black;
+}
+
+.hidden-design {
+  width: 110px;
+  height: 110px;
+  border: thin solid black;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.box-cover {
+  border: solid 1px gray;
+  width: 5px;
+  height: auto;
+  font-size: 10px;
+  align-content: center;
+}
+
+.circle-cover {
+  font-size: 20px;
+  border-radius: 100%;
+  border: solid 2px #428047;
+  background-color: #428047;
+  color: white;
+}
+
+.img-design {
+  width: 100%;
+  height: auto;
+}
+
+.li-style {
+  padding: 2%;
+}
+
+.contain {
+  width: 100%;
+}
+
+.font-size {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.glyphicon {
+  margin-right: 5px;
+}
+
+.blog {
+  width: 95%;
+}
+
+.thumbnail {
+  margin-bottom: 20px;
+  padding: 0px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border: solid 2px rgba(191, 0, 0, .4);;
+  border-radius: 3px;
+}
+
+.img {
+  width: 100%;
+  height: 130px;
+  /*border-radius: 10px;*/
+  overflow: hidden;
+}
+
+.crop {
+  max-height: 170px;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.crop img {
+  max-height: 200px;
+  max-width: 100%;
+  margin: -3% 0 -3% 0;
+}
+
+.well-bar {
+  margin-top: -6%;
+  background-color: #bf2b2a;
+}
+
+.well {
+  background-color: #bf2b2a;
+  opacity: 1;
+}
+
+/*.list-group {*/
+  /*background-color: #cfcfcf;*/
+/*}*/
+
+.well-height {
+  height: 40px;
+}
+
+.style-height-bar {
+  height: 40px;
+}
+
+.list-group {
+  width: 100%;
+}
+
+.list-group-item {
+  font-family: 'Kanit', sans-serif;
+}
+
+h2 {
+  font-size: 24px;
+  letter-spacing: 2px;
+  padding-top: 10px;
+  font-family: 'Kanit', sans-serif;
+  color: white;
+}
+
+.imaginary_container {
+  width: 80%;
+}
+
+#imaginary_container {
+  margin-top: -250px !important; /* Don't copy this */
+}
+
+.all-copy p {
+  -webkit-user-select: all; /* Chrome all / Safari all */
+  -moz-user-select: all; /* Firefox all */
+  -ms-user-select: all; /* IE 10+ */
+  user-select: all; /* Likely future */
+}
+
+/* enable absolute positioning */
+.inner-addon {
+  position: relative;
+}
+
+/* style glyph */
+.inner-addon .glyphicon {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+
+/* align glyph */
+.left-addon .glyphicon {
+  left: 0px;
+}
+
+.right-addon .glyphicon {
+  right: 0px;
+}
+
+/* add padding  */
+.left-addon input {
+  padding-left: 30px;
+}
+
+.right-addon input {
+  padding-right: 30px;
+}
+
+#div1 {
+  white-space: nowrap;
+  width: 10em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#div2 {
+  white-space: nowrap;
+  width: 10em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#div3 {
+  white-space: nowrap;
+  width: 10em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#div4 {
+  white-space: nowrap;
+  width: 10em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#div5 {
+  white-space: nowrap;
+  width: 10em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#div6 {
+  white-space: nowrap;
+  width: 10em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#div7 {
+  white-space: nowrap;
+  width: 10em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#div8 {
+  white-space: nowrap;
+  width: 10em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#div9 {
+  white-space: nowrap;
+  width: 10em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#div10 {
+  white-space: nowrap;
+  width: 10em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#div11 {
+  white-space: nowrap;
+  width: 10em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#div15 {
+  white-space: nowrap;
+  width: 10em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.stuck {
+  position: fixed;
+  /*max-height: 100%;*/
+  /*width: 320px;*/
+  /*background-color: #eee;*/
+}

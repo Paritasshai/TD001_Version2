@@ -1,0 +1,23 @@
+<app-header></app-header>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Order ID</th>
+    <th>User ID</th>
+    <th>Payment ID</th>
+    <th>Username</th>
+    <th>Email</th>
+    <th>Payment</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr [hidden]="orderPayments == undefined" *ngFor="let orderPayment of orderPayments">
+    <td>{{orderPayment.id}}</td>
+    <td>{{orderPayment.users[0].id}}</td>
+    <td>{{orderPayment.transRef}}</td>
+    <td>{{orderPayment.users[0].firstName}}</td>
+    <td>{{orderPayment.users[0].email}}</td>
+    <td align="right">{{orderPayment.transAmount}}</td>
+  </tr>
+  </tbody>
+</table>

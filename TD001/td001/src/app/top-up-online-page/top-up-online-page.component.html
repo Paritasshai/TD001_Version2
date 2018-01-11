@@ -1,0 +1,70 @@
+<app-header></app-header>
+<!--<hr style="border: solid 2px #dd1d0a; font-weight: 900">-->
+<div class="container-fluid">
+  <div align="center">
+    <div class="row content">
+      <div class="col-sm-12">
+        <div class="well">
+          <h2>เติมแต้มออนไลน์</h2>
+
+          <div class="checkbox-container navbar-default" *ngFor="let user of users">
+            <div align="left" *ngIf="user.id == currentUser.id">
+
+              <form name="form" #f="ngForm" novalidate>
+                <div class="form-group" style="width: 70%">
+                  <label>ระบุจำนวนเงินที่ต้องการใช้เติมแต้ม</label>
+                  <div class="form-group has-feedback">
+                    <p><select class="btn btn-danger btn-lg" style="width: 250px" [ngModel]="selectedDeviceObj"
+                               (ngModelChange)="onChangeObj($event)" name="sel3">
+                      <option [ngValue]="i" *ngFor="let i of deviceObjects">{{i.name}} บาท {{i.description}}</option>
+                    </select>
+                      <!--<input #box (keyup)="onKey(box.value)" type="number" (keypress)="keyPress($event)" class="form-control" name="transAmount"-->
+                      <!--id="transAmount"-->
+                      <!--[(ngModel)]="Order.transAmount"-->
+                      <!--#transAmount="ngModel"/>-->
+                  </div>
+                </div>
+                <div class="form-group">
+                  <hr>
+                  <label>รายการเติมเงิน</label>
+                  <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                      <th>ยอดเงินคงเหลือ</th>
+                      <!--<th>จำนวนเงินที่ต้องการเติม</th>-->
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <td><p>{{user.balance}} Bath.</p></td>
+                      <!--<td><p [hidden]="!values" style="color: red; font-size: 14px">+ {{values}} Bath.</p></td>-->
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="form-group">
+                  <hr>
+                  <label>ตรวจสอบรายละเอียดอีกครั้งแล้วยืนยัน</label>
+                  <div class="form-group">
+                    <label for="transRemark">*หมายเหตุ</label>
+                    <textarea class="form-control" name="transRemark" id="transRemark" rows="3"
+                              [(ngModel)]="Order.transRemark"
+                              #transRemark="ngModel"></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <hr>
+                  <button type="button" class="btn btn-primary btn-md" (click)="Confirm()">บันทึก</button>
+                </div>
+
+              </form>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

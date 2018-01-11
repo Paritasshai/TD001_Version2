@@ -1,0 +1,114 @@
+.modal {
+  margin-top: 4%;
+  margin-left: 40px;
+}
+
+.form-signin input[type="text"] {
+  margin-bottom: 5px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.form-signin .form-control {
+  position: relative;
+  font-size: 16px;
+  font-family: 'Kanit', sans-serif;
+  height: auto;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.vertical-offset-100 {
+  padding-top: 100px;
+}
+
+.img-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: auto;
+}
+
+.panel {
+  margin-bottom: 20px;
+  background-color: rgba(255, 255, 255, 0.75);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+}
+
+.center {
+  margin-top: 5px;
+}
+
+.modal-header {
+  padding-bottom: 1px;
+}
+
+.modal-footer {
+  padding: 0;
+}
+
+.modal-footer .btn-group button {
+  height: 40px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border: none;
+  border-right: 1px solid #ddd;
+}
+
+.modal-footer .btn-group:last-child > button {
+  border-right: 0;
+}
+
+.form-control {
+  height: 40px;
+}
+
+.modal {
+  text-align: center;
+  width: 95%;
+}
+
+.modal-dialog {
+  display: inline-block;
+}
+
+hr.style15 {
+  border-top: 4px double #8c8b8b;
+  text-align: center;
+}
+
+hr.style15:after {
+  content: 'Sign Up';
+  display: inline-block;
+  position: relative;
+  top: -15px;
+  padding: 0 10px;
+  background: white;
+  color: #8c8b8b;
+  font-size: 18px;
+}
+
+.style-height {
+  min-height: 270%;
+}
+
+.double {
+  border-style: double;
+  color: #bf2b2a;
+  padding: 2%;
+}
+
+.wrapper {
+  margin-top: -5%;
+}

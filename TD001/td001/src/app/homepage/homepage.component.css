@@ -1,0 +1,71 @@
+/* home section */
+
+#home {
+  background: url('../../assets/images/cover.png') no-repeat;
+  /*background: url('https://firebasestorage.googleapis.com/v0/b/makehappen-cc730.appspot.com/o/Image_fa3e295.png?alt=media&token=5256259e-d477-4313-8834-8120cca6bd5a') no-repeat;*/
+  /*background: url('https://drive.google.com/open?id=0B-3_PQch_LsGS3ktdWRJSm1uVE0') 50% 0 repeat-y fixed;*/
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-position: center;
+  color: #ffffff;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  height: 250px;
+  text-align: left;
+  opacity: 0.9;
+  margin-top: -20px;
+}
+
+#home h2 {
+  font-size: 24px;
+  letter-spacing: 2px;
+  padding-top: 10px;
+  font-family: 'Kanit', sans-serif;
+}
+
+@media screen and (max-width: 400px) {
+  #separate-design-one {
+    float: none;
+    margin-right: 0;
+    width: auto;
+    border: 0;
+    border-bottom: 1px solid #000;
+  }
+}
+
+.btn-color {
+  background-color: #bf2b2a;
+  color: white;
+}
+
+.double {
+  border-style: double;
+}
+
+.container-fluid {
+  width: 100%;
+}
+
+#imaginary_container{
+  margin-top:7%; /* Don't copy this */
+}
+.stylish-input-group .input-group-addon{
+  background: white !important;
+}
+.stylish-input-group .form-control{
+  border-right:0;
+  box-shadow:0 0 0;
+  border-color:#ccc;
+  height: 40px;
+}
+.stylish-input-group button{
+  border:0;
+  background:transparent;
+}

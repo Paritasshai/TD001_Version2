@@ -1,0 +1,39 @@
+.my-drop-zone {
+  border: dotted 3px lightgray;
+}
+
+.nv-file-over {
+  border: dotted 3px red;
+}
+
+/* Default class applied to drop zones on over */
+.another-file-over-class {
+  border: dotted 3px green;
+}
+
+html, body {
+  height: 100%;
+}
+
+.run {
+  margin-top: 50px;
+}
+
+hr.style13 {
+  height: 10px;
+  border: 0;
+  box-shadow: 0 10px 10px -10px #8c8b8b inset;
+}
+
+hr.style1 {
+  border-top: 1px solid #8c8b8b;
+}
+
+.container-fluid {
+  width: 70%;
+  margin-top: 5%;
+}
+
+textarea{
+  height: 250px;
+}

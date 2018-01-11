@@ -1,0 +1,50 @@
+.container{
+  width: 95%;
+}
+
+
+.thumbnail {
+  margin-bottom: 20px;
+  padding: 0px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border: solid 2px rgba(191, 0, 0, .4);
+  border-radius: 3px;
+  width: 160px;
+}
+
+.img {
+  width: 100%;
+  height: 130px;
+  /*border-radius: 10px;*/
+  overflow: hidden;
+}
+
+.crop {
+  max-height: 170px;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.crop img {
+  max-height: 200px;
+  max-width: 100%;
+  margin: -3% 0 -3% 0;
+}
+
+.well{
+  background-color: #bf2b2a;
+  opacity: 1;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: Kanit, sans-serif;
+}
+
+.div1{
+  white-space: nowrap;
+  width: 10em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

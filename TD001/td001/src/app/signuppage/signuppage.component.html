@@ -1,0 +1,74 @@
+<div class="container">
+
+  <!-- line modal -->
+  <div class="modal fade" id="squarespaceModalSignUp" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+       aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-body">
+          <div class="container-fluid double">
+
+            <div class="row">
+              <div class="col-sm-4">
+                <img [src]="ImgSignUp" class="img-responsive" style="width: 400px; height: auto; margin-top: 15%"/>
+              </div>
+
+              <div class="col-sm-8">
+                <hr class="style15">
+                <div class="col-sm-12">
+
+                  <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1 style-height">
+                      <form name="form" (ngSubmit)="f.form.valid && signUp()" #f="ngForm" novalidate>
+                        <div style="margin-top: -2%; width: 100%" class="form-group"
+                             [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+                          <input type="text" class="form-control" name="firstName" placeholder="ชื่อ"
+                                 [(ngModel)]="User.firstName"
+                                 #firstName="ngModel" required/>
+                          <div align="left" *ngIf="f.submitted && !firstName.valid" class="help-block">First Name is
+                            required!
+                          </div>
+                        </div>
+                        <div style="margin-top: -2%" class="form-group"
+                             [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+                          <input type="email" class="form-control" name="email" placeholder="อีเมล์"
+                                 [(ngModel)]="User.email"
+                                 #username="ngModel" required/>
+                          <div align="left" *ngIf="f.submitted && !username.valid" class="help-block">Email is
+                            required!
+                          </div>
+                        </div>
+                        <div style="margin-top: -2%" class="form-group"
+                             [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+                          <input minlength="8" type="password" class="form-control" name="password"
+                                 placeholder="รหัสผ่าน"
+                                 [(ngModel)]="User.password"
+                                 #password="ngModel" required/>
+                          <div align="left" *ngIf="f.submitted && !password.valid" class="help-block">Password is
+                            required! 8 characters
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <button [disabled]="loading" class="btn btn-primary">สมัครสมาชิก</button>
+                          <img *ngIf="loading"
+                               src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+                          <a data-dismiss="modal" type="reset" class="btn btn-link">ออก</a>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
