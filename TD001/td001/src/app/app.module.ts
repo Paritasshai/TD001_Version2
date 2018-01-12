@@ -70,7 +70,13 @@ import {EditCommentComponent} from './robomind/add-coment/edit-comment/edit-comm
 import {CreateRoboticComponent} from './robomind/create-robotic/create-robotic.component';
 import {InstructorProfileComponent} from './userProfile/instructor-profile/instructor-profile.component';
 import {SpinnerModule} from 'spinner-angular';
-import {MyDoalogComponent} from './alertContent/my-doalog/my-doalog.component';
+
+import { ModalModule } from 'angular2-modal';
+import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
+import { CustomModalContextComponent } from './alertContent/custom-modal-context/custom-modal-context.component';
+import { CourseComponent } from './alertContent/course/course.component';
+import { CourseDecisionComponent } from './alertContent/course-decision/course-decision.component';
+
 
 @NgModule({
   declarations: [
@@ -118,7 +124,9 @@ import {MyDoalogComponent} from './alertContent/my-doalog/my-doalog.component';
     EditCommentComponent,
     CreateRoboticComponent,
     InstructorProfileComponent,
-    MyDoalogComponent
+    CustomModalContextComponent,
+    CourseComponent,
+    CourseDecisionComponent
   ],
   imports: [
     BrowserModule,
@@ -135,6 +143,8 @@ import {MyDoalogComponent} from './alertContent/my-doalog/my-doalog.component';
     // VgControlsModule,
     // VgOverlayPlayModule,
     // VgBufferingModule,
+    ModalModule.forRoot(),
+    BootstrapModalModule,
     SpinnerModule.forRoot({})
   ],
   providers: [
@@ -153,6 +163,8 @@ import {MyDoalogComponent} from './alertContent/my-doalog/my-doalog.component';
   bootstrap: [AppComponent],
   entryComponents: [
     AppComponent,
+    CustomModalContextComponent,
+    CourseComponent
   ],
 })
 export class AppModule {

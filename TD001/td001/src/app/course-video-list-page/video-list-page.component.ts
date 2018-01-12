@@ -64,11 +64,11 @@ export class VideoListPageComponent implements OnInit {
     this.courseService.createCourse(id, this.Course)
       .subscribe(
         data => {
-          this.alertService.success('Upload Successful', true);
+          //this.alertService.success('Upload Successful', true);
           this.router.navigate(['/EditCourse']);
         },
         error => {
-          this.alertService.error('Upload Failed', true);
+          //this.alertService.error('Upload Failed', true);
         });
   }
 

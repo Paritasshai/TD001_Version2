@@ -65,9 +65,6 @@ export class CourselistComponent implements OnInit {
   SearchAdvance: any = {};
   SelectedValue: string = null;
 
-  // checkboxValue1: boolean = false;
-  // checkboxValue2: boolean = false;
-
   constructor(private courseService: CourseService,
               private router: Router,
               private userService: UserService) {
@@ -233,32 +230,32 @@ export class CourselistComponent implements OnInit {
       });
     }
 
-    if (this.SearchAdvance.Pname != null) {
-      alert('Pname');
-      this.querySearch = true;
-      this.querySearchPay = false;
-      this.courseService.getSearchByName(this.SearchAdvance.Pname, this.textPublic).subscribe(courseSearch => {
-        this.courseSearch = courseSearch;
-      });
-
-    } else if (this.SearchAdvance.free === true) {
-      alert('Free');
-      console.log(this.empty);
-      this.querySearchPay = false;
-      this.querySearch = true;
-      this.courseService.getSearchByFree(this.empty, this.textPublic).subscribe(courseSearch => {
-        this.courseSearch = courseSearch;
-      });
-    } else if (this.SearchAdvance.pay === true) {
-      alert('Pay');
-      this.querySearchPay = true;
-      this.querySearch = false;
-      this.courseService.getCourseItemsByPublic(this.textPublic).subscribe(courseSearch => {
-        this.courseSearch = courseSearch;
-      });
-    } else {
-      alert('Else');
-    }
+    // if (this.SearchAdvance.Pname != null) {
+    //   // alert('Pname');
+    //   this.querySearch = true;
+    //   this.querySearchPay = false;
+    //   this.courseService.getSearchByName(this.SearchAdvance.Pname, this.textPublic).subscribe(courseSearch => {
+    //     this.courseSearch = courseSearch;
+    //   });
+    //
+    // } else if (this.SearchAdvance.free === true) {
+    //   // alert('Free');
+    //   console.log(this.empty);
+    //   this.querySearchPay = false;
+    //   this.querySearch = true;
+    //   this.courseService.getSearchByFree(this.empty, this.textPublic).subscribe(courseSearch => {
+    //     this.courseSearch = courseSearch;
+    //   });
+    // } else if (this.SearchAdvance.pay === true) {
+    //   // alert('Pay');
+    //   this.querySearchPay = true;
+    //   this.querySearch = false;
+    //   this.courseService.getCourseItemsByPublic(this.textPublic).subscribe(courseSearch => {
+    //     this.courseSearch = courseSearch;
+    //   });
+    // } else {
+    //   // alert('Else');
+    // }
   }
 
   public BAll() {

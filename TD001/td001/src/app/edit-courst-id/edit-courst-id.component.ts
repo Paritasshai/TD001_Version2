@@ -90,10 +90,10 @@ export class EditCourstIdComponent implements OnInit {
     this.courseService.updateCourse(id, this.name, this.description, this.price, this.publicCourse, this.linkCourse, this.Course, this.courseType, this.catagory)
       .subscribe(
         data => {
-          this.alertService.success('Edit Successful', true);
+          // this.alertService.success('Edit Successful', true);
         },
         error => {
-          this.alertService.error('Edit Failed', true);
+          // this.alertService.error('Edit Failed', true);
         });
   }
 
@@ -140,10 +140,10 @@ export class EditCourstIdComponent implements OnInit {
     this.courseService.createVideoItem(this.route.snapshot.params['id'], this.course).subscribe(
       data => {
         location.reload();
-        this.alertService.success('Upload Successful', true);
+        // this.alertService.success('Upload Successful', true);
       },
       error => {
-        this.alertService.error('Upload Failed', true);
+        // this.alertService.error('Upload Failed', true);
       });
   }
 
@@ -152,10 +152,10 @@ export class EditCourstIdComponent implements OnInit {
     this.courseService.createImageItem(this.route.snapshot.params['id'], this.course).subscribe(
       data => {
         location.reload();
-        this.alertService.success('Upload Successful', true);
+        // this.alertService.success('Upload Successful', true);
       },
       error => {
-        this.alertService.error('Upload Failed', true);
+        // this.alertService.error('Upload Failed', true);
       });
   }
 
@@ -163,10 +163,10 @@ export class EditCourstIdComponent implements OnInit {
     this.courseService.createTextItem(this.route.snapshot.params['id'], this.course).subscribe(
       data => {
         location.reload();
-        this.alertService.success('Upload Successful', true);
+        // this.alertService.success('Upload Successful', true);
       },
       error => {
-        this.alertService.error('Upload Failed', true);
+        // this.alertService.error('Upload Failed', true);
       });
   }
 

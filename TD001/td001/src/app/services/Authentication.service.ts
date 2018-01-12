@@ -26,13 +26,13 @@ export class AuthenticationService {
 
       // if (localStorage.getItem('currentUser') === null) {
       if (user.status === 'new') {
-        this.alertService.error('Please Activate Your Email Account');
+        // this.alertService.error('Please Activate Your Email Account');
         alert('Please Activate Your Email Account');
         this.router.navigate(['/home']);
       } else {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('currentUser', JSON.stringify(user));
-        this.alertService.success('Login successful', true);
+        // this.alertService.success('Login successful', true);
       }
       // location.reload();
       return user;

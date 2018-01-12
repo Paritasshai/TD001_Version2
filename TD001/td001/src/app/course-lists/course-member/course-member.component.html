@@ -3,7 +3,8 @@
   <div *ngFor="let user of users">
     <div *ngIf="user.id == currentUser.id">
       <div *ngIf="user.status == statusActive">
-
+        <alert></alert>
+        <!--<span>{{name}}</span>-->
         <div class="container-design">
           <spinner icon="bubbles" class="spinner-balanced" color="#e32d25" [size]="130" *ngIf="loading">Loading...
           </spinner>

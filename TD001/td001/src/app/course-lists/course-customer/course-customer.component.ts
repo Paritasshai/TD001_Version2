@@ -6,10 +6,15 @@ import {Http} from '@angular/http';
 import {User} from '../../models/User';
 import {AppComponent} from '../../app.component';
 
+import {BSModalContext, Modal} from 'angular2-modal/plugins/bootstrap';
+import {overlayConfigFactory} from "angular2-modal";
+import {CustomModalContextComponent} from "../../alertContent/custom-modal-context/custom-modal-context.component";
+
 @Component({
   selector: 'app-course-customer',
   templateUrl: './course-customer.component.html',
-  styleUrls: ['./course-customer.component.css']
+  styleUrls: ['./course-customer.component.css'],
+  providers: [Modal]
 })
 export class CourseCustomerComponent implements OnInit {
 
@@ -58,7 +63,8 @@ export class CourseCustomerComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router,
               private userService: UserService,
-              private http: Http) {
+              private http: Http,
+              public modal: Modal) {
 
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
@@ -93,6 +99,18 @@ export class CourseCustomerComponent implements OnInit {
     //this.open();
   }
 
+  openCustom() {
+    return this.modal.open(CustomModalContextComponent,  overlayConfigFactory({ num1: 2, num2: 3 }, BSModalContext));
+  }
+
+  // buyCourseNull() {
+  //   this.modal.alert()
+  //     .size('lg')
+  //     .showClose(true)
+  //     .body(`<div align="center"><h4>เข้าสู่ระบบหรือสมัครสมาชิก</h4></div>`)
+  //     .open();
+  // }
+
   private getUserList() {
     this.userService.getAll().subscribe(users => {
       this.users = users;
@@ -111,9 +129,10 @@ export class CourseCustomerComponent implements OnInit {
     });
   }
 
-  buyCourseNull() {
-    alert('เข้าสู่ระบบหรือสมัครสมาชิก');
-  }
+  // buyCourseNull() {
+  //
+  //   alert('เข้าสู่ระบบหรือสมัครสมาชิก');
+  // }
 
   TeacherHistory(email) {
     //console.log(email);
@@ -131,7 +150,7 @@ export class CourseCustomerComponent implements OnInit {
   }
 
   buyyy() {
-    alert('กรุณาเข้าสู่ระบบหรือสมัครสมาชิก');
+    return this.modal.open(CustomModalContextComponent,  overlayConfigFactory({ num1: 2, num2: 3 }, BSModalContext));
   }
 
   insProfile(id) {

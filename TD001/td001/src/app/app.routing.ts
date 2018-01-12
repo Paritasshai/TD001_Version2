@@ -9,7 +9,7 @@ import {TopUpBankPageComponent} from "./top-up-bank-page/top-up-bank-page.compon
 import {TopUpOnlinePageComponent} from "./top-up-online-page/top-up-online-page.component";
 import {UserProfileComponent} from "./userProfile/user-profile.component";
 import {NonTopUpComponent} from "./non-top-up/non-top-up.component";
-import {PaymentHistoryListComponent} from "app/payment-history-list/payment-history-list.component";
+// import {PaymentHistoryListComponent} from "app/payment-history-list/payment-history-list.component";
 import {CourseListsComponent} from "./course-lists/course-lists.component";
 import {EditCourstIdComponent} from "./edit-courst-id/edit-courst-id.component";
 import {VideoListPageComponent} from "./course-video-list-page/video-list-page.component";
@@ -37,7 +37,7 @@ const appRoutes: Routes = [
   {path: 'topUpBank/:id', component: TopUpBankPageComponent},
   {path: 'topUpOnline', component: TopUpOnlinePageComponent},
   {path: 'nonTopUp', component: NonTopUpComponent},
-  {path: 'PaymentLists', component: PaymentHistoryListComponent},
+  // {path: 'PaymentLists', component: PaymentHistoryListComponent},
   {path: 'CourseLists/:id', component: CourseListsComponent},
   {path: 'EditCourse/:id', component: EditCourstIdComponent},
   {path: 'createCourse', component: VideoListPageComponent},

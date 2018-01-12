@@ -6,6 +6,10 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {CourseService} from '../../services/CourseService';
 import {User} from '../../models/User';
 import {AppComponent} from '../../app.component';
+import {Modal, overlayConfigFactory} from "angular2-modal";
+import {CourseComponent} from "../../alertContent/course/course.component";
+import {BSModalContext} from "angular2-modal/plugins/bootstrap/src/modal-context";
+import {AlertService} from "../../alertContent/AlertService";
 
 @Component({
   selector: 'app-course-member',
@@ -60,12 +64,16 @@ export class CourseMemberComponent implements OnInit {
   loading = true;
   show = false;
 
+  name: any;
+
   constructor(private courseService: CourseService,
               private route: ActivatedRoute,
               private router: Router,
               private userService: UserService,
               private purchaseCourseService: PurchaseCourseService,
-              private http: Http) {
+              private http: Http,
+              public modal: Modal,
+              private alertService: AlertService) {
 
     const id = this.route.snapshot.params['id'];
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -143,27 +151,36 @@ export class CourseMemberComponent implements OnInit {
 
   buyCourse(id, balance, price, name) {
 
-    const answer = confirm('\nยืนยันการใช้แต้มเข้าเรียน');
-    if (answer) {
+    let that = this;
+    this.alertService.confirmThis("ยืนยันการใช้แต้มเข้าเรียน?", function () {
+      //ACTION: Do this If user says YES
+      that.name = "Yes clicked";
+    }, function () {
+      //ACTION: Do this if user says NO
+      that.name = "No clicked";
+    })
 
-      this.userId = this.currentUser.id;
-      this.userBalance = balance;
-      // console.log("your ID: " + id);
-      // console.log("your balance: " + balance);
-      // console.log("course price: " + price);
-      // console.log("name: " + name);
-
-      this.purchaseCourseService.createBuyCourse(this.userId, id, this.purchaseCart, this.userBalance, price, name).subscribe(
-        data => {
-          alert('กรุณาตรวจสอบแต้มคงเหลือ..... \nยืนยันการใช้แต้มเข้าเรียน');
-          location.reload();
-        },
-        error => {
-          alert('มีบางอย่างผิดพลาดระบบกำลังตรวจสอบ');
-        });
-    } else {
-      console.log('Refuse');
-    }
+    // const answer = confirm('\nยืนยันการใช้แต้มเข้าเรียน');
+    // if (answer) {
+    //
+    //   this.userId = this.currentUser.id;
+    //   this.userBalance = balance;
+    //   // console.log("your ID: " + id);
+    //   // console.log("your balance: " + balance);
+    //   // console.log("course price: " + price);
+    //   // console.log("name: " + name);
+    //
+    //   this.purchaseCourseService.createBuyCourse(this.userId, id, this.purchaseCart, this.userBalance, price, name).subscribe(
+    //     data => {
+    //       alert('กรุณาตรวจสอบแต้มคงเหลือ..... \nยืนยันการใช้แต้มเข้าเรียน');
+    //       location.reload();
+    //     },
+    //     error => {
+    //       alert('มีบางอย่างผิดพลาดระบบกำลังตรวจสอบ');
+    //     });
+    // } else {
+    //   console.log('Refuse');
+    // }
   }
 
   // TeacherHistory(email) {
@@ -182,7 +199,8 @@ export class CourseMemberComponent implements OnInit {
   }
 
   buyyy() {
-    alert('กรุณายันการใช้แต้มเข้าเรียนก่อน');
+    return this.modal.open(CourseComponent, overlayConfigFactory({num1: 2, num2: 3}, BSModalContext));
+    // alert('กรุณายันการใช้แต้มเข้าเรียนก่อน');
   }
 
   insProfile(id) {
