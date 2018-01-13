@@ -26,6 +26,7 @@ import {EditProfileComponent} from "./robomind/create-profile/edit-profile/edit-
 import {EditCommentComponent} from "./robomind/add-coment/edit-comment/edit-comment.component";
 import {CreateRoboticComponent} from "./robomind/create-robotic/create-robotic.component";
 import {InstructorProfileComponent} from "./userProfile/instructor-profile/instructor-profile.component";
+import {StoreComponent} from "./alertContent/store/store.component";
 
 const appRoutes: Routes = [
   {path: 'home', component: HomepageComponent},
@@ -54,6 +55,7 @@ const appRoutes: Routes = [
   {path: 'editComment/:id', component: EditCommentComponent},
   {path: 'createRobotic', component: CreateRoboticComponent},
   {path: 'insProfile/:id', component: InstructorProfileComponent},
+  {path: 'store', component: StoreComponent},
 
 
   // otherwise redirect to home

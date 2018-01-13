@@ -152,13 +152,32 @@ export class CourseMemberComponent implements OnInit {
   buyCourse(id, balance, price, name) {
 
     let that = this;
-    this.alertService.confirmThis("ยืนยันการใช้แต้มเข้าเรียน?", function () {
-      //ACTION: Do this If user says YES
-      that.name = "Yes clicked";
-    }, function () {
-      //ACTION: Do this if user says NO
-      that.name = "No clicked";
-    })
+    this.alertService.confirmThis("ยืนยันการใช้แต้มเข้าเรียน?",
+
+      function () {
+        //ACTION: Do this If user says YES
+        that.name = "Yes clicked";
+        that.userId = that.currentUser.id;
+        that.userBalance = balance;
+        // console.log("your ID: " + id);
+        // console.log("your balance: " + balance);
+        // console.log("course price: " + price);
+        // console.log("name: " + name);
+
+        that.purchaseCourseService.createBuyCourse(that.userId, id, that.purchaseCart, that.userBalance, price, name).subscribe(
+          data => {
+            //alert('กรุณาตรวจสอบแต้มคงเหลือ..... \nยืนยันการใช้แต้มเข้าเรียน');
+            location.reload();
+          },
+          error => {
+            alert('มีบางอย่างผิดพลาดระบบกำลังตรวจสอบ');
+          });
+
+      }, function () {
+        //ACTION: Do this if user says NO
+        that.name = "No clicked";
+        console.log('Refuse');
+      })
 
     // const answer = confirm('\nยืนยันการใช้แต้มเข้าเรียน');
     // if (answer) {
@@ -199,7 +218,7 @@ export class CourseMemberComponent implements OnInit {
   }
 
   buyyy() {
-    return this.modal.open(CourseComponent, overlayConfigFactory({num1: 2, num2: 3}, BSModalContext));
+     return this.modal.open(CourseComponent, overlayConfigFactory({num1: 2, num2: 3}, BSModalContext));
     // alert('กรุณายันการใช้แต้มเข้าเรียนก่อน');
   }
 

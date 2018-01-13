@@ -1,14 +1,15 @@
 .custom-modal-container {
   padding: 15px;
+  display: block;
 }
 
 .custom-modal-header {
   background-color: #ce1b09;
   opacity: 0.8;
   color: #fff;
-  -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
-  box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+  /*-webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);*/
+  /*-moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);*/
+  /*box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);*/
   margin-top: -15px;
   margin-bottom: 15px;
 }

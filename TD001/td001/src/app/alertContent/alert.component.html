@@ -1,19 +1,22 @@
 <div *ngIf="message" class="modal" tabindex="-1" role="dialog" style="display:block!important">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog custom-modal-container" role="document">
     <div class="modal-content" *ngIf="message?.type == 'confirm'">
       <div class="modal-header">
-        <button type="button" class="close" (click)="message.noFn()">&times;</button>
+        <button type="button" class="close" (click)="message.noFn()" style="color: white; font-size: 16px">X</button>
       </div>
       <div class="modal-body">
         <div class="row">
           <div class="col-md-12">
+            <div align="center">
+              <h4>กรุณาตรวจสอบแต้มคงเหลือ</h4>
+            </div>
             <h3 class="text-center">{{message.text}}</h3>
           </div>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" (click)="message.noFn()">Yes</button>
-        <button type="button" class="btn btn-default" (click)="message.siFn()">No</button>
+        <button type="button" class="btn btn-default" (click)="message.siFn()">Yes</button>
+        <button type="button" class="btn btn-default" (click)="message.noFn()">No</button>
       </div>
 
     </div>

@@ -71,11 +71,12 @@ import {CreateRoboticComponent} from './robomind/create-robotic/create-robotic.c
 import {InstructorProfileComponent} from './userProfile/instructor-profile/instructor-profile.component';
 import {SpinnerModule} from 'spinner-angular';
 
-import { ModalModule } from 'angular2-modal';
-import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
-import { CustomModalContextComponent } from './alertContent/custom-modal-context/custom-modal-context.component';
-import { CourseComponent } from './alertContent/course/course.component';
-import { CourseDecisionComponent } from './alertContent/course-decision/course-decision.component';
+import {ModalModule} from 'angular2-modal';
+import {BootstrapModalModule} from 'angular2-modal/plugins/bootstrap';
+import {CustomModalContextComponent} from './alertContent/custom-modal-context/custom-modal-context.component';
+import {CourseComponent} from './alertContent/course/course.component';
+import {CourseDecisionComponent} from './alertContent/course-decision/course-decision.component';
+import { StoreComponent } from './alertContent/store/store.component';
 
 
 @NgModule({
@@ -126,7 +127,8 @@ import { CourseDecisionComponent } from './alertContent/course-decision/course-d
     InstructorProfileComponent,
     CustomModalContextComponent,
     CourseComponent,
-    CourseDecisionComponent
+    CourseDecisionComponent,
+    StoreComponent
   ],
   imports: [
     BrowserModule,

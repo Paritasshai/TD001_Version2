@@ -67,7 +67,7 @@
                   <!--</div>-->
 
                   <div class="form-group">
-                    <label>ค้นหาโดยกลุ่มโปรเจค</label>
+                    <label>กลุ่มโปรเจค</label>
                     <select class="form-control" [ngModel]="selectedDeviceObj"
                             (ngModelChange)="onChangeObj($event)" name="sel3">
                       <option [ngValue]="i" *ngFor="let i of deviceObjects">{{i.name}}</option>
@@ -75,38 +75,12 @@
                   </div>
 
                   <div class="form-group">
-                    <label>ค้นหาจากวันที่เผยแพร่</label>
+                    <label>วันที่เผยแพร่</label>
                     <select class="form-control" [ngModel]="selectedDayObj"
                             (ngModelChange)="onChangeObjj($event)" name="sel4">
                       <option [ngValue]="i" *ngFor="let i of daysObjects">{{i.name}}</option>
                     </select>
                   </div>
-
-                  <!--<div class="form-group">-->
-                  <!--<label>ค้นหาโดยกลุ่มโปรเจค</label>-->
-                  <!--<select class="form-control">-->
-                  <!--<option value="0" selected>Lego Mindstrom</option>-->
-                  <!--<option value="1">Tech-->
-                  <!--Household</option>-->
-                  <!--<option value="2">Tech-->
-                  <!--Household</option>-->
-                  <!--<option value="3">Tech-->
-                  <!--Toy</option>-->
-                  <!--<option value="4">Tech-->
-                  <!--Garden</option>-->
-                  <!--<option value="4">IoT</option>-->
-                  <!--</select>-->
-                  <!--</div>-->
-
-                  <!--<div class="form-group">-->
-                  <!--<label>ค้นหาจากวันที่เผยแพร่</label>-->
-                  <!--<select class="form-control">-->
-                  <!--<option value="0" selected>1 วันที่แล้ว</option>-->
-                  <!--<option value="1">1 สัปดาห์ที่แล้ว</option>-->
-                  <!--<option value="2">1 เดือนที่แล้ว</option>-->
-                  <!--<option value="3">1 ปีที่แล้ว</option>-->
-                  <!--</select>-->
-                  <!--</div>-->
 
                   <div class="form-group">
                     <div align="center">

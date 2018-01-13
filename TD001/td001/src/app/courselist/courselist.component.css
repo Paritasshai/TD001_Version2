@@ -12,6 +12,7 @@ body {
   width: 100%;
   box-shadow: 0 0 2px 2px #cfcfcf; /*THIS does not work as expected*/
   border-radius: 2px;
+  margin-top: 4%;
   /*margin-top: -17px;*/
 }
 
