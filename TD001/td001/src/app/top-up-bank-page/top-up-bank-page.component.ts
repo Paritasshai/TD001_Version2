@@ -18,6 +18,11 @@ export class TopUpBankPageComponent implements OnInit {
     dateFormat: 'dd-mm-yyyy',
   };
 
+  ImgKTB: string;
+  ImgBBL: string;
+  ImgSCB: string;
+  ImgKB: string;
+
   // Initialized to specific date (09.10.2018).
   // private modelDate: Object = { date: { year: 2018, month: 10, day: 9 } };
 
@@ -41,6 +46,11 @@ export class TopUpBankPageComponent implements OnInit {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.userId = this.currentUser.id;
     console.clear();
+
+    this.ImgKTB = '../../assets/images/KTB.jpg';
+    this.ImgBBL = '../../assets/images/bbl.png';
+    this.ImgSCB = '../../assets/images/scb.jpg';
+    this.ImgKB = '../../assets/images/Kb.jpg';
   }
 
   ngOnInit() {
@@ -82,7 +92,7 @@ export class TopUpBankPageComponent implements OnInit {
             location.reload();
           }, 2000);
           this.router.navigate(['/userProfile']);
-          alert('Success');
+          //alert('Success');
         },
         error => {
           alert('Error');

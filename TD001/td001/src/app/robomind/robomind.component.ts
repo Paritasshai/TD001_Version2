@@ -18,6 +18,7 @@ export class RobomindComponent implements OnInit {
   users: User[] = [];
   Student: any = {};
   ImgLogo: string;
+  instructor = 'instructor';
 
   constructor(private router: Router,
               private studentService: StudentService,

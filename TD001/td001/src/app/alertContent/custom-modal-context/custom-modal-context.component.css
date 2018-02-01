@@ -19,3 +19,8 @@
   color: #bf2b2a;
   padding: 2%;
 }
+
+.modal-footer{
+  height: 40px;
+  padding: 2%;
+}

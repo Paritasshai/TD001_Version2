@@ -21,6 +21,7 @@ export class EditCourstIdComponent implements OnInit {
   public CourseId;
   name: any;
   description: any;
+  dateCreateCourse: any;
   price: any;
   courseId: any;
   video: Video;
@@ -37,6 +38,11 @@ export class EditCourstIdComponent implements OnInit {
   CatagoriesItems = 'Lego Household Toy Garden IoT'.split(' ');
   model = {options: ''};
   models = {options: ''};
+
+  public uploader: FileUploader = new FileUploader({url: URL + 'add/video/' + '?id=' + this.route.snapshot.params['id']});
+  public uploaderImage: FileUploader = new FileUploader({url: URL + 'add/ImageCourse/' + '?id=' + this.route.snapshot.params['id']});
+  public hasBaseDropZoneOver = false;
+  public hasAnotherDropZoneOver = false;
 
   constructor(private route: ActivatedRoute,
               private courseService: CourseService,
@@ -56,11 +62,6 @@ export class EditCourstIdComponent implements OnInit {
     });
   }
 
-  public uploader: FileUploader = new FileUploader({url: URL + 'add/video/' + '?id=' + this.route.snapshot.params['id']});
-  public uploaderImage: FileUploader = new FileUploader({url: URL + 'add/ImageCourse/' + '?id=' + this.route.snapshot.params['id']});
-  public hasBaseDropZoneOver = false;
-  public hasAnotherDropZoneOver = false;
-
   public fileOverBase(e: any): void {
     this.hasBaseDropZoneOver = e;
   }
@@ -76,6 +77,8 @@ export class EditCourstIdComponent implements OnInit {
 
     this.name = this.Course.name;
     this.description = this.Course.description;
+    this.dateCreateCourse = this.Course.dateCreateCourse;
+    console.log(' Date Create Course: ' + this.dateCreateCourse);
     this.price = this.Course.price;
     this.publicCourse = this.Course.publicCourse;
     console.log(this.publicCourse);
@@ -87,7 +90,7 @@ export class EditCourstIdComponent implements OnInit {
     console.log(this.courseType);
     console.log(this.catagory);
 
-    this.courseService.updateCourse(id, this.name, this.description, this.price, this.publicCourse, this.linkCourse, this.Course, this.courseType, this.catagory)
+    this.courseService.updateCourse(id, this.name, this.description, this.price, this.publicCourse, this.linkCourse, this.Course, this.courseType, this.catagory, this.dateCreateCourse)
       .subscribe(
         data => {
           // this.alertService.success('Edit Successful', true);
@@ -136,7 +139,7 @@ export class EditCourstIdComponent implements OnInit {
   }
 
   CreateVideo() {
-    //this.router.navigate(['/addVideoItem', this.route.snapshot.params['id']]);
+    // this.router.navigate(['/addVideoItem', this.route.snapshot.params['id']]);
     this.courseService.createVideoItem(this.route.snapshot.params['id'], this.course).subscribe(
       data => {
         location.reload();
@@ -148,7 +151,7 @@ export class EditCourstIdComponent implements OnInit {
   }
 
   CreateImage() {
-    //this.router.navigate(['/addVideoItem', this.route.snapshot.params['id']]);
+    // this.router.navigate(['/addVideoItem', this.route.snapshot.params['id']]);
     this.courseService.createImageItem(this.route.snapshot.params['id'], this.course).subscribe(
       data => {
         location.reload();

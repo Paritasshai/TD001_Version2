@@ -4,6 +4,15 @@
   align-content: center;
 }
 
+.well {
+  background-color: #bf2b2a;
+  opacity: 1;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: Kanit, sans-serif;
+}
+
 /*.nav-design {*/
   /*background-color: #5f6d7e;*/
 /*}*/
@@ -13,7 +22,7 @@
 /*background: linear-gradient(to bottom, #5f6d7e 0%, #7f91a9 100%);*/
 /*width: 100%;*/
 /*min-height:100vh;*/
-margin-top: -10%;
+margin-top: -5%;
 }
 
 /*.navbar-default {*/

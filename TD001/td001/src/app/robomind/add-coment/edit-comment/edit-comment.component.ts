@@ -13,6 +13,7 @@ import {User} from '../../../models/User';
 export class EditCommentComponent implements OnInit {
 
   url = AppComponent.API_URL;
+  stIdPath: any;
   contents: any = [];
   Content: any = {};
   ctId: any;
@@ -119,6 +120,8 @@ export class EditCommentComponent implements OnInit {
     console.log(this.contents.stContent);
     console.log(this.contents.contentDate);
 
+    // this.stIdPath = this.route.snapshot.params['id'];
+    // this.contents.stStudentId = this.stIdPath;
     this.contents.rbGroup = this.selectedDeviceObj.name;
     this.contents.rbName = this.SelectedValue;
     console.log('rbGroup: ' + this.contents.rbGroup);
@@ -130,6 +133,7 @@ export class EditCommentComponent implements OnInit {
           // console.log("success");
           // this.alertService.success('Edit Successful', true);
           // location.reload();
+          alert("Success");
         },
         error => {
           alert('Failed');

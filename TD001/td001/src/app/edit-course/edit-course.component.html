@@ -4,35 +4,71 @@
     <div align="left">
       <button [routerLink]="['/createCourse']" class="btn btn-success btn-md"> Create Course</button>
     </div>
+
+    <!-- <div class="col-md-9">
+      <div class="profile-content" ngFor="let user of users">
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12" style="float: left; display:inline; margin-right: 30px" *ngFor="let course of coursesList | sortBy:'id'">
+
+          <div *ngIf="currentUser.id == user.id">
+            <div ngFor="let course of courses">
+              <div ngIf="user.id == course.userId">
+                <div class="thumbnail">
+                  <div class="crop" style="border: solid 1px #e59999;">
+
+                    <img style="cursor: pointer" (click)="click(course.id)" class="img" src="{{ url + '/displayImage/' + course.imageCourses[0]?.id}}" alt="" />
+
+                  </div>
+                  <div align="left" [hidden]="course.linkCourse == textNull">
+                    <a style="cursor: pointer"><span
+                  style="font-size: 20px; color: #bf2b2a; float: right; margin-top: -115px; margin-right: 5px"
+                  class="glyphicon glyphicon glyphicon-shopping-cart"></span></a>
+                  </div>
+
+                  <div class="caption" align="left">
+                    <div class="div1">{{course.name}}</div>
+                    <h6 [hidden]="course.price == empty" class="group inner list-group-item-heading">
+                  {{course.price}} บาท.</h6>
+                    <h6 *ngIf="course.price == empty" class="animated pulse infinite group inner list-group-item-heading" style="color: #bf2b2a">ฟรี</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div> -->
+
     <table class="table table-striped" style="margin-top: 30px">
       <thead>
-      <tr>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Public</th>
-        <th>Type</th>
-        <th>Category</th>
-        <th>Edit</th>
-        <th>Delete</th>
-      </tr>
+        <tr>
+          <th>Name</th>
+          <th>Date</th>
+          <th>Price</th>
+          <th>Public</th>
+          <th>Type</th>
+          <th>Category</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
       </thead>
       <tbody *ngFor="let userCourse of courses | sortBy : 'id'; let i = index">
-      <tr *ngIf="userCourse.userId == currentUser.id">
-        <!--<td>{{i+1}}</td>-->
-        <td><a (click)="click(userCourse.id)" style="cursor: pointer">{{userCourse.name}}</a></td>
-        <td>{{userCourse.price}}</td>
-        <td>{{userCourse.publicCourse}}</td>
-        <td>{{userCourse.courseType}}</td>
-        <td>{{userCourse.catagory}}</td>
-        <td>
-          <button class="btn btn-primary btn-md glyphicon glyphicon-wrench"
-                  (click)="EditCourse(userCourse.id)">
+        <tr *ngIf="userCourse.userId == currentUser.id">
+          <td>{{i+1}}</td>
+          <td><a (click)="click(userCourse.id)" style="cursor: pointer">{{userCourse.name}}</a></td>
+          <td>{{userCourse.dateCreateCourse}}</td>
+          <td>{{userCourse.price}}</td>
+          <td>{{userCourse.publicCourse}}</td>
+          <td>{{userCourse.courseType}}</td>
+          <td>{{userCourse.catagory}}</td>
+          <td>
+            <button class="btn btn-primary btn-md glyphicon glyphicon-wrench" (click)="EditCourse(userCourse.id)">
           </button>
-        </td>
-        <td>
-          <button class="btn btn-danger glyphicon glyphicon-minus" (click)="DeleteCourse(userCourse.id)"></button>
-        </td>
-      </tr>
+          </td>
+          <td>
+            <button class="btn btn-danger glyphicon glyphicon-minus" (click)="DeleteCourse(userCourse.id)"></button>
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>

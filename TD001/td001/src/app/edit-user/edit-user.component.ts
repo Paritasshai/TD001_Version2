@@ -56,17 +56,17 @@ export class EditUserComponent implements OnInit {
     }
   }
 
-  public uploaderImageUser: FileUploader = new FileUploader({url: URL + 'add/ImageUser/' + '?userId=' + this.getUserId});
-  public hasBaseDropZoneOver = false;
-  public hasAnotherDropZoneOver = false;
-
-  public fileOverBase(e: any): void {
-    this.hasBaseDropZoneOver = e;
-  }
-
-  public fileOverAnother(e: any): void {
-    this.hasAnotherDropZoneOver = e;
-  }
+  // public uploaderImageUser: FileUploader = new FileUploader({url: URL + 'add/ImageUser/' + '?userId=' + this.getUserId});
+  // public hasBaseDropZoneOver = false;
+  // public hasAnotherDropZoneOver = false;
+  //
+  // public fileOverBase(e: any): void {
+  //   this.hasBaseDropZoneOver = e;
+  // }
+  //
+  // public fileOverAnother(e: any): void {
+  //   this.hasAnotherDropZoneOver = e;
+  // }
 
   private getUserList() {
     this.userService.getAll().subscribe(users => {

@@ -1,14 +1,15 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {CourseService} from '../../services/CourseService';
-import {ActivatedRoute, Router} from '@angular/router';
-import {UserService} from '../../services/User.service';
-import {Http} from '@angular/http';
-import {User} from '../../models/User';
-import {AppComponent} from '../../app.component';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { CourseService } from '../../services/CourseService';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UserService } from '../../services/User.service';
+import { Http } from '@angular/http';
+import { User } from '../../models/User';
+import { AppComponent } from '../../app.component';
 
-import {BSModalContext, Modal} from 'angular2-modal/plugins/bootstrap';
-import {overlayConfigFactory} from "angular2-modal";
-import {CustomModalContextComponent} from "../../alertContent/custom-modal-context/custom-modal-context.component";
+import { BSModalContext, Modal } from 'angular2-modal/plugins/bootstrap';
+import { overlayConfigFactory } from "angular2-modal";
+import { CustomModalContextComponent } from "../../alertContent/custom-modal-context/custom-modal-context.component";
+import { VgAPI, VgFullscreenAPI } from "videogular2/core";
 
 @Component({
   selector: 'app-course-customer',
@@ -59,32 +60,85 @@ export class CourseCustomerComponent implements OnInit {
   loading = true;
   show = false;
 
+  sources: Array<Object>;
+  controls: boolean = false;
+  autoplay: boolean = false;
+  loop: boolean = false;
+  preload: string = 'auto';
+  api: VgAPI;
+  fsAPI: VgFullscreenAPI;
+  nativeFs: boolean = true;
+
+  id = 'qDuKsiwS5xw';
+  private player;
+  private ytEvent;
+  private stEvent;
+
+  ShowIp = false;
+
+  // public version = config.map['ngx-youtube-player'].split('@')[1];
+
   constructor(private courseService: CourseService,
-              private route: ActivatedRoute,
-              private router: Router,
-              private userService: UserService,
-              private http: Http,
-              public modal: Modal) {
+    private route: ActivatedRoute,
+    private router: Router,
+    private userService: UserService,
+    private http: Http,
+    public modal: Modal) {
 
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  }
 
+  onStateChange(event) {
+    this.ytEvent = event.data;
+    this.stEvent = this.player.getVideoUrl();
+  }
+
+  savePlayer(player) {
+    this.player = player;
+  }
+
+  playVideo() {
+    this.player.playVideo();
+  }
+
+  pauseVideo() {
+    this.player.pauseVideo();
   }
 
   open() {
-    // this.jsonp.get('//api.ipify.org/?format=jsonp&callback=JSONP_CALLBACK')
-    //   .subscribe(response => {
-    //     this.ipObj = response;
-    //     console.log(this.ipObj);
-    //   });
-    this.http.get(this.url + 'getClientIp')
+    this.http.get('//api.ipify.org?format=json')
       .subscribe(response => {
         this.ipObj = response;
-        console.log(this.ipObj);
+        console.log(this.ipObj)
       });
+    //     // this.http.get(this.url + 'getClientIp')
+    //     //   .subscribe(response => {
+    //     //     this.ipObj = response;
+    //     //     //console.log(this.ipObj);
+    //     //   });
+  }
+
+  PauseYoutube(videoPath) {
+    console.log("Close Video Youtube : " + videoPath);
+    const myVideo: HTMLIFrameElement = <HTMLIFrameElement>document.getElementById("player");
+  };
+
+  playPause(id) {
+    console.log("Close Video : " + id);
+    // let inputFields = document.getElementsByClassName("settings") as HTMLInputElement
+    const myVideo: HTMLVideoElement = <HTMLVideoElement>document.getElementById(id);
+    if (myVideo.paused)
+      myVideo.pause();
+    else
+      myVideo.pause();
+  }
+
+  onChangeNativeFs($event) {
+    this.fsAPI.nativeFullscreen = this.nativeFs;
+    console.log('onChangeNativeFs', this.fsAPI.nativeFullscreen, this.nativeFs);
   }
 
   ngOnInit() {
-
     setTimeout(() => {    //<<<---    using ()=> syntax
       this.loading = false;
       this.show = true;
@@ -93,31 +147,20 @@ export class CourseCustomerComponent implements OnInit {
     this.getCoursesById();
     this.getUserList();
     this.getCourseList();
-    if (this.currentUser != undefined) {
-      this.getUserList();
-    }
-    //this.open();
+    this.open();
   }
 
   openCustom() {
-    return this.modal.open(CustomModalContextComponent,  overlayConfigFactory({ num1: 2, num2: 3 }, BSModalContext));
+    return this.modal.open(CustomModalContextComponent, overlayConfigFactory({ num1: 2, num2: 3 }, BSModalContext));
   }
 
-  // buyCourseNull() {
-  //   this.modal.alert()
-  //     .size('lg')
-  //     .showClose(true)
-  //     .body(`<div align="center"><h4>เข้าสู่ระบบหรือสมัครสมาชิก</h4></div>`)
-  //     .open();
-  // }
-
-  private getUserList() {
+  getUserList() {
     this.userService.getAll().subscribe(users => {
       this.users = users;
     });
   }
 
-  private getCourseList() {
+  getCourseList() {
     this.courseService.getCourseItemsByPublic(this.textPublic).subscribe(courses => {
       this.coursesList = courses;
     });
@@ -128,11 +171,6 @@ export class CourseCustomerComponent implements OnInit {
       this.courses = courses;
     });
   }
-
-  // buyCourseNull() {
-  //
-  //   alert('เข้าสู่ระบบหรือสมัครสมาชิก');
-  // }
 
   TeacherHistory(email) {
     //console.log(email);
@@ -150,7 +188,7 @@ export class CourseCustomerComponent implements OnInit {
   }
 
   buyyy() {
-    return this.modal.open(CustomModalContextComponent,  overlayConfigFactory({ num1: 2, num2: 3 }, BSModalContext));
+    return this.modal.open(CustomModalContextComponent, overlayConfigFactory({ num1: 2, num2: 3 }, BSModalContext));
   }
 
   insProfile(id) {
@@ -158,8 +196,4 @@ export class CourseCustomerComponent implements OnInit {
     this.router.navigate(['/insProfile', id]);
   }
 
-  openVideo() {
-    console.log('================================');
-    this.videoplayer.nativeElement.pause();
-  }
 }

@@ -15,9 +15,11 @@
 }
 
 .container-design {
+  padding: 2%;
   margin-top: 2%;
   margin-right: 10%;
   margin-left: 10%;
+  /*box-shadow: 0 0 2px 2px #cfcfcf; !*THIS does not work as expected*!*/
 }
 
 .font-design {
@@ -314,4 +316,3 @@ marquee {
   padding-top:10%;
   width:5%;
 }
-

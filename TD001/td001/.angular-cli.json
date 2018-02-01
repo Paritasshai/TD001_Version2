@@ -21,7 +21,8 @@
       "styles": [
         "styles.css",
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
-        "../node_modules/angular2-busy/build/style/busy.css"
+        "../node_modules/angular2-busy/build/style/busy.css",
+        "../node_modules/videogular2/fonts/videogular.css"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",

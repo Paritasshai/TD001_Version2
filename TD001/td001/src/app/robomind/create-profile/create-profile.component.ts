@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Router} from "@angular/router";
 import {StudentService} from "../../services/StudentService";
-import {Student} from "app/models/Student";
+import {Student} from '../../../app/models/Student';
 import {User} from "../../models/User";
 
 @Component({
@@ -16,6 +16,7 @@ export class CreateProfileComponent implements OnInit {
   @ViewChild('fileInput') fileInput;
   ImgLogo: string;
   currentUser: User;
+  today: number = Date.now();
 
   constructor(private router: Router,
               private studentService: StudentService) {
@@ -27,8 +28,9 @@ export class CreateProfileComponent implements OnInit {
     this.getStudentList();
   }
 
-  RobomindContent() {
-    this.router.navigate(['/RobomindContent']);
+  RobomindContent(id) {
+    console.log("Student ID :" + id);
+    this.router.navigate(['/RobomindContent', id]);
   }
 
   RobomindHome() {
@@ -46,12 +48,15 @@ export class CreateProfileComponent implements OnInit {
 
   createProfile() {
     console.log(this.Student);
+    // console.log(this.Student.stDate);
+    // console.log(this.today);
+
     this.studentService.createProfile(this.Student)
       .subscribe(
         data => {
           // this.alertService.success('Registration successful', true);
           alert("create success");
-          location.reload();
+          //location.reload();
         },
         error => {
           // this.alertService.error('This email already exists', true);

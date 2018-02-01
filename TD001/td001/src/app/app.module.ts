@@ -78,6 +78,10 @@ import {CourseComponent} from './alertContent/course/course.component';
 import {CourseDecisionComponent} from './alertContent/course-decision/course-decision.component';
 import { StoreComponent } from './alertContent/store/store.component';
 
+import { VgCoreModule } from 'videogular2/core';
+import { VgControlsModule } from 'videogular2/controls';
+import { VgOverlayPlayModule } from "videogular2/overlay-play";
+import { YoutubePlayerModule } from 'ngx-youtube-player';
 
 @NgModule({
   declarations: [
@@ -147,7 +151,11 @@ import { StoreComponent } from './alertContent/store/store.component';
     // VgBufferingModule,
     ModalModule.forRoot(),
     BootstrapModalModule,
-    SpinnerModule.forRoot({})
+    SpinnerModule.forRoot({}),
+    VgCoreModule,
+    VgControlsModule,
+    VgOverlayPlayModule,
+    YoutubePlayerModule
   ],
   providers: [
     AuthGuard,
@@ -169,5 +177,5 @@ import { StoreComponent } from './alertContent/store/store.component';
     CourseComponent
   ],
 })
-export class AppModule {
-}
+export class AppModule {}
+

@@ -4,19 +4,38 @@
 <div class="container" style="margin-top: 3%">
   <div class="row profile">
     <div class="col-md-3">
-      <div class="profile-sidebar">
+      <div class="well2">
         <!-- SIDEBAR USERPIC -->
         <div align="center">
-          <div class="profile-userpic">
-            <img
-              src="data:{{usersId?.userImages[0].contentType}};base64,{{usersId?.userImages[0].content}}">
-          </div>
+
+          <!-- <form (ngSubmit)="user(currentUser.id)">
+            <div class="row">
+
+              <div class="col-lg-4" *ngIf="usersId?.userImages[0].id == null">
+                <br>
+                <div>
+                  <input class="btn btn-danger btn-md" type="file" #fileInput/>
+                  <button type="button" (click)="upload(currentUser.id)">Upload</button>
+                </div>
+              </div>
+
+            </div>
+          </form> -->
+
+
+          <img style="width: 200px; height: auto;" src="data:{{usersId?.userImages[0].contentType}};base64,{{usersId?.userImages[0].content}}">
+
+          <!-- <br>
+          <button class="btn btn-danger btn-md" style="width: 50%;" *ngIf="usersId?.userImages[0].id != null" (click)="DeleteImage(usersId?.userImages[0].id)">
+        Delete
+            </button> -->
         </div>
+
         <!-- END SIDEBAR USERPIC -->
         <!-- SIDEBAR USER TITLE -->
         <div class="profile-usertitle">
           <div class="profile-usertitle-name" style="padding: 5px">
-            {{usersId.firstName}}
+          
           </div>
           <div class="profile-usertitle-job" style="padding: 5px">
             {{usersId.instructorBio}}
@@ -60,16 +79,14 @@
     <div class="col-md-9">
       <div class="well">โปรเจคทั้งหมดของ {{usersId.firstName}}</div>
       <div class="profile-content">
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12" style="float: left; display:inline; margin-right: 30px"
-             *ngFor="let course of coursesList | sortBy:'id'">
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12" style="float: left; display:inline; margin-right: 30px" *ngFor="let course of coursesList | sortBy:'id'">
 
           <div *ngIf="usersId.id == course.userId">
 
             <div class="thumbnail">
               <div class="crop" style="border: solid 1px #e59999;">
 
-                <img style="cursor: pointer" (click)="click(course.id)" class="img"
-                     src="{{ url + '/displayImage/' + course.imageCourses[0]?.id}}" alt=""/>
+                <img style="cursor: pointer" (click)="click(course.id)" class="img" src="{{ url + '/displayImage/' + course.imageCourses[0]?.id}}" alt="" />
 
               </div>
               <div align="left" [hidden]="course.linkCourse == textNull">
@@ -82,9 +99,7 @@
                 <div class="div1">{{course.name}}</div>
                 <h6 [hidden]="course.price == empty" class="group inner list-group-item-heading">
                   {{course.price}} บาท.</h6>
-                <h6 *ngIf="course.price == empty"
-                    class="animated pulse infinite group inner list-group-item-heading"
-                    style="color: #bf2b2a">ฟรี</h6>
+                <h6 *ngIf="course.price == empty" class="animated pulse infinite group inner list-group-item-heading" style="color: #bf2b2a">ฟรี</h6>
               </div>
             </div>
 

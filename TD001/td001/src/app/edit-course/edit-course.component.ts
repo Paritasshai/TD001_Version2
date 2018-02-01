@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {Course} from '../models/Course';
-import {CourseService} from '../services/CourseService';
-import {Router} from '@angular/router';
-import {User} from '../models/User';
+import { Component, OnInit } from '@angular/core';
+import { Course } from '../models/Course';
+import { CourseService } from '../services/CourseService';
+import { UserService } from '../services/User.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { User } from '../models/User';
 
 @Component({
   selector: 'app-edit-course',
@@ -14,16 +15,19 @@ export class EditCourseComponent implements OnInit {
   currentUser: User;
   users: User[] = [];
   userId: any;
+  textPublic = 'true';
 
   constructor(private courseService: CourseService,
-              private router: Router) {
+    private router: Router,
+    private userService: UserService,
+    private route: ActivatedRoute) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
   ngOnInit() {
     this.getCourseList();
     // this.getUserList();
-    this.courses.sort(function (id1, id2) {
+    this.courses.sort(function(id1, id2) {
       if (id1.id < id2.id) {
         return -1;
       } else if (id1.id > id2.id) {
@@ -32,11 +36,19 @@ export class EditCourseComponent implements OnInit {
         return 0;
       }
     });
+
+    //this.getUserList();
   }
 
   private getCourseList() {
     this.courseService.getCourses().subscribe(courses => {
       this.courses = courses;
+    });
+  }
+
+  private getUserList() {
+    this.userService.getAll().subscribe(users => {
+      this.users = users;
     });
   }
 

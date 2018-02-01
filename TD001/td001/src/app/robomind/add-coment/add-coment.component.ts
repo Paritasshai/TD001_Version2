@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {StudentService} from '../../services/StudentService';
 import {User} from '../../models/User';
+import {AppComponent} from "../../app.component";
 
 @Component({
   selector: 'app-add-coment',
@@ -10,6 +11,7 @@ import {User} from '../../models/User';
 })
 export class AddComentComponent implements OnInit {
 
+  url = AppComponent.API_URL;
   Content: any = {};
   stIdPath: any;
   @ViewChild('fileInput') fileInput;
@@ -19,6 +21,7 @@ export class AddComentComponent implements OnInit {
   student: any = [];
   values = '';
   RoboticLists: any = [];
+  students: any = [];
 
   SelectedValue: string = null;
   rbName: any;
@@ -66,6 +69,8 @@ export class AddComentComponent implements OnInit {
     this.studentService.getRoboticLists().subscribe(RoboticLists => {
       this.RoboticLists = RoboticLists;
     });
+
+    this.getStudentId();
   }
 
   RobomindContent() {
@@ -87,13 +92,16 @@ export class AddComentComponent implements OnInit {
 
   addContent() {
 
-    this.stIdPath = this.Content.stStudentId;
-    console.log(this.stIdPath);
+    //this.stIdPath = this.Content.stStudentId;
+    this.stIdPath = this.students.stId;
+    console.log("Student ID: " + this.stIdPath);
 
+    this.Content.stStudentId = this.stIdPath;
     this.Content.rbGroup = this.selectedDeviceObj.name;
     this.Content.rbName = this.SelectedValue;
     console.log('rbGroup: ' + this.Content.rbGroup);
     console.log('rbName: ' + this.Content.rbName);
+    console.log('stStudentId: ' + this.Content.stStudentId);
     console.log(this.Content);
 
     this.studentService.addContent(this.stIdPath, this.Content)
@@ -107,6 +115,12 @@ export class AddComentComponent implements OnInit {
           // this.alertService.error('This email already exists', true);
           alert('create Failed!!');
         });
+  }
+
+  private getStudentId() {
+    this.studentService.getStudentId(this.route.snapshot.params['id']).subscribe(students => {
+      this.students = students;
+    });
   }
 
   private getContentList() {

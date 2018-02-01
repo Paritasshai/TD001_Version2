@@ -8,8 +8,8 @@
     <ul class="nav navbar-nav navbar-right" [hidden]="!currentUser">
       <li><a (click)="RobomindCreate()" style="cursor: pointer"><span class="glyphicon glyphicon-new-window"></span>
         Create Student</a></li>
-      <li><a (click)="RobomindContent()" style="cursor: pointer"><span class="glyphicon glyphicon-link"></span>
-        Create Content</a></li>
+      <!--<li><a (click)="RobomindContent()" style="cursor: pointer"><span class="glyphicon glyphicon-link"></span>-->
+      <!--Create Content</a></li>-->
       <li><a (click)="RoboticName()" style="cursor: pointer"><span class="glyphicon glyphicon-wrench"></span>
         Create Robotic</a></li>
     </ul>
@@ -19,17 +19,31 @@
 <div class="container">
   <div class="row col-sm-12" style="width: 100%">
     <div class="col-sm-6" style="margin-top: 2%">
-      <form (ngSubmit)="addContent()">
-        <div class="form-group">
-          <h4>Student ID</h4>
-          <span> <input (keyup)="onKey($event)" style="padding: 1%; border-color:#b62415" type="text" class="btn"
-                        [(ngModel)]="Content.stStudentId"
-                        #stStudentId="ngModel" name="StudentId" placeholder="">
-          </span>
-          <div *ngIf="showName">
-            <p style="float: left">Full Name:<b> {{student.stFirstname}} {{student.stLastname}}</b> Nickname:<b>{{student.stNickname}}</b>
-            </p></div>
+      <div>
+        <div class="container">
+          <h1>Student Information</h1>
+          <div class="card-img-overlay">
+            <h4 class="card-title"><b>Student ID</b>: {{students.stId}} <b>Nickname</b>: {{students.stNickname}}</h4>
+            <h4 class="card-title"><b>Name</b>: {{students.stFirstname}} {{students.stLastname}}</h4>
+            <!--<a href="#" class="btn btn-primary">See Profile</a>-->
+          </div>
+          <div class="card img-fluid" style="width:300px">
+            <img class="card-img-top" src="{{ url + 'displayImageStudent/' + students.roboImageSet[0]?.id}}" alt="Card
+            image" style="width:100%">
+          </div>
         </div>
+      </div>
+      <form (ngSubmit)="addContent()">
+        <!--<div class="form-group">-->
+        <!--<h4>Student ID</h4>-->
+        <!--<span> <input (keyup)="onKey($event)" style="padding: 1%; border-color:#b62415" type="text" class="btn"-->
+        <!--[(ngModel)]="Content.stStudentId"-->
+        <!--#stStudentId="ngModel" name="StudentId" placeholder="">-->
+        <!--</span>-->
+        <!--<div *ngIf="showName">-->
+        <!--<p style="float: left">Full Name:<b> {{student.stFirstname}} {{student.stLastname}}</b> Nickname:<b>{{student.stNickname}}</b>-->
+        <!--</p></div>-->
+        <!--</div>-->
         <br>
         <div class="form-group">
           <h4>Coach Name</h4>
@@ -93,7 +107,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let content of contents">
+          <tr *ngFor="let content of students?.contents | sortObject:'id'">
             <td>{{content.contentDate | date: 'dd/MM/yyyy'}}</td>
             <td>{{content.stStudentId}}</td>
             <td>{{content.rbGroup}}</td>
@@ -103,6 +117,16 @@
             <td align="center"><i class="glyphicon glyphicon-trash" style="cursor: pointer"
                                   (click)="delete(content.id,content.stStudentId)"></i></td>
           </tr>
+          <!--<tr *ngFor="let content of contents">-->
+          <!--<td>{{content.contentDate | date: 'dd/MM/yyyy'}}</td>-->
+          <!--&lt;!&ndash;<td>{{content.stStudentId}}</td>&ndash;&gt;-->
+          <!--<td>{{content.rbGroup}}</td>-->
+          <!--<td>{{content.rbName}}</td>-->
+          <!--<td align="center"><i class="glyphicon glyphicon-edit" style="cursor: pointer"-->
+          <!--(click)="edit(content.id)"></i></td>-->
+          <!--<td align="center"><i class="glyphicon glyphicon-trash" style="cursor: pointer"-->
+          <!--(click)="delete(content.id,content.stStudentId)"></i></td>-->
+          <!--</tr>-->
           </tbody>
         </table>
       </div>

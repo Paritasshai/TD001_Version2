@@ -108,7 +108,8 @@ export class EditProfileComponent implements OnInit {
       .subscribe(
         data => {
           console.log("success");
-          location.reload();
+          // location.reload();
+          alert("Success");
           // this.alertService.success('Edit Successful', true);
         },
         error => {

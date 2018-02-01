@@ -4,6 +4,7 @@ import {UserService} from '../../services/User.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CourseService} from '../../services/CourseService';
 import {AppComponent} from '../../app.component';
+import {ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-instructor-profile',
@@ -13,6 +14,11 @@ import {AppComponent} from '../../app.component';
 export class InstructorProfileComponent implements OnInit {
 
   currentUser: User;
+  users: User[] = [];
+  userId: any;
+  @ViewChild('fileInput') fileInput;
+  User: any = {};
+
   usersId: any = [];
   coursesList: any = [];
   textPublic = 'true';

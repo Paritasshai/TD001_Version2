@@ -3,7 +3,7 @@
 <div class="bg">
   <div class="container-fluid" *ngFor="let user of users">
     <div class="container" *ngIf="user.id == currentUser.id">
-      <div style="margin-top: 6%" class="fb-profile">
+      <div style="margin-top: 2%" class="fb-profile">
         <br>
         <br>
         <div class="fb-profile-text">
@@ -44,13 +44,14 @@
                 <app-edit-user></app-edit-user>
               </div>
               <div class="col-sm-8">
+                <div class="well">โปรเจคทั้งหมดของ {{currentUser.firstName}}</div>
                 <app-edit-course></app-edit-course>
               </div>
             </div>
           </div>
         </div>
-        <div [hidden]="user.status != admin">
 
+        <div [hidden]="user.status != admin">
           <div *ngIf="show1">
             <br>
             <h2>User Management</h2>
@@ -68,41 +69,40 @@
             <h2>Payment Management</h2>
             <table class="table table-striped">
               <thead>
-              <tr>
-                <th>User ID</th>
-                <th>Payment Id</th>
-                <th>Order ID</th>
-                <th>Username</th>
-                <th>Email</th>
-                <th>Bank</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Status</th>
-                <th>Amount</th>
-                <th></th>
-              </tr>
+                <tr>
+                  <th>User ID</th>
+                  <th>Payment Id</th>
+                  <th>Order ID</th>
+                  <th>Username</th>
+                  <th>Email</th>
+                  <th>Bank</th>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Status</th>
+                  <th>Amount</th>
+                  <th></th>
+                </tr>
               </thead>
               <tbody>
-              <tr [hidden]="bankStatements == undefined" *ngFor="let bankStatement of bankStatements">
-                <td>{{bankStatement.users[0].id}}</td>
-                <td>{{bankStatement.paymentId}}</td>
-                <td>{{bankStatement.bankOrderId}}</td>
-                <td>{{bankStatement.users[0].firstName}}</td>
-                <td>{{bankStatement.users[0].email}}</td>
-                <td>{{bankStatement.bankName}}</td>
-                <td>{{bankStatement.statementDate}}</td>
-                <td>{{bankStatement.statementTime}}</td>
-                <td>{{bankStatement.statusBank}}</td>
-                <td align="right">{{bankStatement.statementAmount}}</td>
-                <td>
-                  <div [hidden]="bankStatement.statusBank == confirm">
-                    <button class="btn btn-primary btn-md"
-                            (click)="ConfirmPayment(bankStatement.id, bankStatement.users[0].email, bankStatement.paymentId, bankStatement.statementAmount, bankStatement.users[0].balance, bankStatement.bankOrderId)">
+                <tr [hidden]="bankStatements == undefined" *ngFor="let bankStatement of bankStatements">
+                  <td>{{bankStatement.users[0].id}}</td>
+                  <td>{{bankStatement.paymentId}}</td>
+                  <td>{{bankStatement.bankOrderId}}</td>
+                  <td>{{bankStatement.users[0].firstName}}</td>
+                  <td>{{bankStatement.users[0].email}}</td>
+                  <td>{{bankStatement.bankName}}</td>
+                  <td>{{bankStatement.statementDate}}</td>
+                  <td>{{bankStatement.statementTime}}</td>
+                  <td>{{bankStatement.statusBank}}</td>
+                  <td align="right">{{bankStatement.statementAmount}}</td>
+                  <td>
+                    <div [hidden]="bankStatement.statusBank == confirm">
+                      <button class="btn btn-primary btn-md" (click)="ConfirmPayment(bankStatement.id, bankStatement.users[0].email, bankStatement.paymentId, bankStatement.statementAmount, bankStatement.users[0].balance, bankStatement.bankOrderId)">
                       Confirm
                     </button>
-                  </div>
-                </td>
-              </tr>
+                    </div>
+                  </td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -119,5 +119,4 @@
     <br>
   </div>
 </div>
-
 <app-footer></app-footer>

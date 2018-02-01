@@ -6,10 +6,10 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {CourseService} from '../../services/CourseService';
 import {User} from '../../models/User';
 import {AppComponent} from '../../app.component';
-import {Modal, overlayConfigFactory} from "angular2-modal";
-import {CourseComponent} from "../../alertContent/course/course.component";
-import {BSModalContext} from "angular2-modal/plugins/bootstrap/src/modal-context";
-import {AlertService} from "../../alertContent/AlertService";
+import {Modal, overlayConfigFactory} from 'angular2-modal';
+import {CourseComponent} from '../../alertContent/course/course.component';
+import {BSModalContext} from 'angular2-modal/plugins/bootstrap/src/modal-context';
+import {AlertService} from '../../alertContent/AlertService';
 
 @Component({
   selector: 'app-course-member',
@@ -20,8 +20,8 @@ export class CourseMemberComponent implements OnInit {
 
   url = AppComponent.API_URL;
 
-  @ViewChild('videoPlayer') videoplayer: any;
-  @ViewChild('videoPlayer1') videoplayer1: any;
+  // @ViewChild('videoPlayer') videoplayer: any;
+  // @ViewChild('videoPlayer1') videoplayer1: any;
 
   jsonp: any;
   courses: any = [];
@@ -81,11 +81,11 @@ export class CourseMemberComponent implements OnInit {
   }
 
   open() {
-    //console.log("opennnnnnn");
+    // console.log("opennnnnnn");
     this.http.get('//api.ipify.org/?callback=Your IP Address: ')
       .subscribe(ipObj => {
         this.ipObj = ipObj;
-        //console.log(this.ipObj);
+        // console.log(this.ipObj);
       });
 
     // this.http.get(this.url + 'getClientIp')
@@ -95,9 +95,21 @@ export class CourseMemberComponent implements OnInit {
     //   });
   }
 
+  playPause(id) {
+    console.log(id);
+    // let inputFields = document.getElementsByClassName("settings") as HTMLInputElement
+    const myVideo: HTMLVideoElement = <HTMLVideoElement> document.getElementById(id);
+    // tslint:disable-next-line:curly
+    if (myVideo.paused)
+      myVideo.pause();
+    // tslint:disable-next-line:curly
+    else
+      myVideo.pause();
+  }
+
   ngOnInit() {
 
-    setTimeout(() => {    //<<<---    using ()=> syntax
+    setTimeout(() => {    // <<<---using ()=> syntax
       this.loading = false;
       this.show = true;
     }, 3000);
@@ -105,13 +117,13 @@ export class CourseMemberComponent implements OnInit {
     this.getCoursesById();
     this.getUserList();
 
-    if (this.currentUser != undefined) {
+    if (this.currentUser !== undefined) {
       this.getCoursesByIdPurchased();
     }
-    if (this.courses != undefined) {
+    if (this.courses !== undefined) {
       // this.getCourseList();
     }
-    if (this.currentUser != undefined) {
+    if (this.currentUser !== undefined) {
       this.getUserList();
       this.getUserId();
     }
@@ -151,12 +163,12 @@ export class CourseMemberComponent implements OnInit {
 
   buyCourse(id, balance, price, name) {
 
-    let that = this;
-    this.alertService.confirmThis("ยืนยันการใช้แต้มเข้าเรียน?",
+    const that = this;
+    this.alertService.confirmThis('ยืนยันการใช้แต้มเข้าเรียน?',
 
       function () {
-        //ACTION: Do this If user says YES
-        that.name = "Yes clicked";
+        // ACTION: Do this If user says YES
+        that.name = ' Yes clicked ';
         that.userId = that.currentUser.id;
         that.userBalance = balance;
         // console.log("your ID: " + id);
@@ -166,7 +178,7 @@ export class CourseMemberComponent implements OnInit {
 
         that.purchaseCourseService.createBuyCourse(that.userId, id, that.purchaseCart, that.userBalance, price, name).subscribe(
           data => {
-            //alert('กรุณาตรวจสอบแต้มคงเหลือ..... \nยืนยันการใช้แต้มเข้าเรียน');
+            // alert('กรุณาตรวจสอบแต้มคงเหลือ..... \nยืนยันการใช้แต้มเข้าเรียน');
             location.reload();
           },
           error => {
@@ -174,10 +186,10 @@ export class CourseMemberComponent implements OnInit {
           });
 
       }, function () {
-        //ACTION: Do this if user says NO
-        that.name = "No clicked";
+        // ACTION: Do this if user says NO
+        that.name = ' No clicked ';
         console.log('Refuse');
-      })
+      });
 
     // const answer = confirm('\nยืนยันการใช้แต้มเข้าเรียน');
     // if (answer) {
@@ -227,16 +239,16 @@ export class CourseMemberComponent implements OnInit {
     this.router.navigate(['/insProfile', id]);
   }
 
-  openVideo() {
-    console.log('openVideo');
-    console.log(this.videoplayer);
-    this.videoplayer.nativeElement.pause();
-  }
-
-  openVideoBuy() {
-    console.log('openVideoBuy');
-    console.log(this.videoplayer1);
-    this.videoplayer1.nativeElement.pause();
-  }
+  // openVideo() {
+  //   console.log('openVideo');
+  //   console.log(this.videoplayer);
+  //   this.videoplayer.nativeElement.pause();
+  // }
+  //
+  // openVideoBuy() {
+  //   console.log('openVideoBuy');
+  //   console.log(this.videoplayer1);
+  //   this.videoplayer1.nativeElement.pause();
+  // }
 
 }

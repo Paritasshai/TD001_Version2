@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {CourseService} from '../services/CourseService';
-import {Router} from '@angular/router';
-import {User} from '../models/User';
-import {UserService} from '../services/User.service';
-import {AppComponent} from '../app.component';
+import { Component, OnInit } from '@angular/core';
+import { CourseService } from '../services/CourseService';
+import { Router } from '@angular/router';
+import { User } from '../models/User';
+import { UserService } from '../services/User.service';
+import { AppComponent } from '../app.component';
 
 
 @Component({
@@ -66,30 +66,30 @@ export class CourselistComponent implements OnInit {
   SelectedValue: string = null;
 
   constructor(private courseService: CourseService,
-              private router: Router,
-              private userService: UserService) {
+    private router: Router,
+    private userService: UserService) {
     this.Img1 = '../../assets/images/001.jpg';
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     // console.clear();
   }
 
   deviceObjects = [
-    {name: 'Select Group'},
-    {name: 'Lego'},
-    {name: 'Tech Household'},
-    {name: 'Tech Toy'},
-    {name: 'Tech Garden'},
-    {name: 'IoT'}
+    { name: '---เลือก---' },
+    { name: 'Lego' },
+    { name: 'Tech Household' },
+    { name: 'Tech Toy' },
+    { name: 'Tech Garden' },
+    { name: 'IoT' }
   ];
 
   selectedDeviceObj = this.deviceObjects[0];
 
   daysObjects = [
-    {name: 'Select Day', value: null},
-    {name: '1 วันที่แล้ว', value: 1},
-    {name: '1 สัปดาห์ที่แล้ว', value: 7},
-    {name: '1 เดือนที่แล้ว', value: 30},
-    {name: '1 ปีที่แล้ว', value: 365}
+    { name: '---เลือก---', value: null },
+    { name: '1 วันที่แล้ว', value: 1 },
+    { name: '1 สัปดาห์ที่แล้ว', value: 7 },
+    { name: '1 เดือนที่แล้ว', value: 30 },
+    { name: '1 ปีที่แล้ว', value: 365 }
   ];
 
   selectedDayObj = this.daysObjects[0];
@@ -118,16 +118,15 @@ export class CourselistComponent implements OnInit {
     if (this.courses !== undefined) {
       this.getCourseList();
     }
-    if (this.currentUser !== undefined) {
-      this.getUserList();
-    }
+    // if (this.currentUser !== undefined) {
+    //   this.getUserList();
+    // }
     this.getCourseNewType();
     this.getCourseRecommendType();
     this.getCourseHotType();
   }
 
   public searchItem(query) {
-
     this.myVar = false;
     this.lego = false;
     this.myVars = false;
@@ -156,7 +155,12 @@ export class CourselistComponent implements OnInit {
 
     this.SearchAdvance.rbGroup = this.selectedDeviceObj.name;
     this.SearchAdvance.day = this.selectedDayObj.value;
-    console.log(this.SearchAdvance);
+    // console.log('Day: ' + this.SearchAdvance.day);
+    // // console.log(this.SearchAdvance);
+
+    // this.courseService.getSearchByDate(this.SearchAdvance.day, this.textPublic).subscribe(courseSearch => {
+    //   this.courseSearch = courseSearch;
+    // });
 
     if (this.SearchAdvance.free === true && this.SearchAdvance.Pname != null) {
       this.querySearch = true;
@@ -230,32 +234,7 @@ export class CourselistComponent implements OnInit {
       });
     }
 
-    // if (this.SearchAdvance.Pname != null) {
-    //   // alert('Pname');
-    //   this.querySearch = true;
-    //   this.querySearchPay = false;
-    //   this.courseService.getSearchByName(this.SearchAdvance.Pname, this.textPublic).subscribe(courseSearch => {
-    //     this.courseSearch = courseSearch;
-    //   });
-    //
-    // } else if (this.SearchAdvance.free === true) {
-    //   // alert('Free');
-    //   console.log(this.empty);
-    //   this.querySearchPay = false;
-    //   this.querySearch = true;
-    //   this.courseService.getSearchByFree(this.empty, this.textPublic).subscribe(courseSearch => {
-    //     this.courseSearch = courseSearch;
-    //   });
-    // } else if (this.SearchAdvance.pay === true) {
-    //   // alert('Pay');
-    //   this.querySearchPay = true;
-    //   this.querySearch = false;
-    //   this.courseService.getCourseItemsByPublic(this.textPublic).subscribe(courseSearch => {
-    //     this.courseSearch = courseSearch;
-    //   });
-    // } else {
-    //   // alert('Else');
-    // }
+    // =============================================================================================
   }
 
   public BAll() {
@@ -280,80 +259,80 @@ export class CourselistComponent implements OnInit {
     this.querySearch = false;
   }
 
-  public Lego() {
-    this.myVars = false;
-    this.myVar = false;
-    this.lego = true;
-    this.household = false;
-    this.toy = false;
-    this.garden = false;
-    this.iot = false;
-    this.querySearch = false;
-    // console.log("Lego");
-    this.courseService.getCourseItemsByLegoPublic(this.LegoText, this.textPublic).subscribe(coursesLego => {
-      this.coursesLego = coursesLego;
-    });
-  }
-
-  public Household() {
-    this.myVars = false;
-    this.myVar = false;
-    this.lego = false;
-    this.household = true;
-    this.toy = false;
-    this.garden = false;
-    this.iot = false;
-    this.querySearch = false;
-    // console.log("Household");
-    this.courseService.getCourseItemsByHouseholdPublic(this.HouseholdText, this.textPublic).subscribe(coursesHousehold => {
-      this.coursesHousehold = coursesHousehold;
-    });
-  }
-
-  public Toy() {
-    this.myVars = false;
-    this.myVar = false;
-    this.lego = false;
-    this.household = false;
-    this.toy = true;
-    this.garden = false;
-    this.iot = false;
-    this.querySearch = false;
-    // console.log("Toy");
-    this.courseService.getCourseItemsByToyPublic(this.ToyText, this.textPublic).subscribe(coursesToy => {
-      this.coursesToy = coursesToy;
-    });
-  }
-
-  public Garden() {
-    this.myVars = false;
-    this.myVar = false;
-    this.lego = false;
-    this.household = false;
-    this.toy = false;
-    this.garden = true;
-    this.iot = false;
-    this.querySearch = false;
-    // console.log("Garden");
-    this.courseService.getCourseItemsByGardenPublic(this.GardenText, this.textPublic).subscribe(coursesGarden => {
-      this.coursesGarden = coursesGarden;
-    });
-  }
-
-  public IoT() {
-    this.myVars = false;
-    this.myVar = false;
-    this.lego = false;
-    this.household = false;
-    this.toy = false;
-    this.garden = false;
-    this.iot = true;
-    this.querySearch = false;
-    // console.log("IoT");
-    this.courseService.getCourseItemsByIoTPublic(this.IoTText, this.textPublic).subscribe(coursesIoT => {
-      this.coursesIoT = coursesIoT;
-    });
-  }
+  // public Lego() {
+  //   this.myVars = false;
+  //   this.myVar = false;
+  //   this.lego = true;
+  //   this.household = false;
+  //   this.toy = false;
+  //   this.garden = false;
+  //   this.iot = false;
+  //   this.querySearch = false;
+  //   // console.log("Lego");
+  //   this.courseService.getCourseItemsByLegoPublic(this.LegoText, this.textPublic).subscribe(coursesLego => {
+  //     this.coursesLego = coursesLego;
+  //   });
+  // }
+  //
+  // public Household() {
+  //   this.myVars = false;
+  //   this.myVar = false;
+  //   this.lego = false;
+  //   this.household = true;
+  //   this.toy = false;
+  //   this.garden = false;
+  //   this.iot = false;
+  //   this.querySearch = false;
+  //   // console.log("Household");
+  //   this.courseService.getCourseItemsByHouseholdPublic(this.HouseholdText, this.textPublic).subscribe(coursesHousehold => {
+  //     this.coursesHousehold = coursesHousehold;
+  //   });
+  // }
+  //
+  // public Toy() {
+  //   this.myVars = false;
+  //   this.myVar = false;
+  //   this.lego = false;
+  //   this.household = false;
+  //   this.toy = true;
+  //   this.garden = false;
+  //   this.iot = false;
+  //   this.querySearch = false;
+  //   // console.log("Toy");
+  //   this.courseService.getCourseItemsByToyPublic(this.ToyText, this.textPublic).subscribe(coursesToy => {
+  //     this.coursesToy = coursesToy;
+  //   });
+  // }
+  //
+  // public Garden() {
+  //   this.myVars = false;
+  //   this.myVar = false;
+  //   this.lego = false;
+  //   this.household = false;
+  //   this.toy = false;
+  //   this.garden = true;
+  //   this.iot = false;
+  //   this.querySearch = false;
+  //   // console.log("Garden");
+  //   this.courseService.getCourseItemsByGardenPublic(this.GardenText, this.textPublic).subscribe(coursesGarden => {
+  //     this.coursesGarden = coursesGarden;
+  //   });
+  // }
+  //
+  // public IoT() {
+  //   this.myVars = false;
+  //   this.myVar = false;
+  //   this.lego = false;
+  //   this.household = false;
+  //   this.toy = false;
+  //   this.garden = false;
+  //   this.iot = true;
+  //   this.querySearch = false;
+  //   // console.log("IoT");
+  //   this.courseService.getCourseItemsByIoTPublic(this.IoTText, this.textPublic).subscribe(coursesIoT => {
+  //     this.coursesIoT = coursesIoT;
+  //   });
+  // }
 
 
   private getCourseList() {
@@ -394,25 +373,6 @@ export class CourselistComponent implements OnInit {
     });
   }
 
-  // addToList(id) {
-  //   // console.log(this.currentUser);
-  //   // console.log(id);
-  //   if (this.currentUser == null) {
-  //     alert("เข้าสู่ระบบหรือสมัครสมาชิก");
-  //   } else {
-  //     this.UserId = this.currentUser.id;
-  //     // console.log("Course ID: " + id);
-  //     // console.log("User ID: " + this.UserId);
-  //     this.courseService.getFavorCourse(id, this.UserId, this.list).subscribe(
-  //       data => {
-  //         alert("Success");
-  //       },
-  //       error => {
-  //         alert("Error")
-  //       });
-  //   }
-  // }
-
   addToList(id) {
     if (this.currentUser == null) {
       alert('เข้าสู่ระบบหรือสมัครสมาชิก');
@@ -424,12 +384,12 @@ export class CourselistComponent implements OnInit {
       // console.log("User ID: " + this.UserId);
       this.userService.createLists(id, this.UserId, this.List)
         .subscribe(
-          data => {
-            alert('เพิ่มโปรเจคลงในลิสต์เรียบร้อยแล้ว');
-          },
-          error => {
-            alert('Failed');
-          });
+        data => {
+          alert('เพิ่มโปรเจคลงในลิสต์เรียบร้อยแล้ว');
+        },
+        error => {
+          alert('Failed');
+        });
     }
   }
 

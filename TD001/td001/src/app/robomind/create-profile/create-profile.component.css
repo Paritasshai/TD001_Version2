@@ -18,3 +18,7 @@ body {
 a {
   color: white;
 }
+
+.border-style{
+  border: solid 1px cadetblue;
+}
