@@ -34,7 +34,7 @@ export class EditCourstIdComponent implements OnInit {
   courseType: any;
   catagory: any;
 
-  TypeItems = 'new hot recommend'.split(' ');
+  TypeItems = 'recommend'.split(' ');
   CatagoriesItems = 'Lego Household Toy Garden IoT'.split(' ');
   model = {options: ''};
   models = {options: ''};

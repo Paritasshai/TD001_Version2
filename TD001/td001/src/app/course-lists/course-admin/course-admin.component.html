@@ -11,22 +11,29 @@
               <div class="thumbnail">
                 <div class="crops">
                   <div align="center">
-                    <img style="width: 100%; height: 230px" src="{{ url + '/displayImage/' + courses.imageCourses[0]?.id}}" alt=""/>
+                    <img style="width: 100%; height: 230px" src="{{ url + '/displayImage/' + courses.imageCourses[0]?.id}}" alt="" />
                   </div>
                 </div>
               </div>
 
               <div class="panel panel-default br">
                 <div class="panel-heading">เกี่ยวกับโปรเจคนี้</div>
-                <div *ngIf="courses.linkCourse != nullText" class="panel-body"><span> <p
-                  style="color: #b62415; font-size: 50px" class="fa fa-shopping-basket fa-lg"></p></span>
+                <div *ngIf="courses.linkCourse != nullText" class="panel-body">
+                  <span>
+                    <p style="color: #b62415; font-size: 50px" class="fa fa-shopping-basket fa-lg"></p>
+                  </span>
                   <a href="{{courses.linkCourse}}" style="color:black;">ซื้ออุปกรณ์ที่เกี่ยวข้อง</a>
                 </div>
-                <div class="panel-body" [hidden]="courses.price == empty"><span> <i class="fa fa-money"></i></span>
+                <div class="panel-body" [hidden]="courses.price == empty">
+                  <span>
+                    <i class="fa fa-money"></i>
+                  </span>
                   เข้าเรียนใช้: {{courses.price}} แต้ม
                 </div>
                 <div class="panel-body" *ngIf="courses.price == empty">
-                  <span> <i class="fa fa-money"></i></span>
+                  <span>
+                    <i class="fa fa-money"></i>
+                  </span>
                   ฟรี
                 </div>
               </div>
@@ -78,8 +85,7 @@
                           <div class="profile-header-imgs">
                             <div align="center">
                               <div class="circular--portraits">
-                                <img
-                                  src="data:{{user.userImages[0]?.contentType}};base64,{{user.userImages[0]?.content}}">
+                                <img src="data:{{user.userImages[0]?.contentType}};base64,{{user.userImages[0]?.content}}">
                               </div>
                             </div>
                           </div>
@@ -92,9 +98,8 @@
                             </div>
                             <div class="row">
                               <div class="col-lg-4">
-                                <img (click)="click(course.id)"
-                                     style="cursor: pointer;width: 100px; height: 60px; overflow: hidden;"
-                                     src="{{ url + '/displayImage/' + course.imageCourses[0]?.id}}" alt=""/>
+                                <img (click)="click(course.id)" style="cursor: pointer;width: 100px; height: 60px; overflow: hidden;" src="{{ url + '/displayImage/' + course.imageCourses[0]?.id}}"
+                                  alt="" />
                               </div>
                             </div>
                           </div>
@@ -118,45 +123,50 @@
               </div>
 
               <div class="panel panel-default">
+
                 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
-                <div class="container-fluid">
-                  <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" style="color: #404040">คอร์สเรียน</a>
-                  </div>
-                  <div>
-                    <div class="collapse navbar-collapse" id="myNavbar3">
-                      <ul class="nav navbar-nav">
-                        <li><a></a></li>
-                        <li><a></a></li>
-                      </ul>
+                  <div class="container-fluid">
+                    <div class="navbar-header">
+                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                      </button>
+                      <a class="navbar-brand" style="color: #404040">คอร์สเรียน</a>
+                    </div>
+                    <div>
+                      <div class="collapse navbar-collapse" id="myNavbar3">
+                        <ul class="nav navbar-nav">
+                          <li>
+                            <a></a>
+                          </li>
+                          <li>
+                            <a></a>
+                          </li>
+                        </ul>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div class="container-fluid">
-                  <div>
-                    <table class="table">
-                      <thead>
-                      <tr>
-                        <th></th>
-                        <th></th>
-                        <th>นาที</th>
-                      </tr>
-                      </thead>
-                      <tbody>
-                      <tr *ngFor="let course of courses?.courseItems| sortBy : 'orderItem'; let i = index">
-                        <td>
-                          <div class="container-fluid">
-                            <div class="row col-sm-12">
+                  <div class="container-fluid">
+                    <div>
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th></th>
+                            <th></th>
+                            <th>นาที</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let course of courses?.courseItems| sortBy : 'orderItem'; let i = index">
+                            <td>
+                              <div class="container-fluid">
+                                <div class="row col-sm-12">
 
-                              <!-- Trigger the modal with a text -->
-                              <a type="text" data-toggle="modal"
+                                  <!-- Trigger the modal with a text -->
+                                  <!-- <a type="text" data-toggle="modal"
                                  [attr.data-target]="'#myModal' + course.id"
                                  style="cursor: pointer; color: #404040">
   <span *ngIf="course.courseType == video"
@@ -164,150 +174,116 @@
                                 <span *ngIf="course.courseType == image" class="glyphicon glyphicon-picture"></span>
                                 <span *ngIf="course.courseType == text" class="glyphicon glyphicon-list-alt"></span>
                                 {{course.name}}
-                              </a>
+                              </a> -->
 
-                              <!-- Modal -->
-                              <div class="modal fade" [id]="'myModal' + course.id" role="dialog"
-                                   *ngIf="course.canPreview == truePreview">
-                                <div class="modal-dialog">
-                                  <div class="card-content">
+                                  <div [hidden]="course.courseType == image || course.courseType == text">
+                                    <div *ngIf="course.courseText != null">
+                                      <a type="text" data-toggle="modal" [attr.data-target]="'#myModal' + course.id" style="cursor: pointer; color: #404040">
+                                        <span *ngIf="course.courseType == video" class="glyphicon glyphicon-facetime-video"></span>
+                                        <span *ngIf="course.courseType == image" class="glyphicon glyphicon-picture"></span>
+                                        <span *ngIf="course.courseType == text" class="glyphicon glyphicon-list-alt"></span>
+                                        {{course.name}}
+                                      </a>
+                                    </div>
+                                  </div>
 
-                                    <div align="center" class="video-responsive">
-                                      <img class="img" *ngIf="course.courseType == image" style="width: 800px; height: 450px"
-                                           src="{{url + 'displayImageItem/' + course.imageItems[0]?.id}}"/>
-                                      <div align="center"
-                                           [hidden]="course.courseType == image || course.courseType == text">
-                                        <div [hidden]="course.videoClips[0]?.id == undefined">
+                                  <div [hidden]="course.courseType == video || course.courseType == text">
+                                    <div *ngIf="course.imageItems[0]?.id != undefined">
+                                      <a type="text" data-toggle="modal" [attr.data-target]="'#myModal' + course.id" style="cursor: pointer; color: #404040">
+                                        <span *ngIf="course.courseType == video" class="glyphicon glyphicon-facetime-video"></span>
+                                        <span *ngIf="course.courseType == image" class="glyphicon glyphicon-picture"></span>
+                                        <span *ngIf="course.courseType == text" class="glyphicon glyphicon-list-alt"></span>
+                                        {{course.name}}
+                                      </a>
+                                    </div>
+                                  </div>
 
-                                          <video controls
-                                                 preload="auto" width="800"
-                                                 height="450">
-                                            <source *ngIf="course.courseType == video"
-                                                    src="{{url + 'playVideo/' + course.videoClips[0]?.id}}"
-                                                    type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"'>
-                                          </video>
 
-                                          <!--<vg-player>-->
-                                          <!--<vg-controls>-->
-                                          <!--<vg-play-pause></vg-play-pause>-->
-                                          <!--<vg-scrub-bar>-->
-                                          <!--<vg-scrub-bar-current-time></vg-scrub-bar-current-time>-->
-                                          <!--<vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>-->
-                                          <!--</vg-scrub-bar>-->
-                                          <!--<vg-fullscreen></vg-fullscreen>-->
-                                          <!--</vg-controls>-->
+                                  <div [hidden]="course.courseType == image || course.courseType == video">
+                                    <div [hidden]="course.videoClips[0]?.id != undefined">
+                                      <a target="_blank" [href]="course.courseText" style="cursor: pointer; color: #404040">
+                                        <span *ngIf="course.courseType == video" class="glyphicon glyphicon-facetime-video"></span>
+                                        <span *ngIf="course.courseType == image" class="glyphicon glyphicon-picture"></span>
+                                        <span *ngIf="course.courseType == text" class="glyphicon glyphicon-list-alt"></span>
+                                        <!--<a target="_blank" [href]="url + 'playVideo/' + course.videoClips[0]?.id">Link</a>-->
+                                        {{course.name}}
+                                      </a>
+                                    </div>
+                                  </div>
 
-                                          <!--<video #videoRef [vgMedia]="videoRef"-->
-                                          <!--id="myVideo"-->
-                                          <!--src="{{url + 'playVideo/' + course.videoClips[0]?.id}}"></video>-->
+                                  <!-- Modal -->
+                                  <div class="modal fade" [id]="'myModal' + course.id" role="dialog" *ngIf="course.canPreview == truePreview">
+                                    <div class="modal-dialog">
+                                      <div class="card-content">
 
-                                          <!--</vg-player>-->
+                                        <div align="center" class="video-responsive">
+                                          <img class="img" *ngIf="course.courseType == image" style="width: 800px; height: 450px" src="{{url + 'displayImageItem/' + course.imageItems[0]?.id}}"
+                                          />
+                                          <div align="center" [hidden]="course.courseType == image || course.courseType == text">
+                                            <div [hidden]="course.videoClips[0]?.id == undefined">
 
-                                          <div class="overlay">
-                                            <form>
-                                              <div class="runtext-container">
-                                                <div class="main-runtext">
-                                                  <marquee direction="" onmouseover="this.stop();"
-                                                           onmouseout="this.start();">
-                                                    <div class="holder">
-                                                      <div class="text-container">
-                                                        {{ipObj._body}}
-                                                      </div>
+                                              <video controls preload="auto" width="800" height="450">
+                                                <source *ngIf="course.courseType == video" src="{{url + 'playVideo/' + course.videoClips[0]?.id}}" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"'>
+                                              </video>
+
+                                              <div class="overlay">
+                                                <form>
+                                                  <div class="runtext-container">
+                                                    <div class="main-runtext">
+                                                      <marquee direction="" onmouseover="this.stop();" onmouseout="this.start();">
+                                                        <div class="holder">
+                                                          <div class="text-container">
+                                                            {{ipObj._body}}
+                                                          </div>
+                                                        </div>
+                                                      </marquee>
                                                     </div>
-                                                  </marquee>
-                                                </div>
+                                                  </div>
+                                                </form>
                                               </div>
-                                            </form>
+                                            </div>
                                           </div>
-                                        </div>
-                                      </div>
-                                      <div align="center"
-                                           [hidden]="course.courseType == image || course.courseType == text">
-                                        <div [hidden]="course.videoClips[0]?.id != undefined">
-                                          <div>
-                                            <iframe width="800" height="450" [src]="course.videoPath | safety"
-                                                    frameborder="0"
-                                                    allowfullscreen></iframe>
+                                          <div align="center" [hidden]="course.courseType == image || course.courseType == text">
+                                            <div [hidden]="course.videoClips[0]?.id != undefined">
+                                              <div>
+                                                <iframe width="800" height="450" [src]="course.videoPath | safety" frameborder="0" allowfullscreen></iframe>
+                                              </div>
+                                            </div>
                                           </div>
-                                        </div>
-                                      </div>
-                                      <div align="center"
-                                           [hidden]="course.courseType == image || course.courseType == video">
-                                        <div *ngIf="course.courseText != null">
-                                          <div class="panel panel-default">
-                                            <textarea maxlength="2000" [(ngModel)]="course.courseText" name="textItem"
-                                                      style="width: 800px; height: 430px" type="text"
-                                                      class="form-control">
+                                          <div align="center" [hidden]="course.courseType == image || course.courseType == video">
+                                            <div *ngIf="course.courseText != null">
+                                              <div class="panel panel-default">
+                                                <textarea maxlength="2000" [(ngModel)]="course.courseText" name="textItem" style="width: 800px; height: 430px" type="text"
+                                                  class="form-control">
                                             </textarea>
+                                              </div>
+                                            </div>
                                           </div>
                                         </div>
+
                                       </div>
                                     </div>
-
                                   </div>
+
                                 </div>
                               </div>
-
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <span *ngIf="course.canPreview != truePreview" class="glyphicon glyphicon-lock"></span>
-                        </td>
-                        <td>{{course.videoTime}}</td>
-                      </tr>
-                      </tbody>
-                    </table>
+                            </td>
+                            <td>
+                              <span *ngIf="course.canPreview != truePreview" class="glyphicon glyphicon-lock"></span>
+                            </td>
+                            <td>
+                              <p [hidden]="course.videoTime == empty">{{course.videoTime}}</p>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
-                </div>
 
                 </body>
               </div>
 
             </div>
-
-            <!--<div class="col-sm-12 col-md-12 col-lg-12" style="margin-top: 15%; margin-bottom: 15%">-->
-              <!--<div class="brr panel panel-default" style="height: 300px; overflow: hidden">-->
-                <!--<div class="panel-heading">คอร์สแนะนำ</div>-->
-                <!--<div class="container-fluid" style="margin-top: 3%">-->
-                  <!--<div class="row">-->
-                    <!--<div align="center">-->
-                      <!--<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" *ngFor="let course of coursesList">-->
-                        <!--<div class="item col-xs-12 col-sm-3 col-md-3 col-lg-3"-->
-                             <!--style="width: 205px; margin-right: 2%; margin-bottom: 2%">-->
-                          <!--<div class="thumbnail" style="display: inline-block">-->
-                            <!--<div class="crop" style="border: solid 1px #e59999;">-->
-                              <!--<img style="cursor: pointer" (click)="click(course.id)" class="img"-->
-                                   <!--src="{{ url + '/displayImage/' + course.imageCourses[0]?.id}}" alt=""/>-->
-                            <!--</div>-->
-                            <!--<div align="left" [hidden]="course.linkCourse == textNull">-->
-                              <!--<a style="cursor: pointer"><span-->
-                                <!--style="font-size: 20px; color: #bf2b2a; float: right; margin-top: -115px; margin-right: 5px"-->
-                                <!--class="glyphicon glyphicon glyphicon-shopping-cart"></span></a>-->
-                            <!--</div>-->
-
-                            <!--<div class="caption" align="left">-->
-                              <!--<div-->
-                                <!--style="white-space: nowrap; width: 10em; overflow: hidden; text-overflow: ellipsis;">-->
-                                <!--{{course.name}}-->
-                              <!--</div>-->
-                              <!--<h6 [hidden]="course.price == empty" class="group inner list-group-item-heading">-->
-                                <!--{{course.price}} บาท.</h6>-->
-                              <!--<h6 *ngIf="course.price == empty"-->
-                                  <!--class="animated pulse infinite group inner list-group-item-heading"-->
-                                  <!--style="color: #bf2b2a">ฟรี</h6>-->
-                            <!--</div>-->
-                          <!--</div>-->
-                        <!--</div>-->
-                      <!--</div>-->
-                    <!--</div>-->
-                  <!--</div>-->
-
-
-                <!--</div>-->
-
-              <!--</div>-->
-            <!--</div>-->
 
           </div>
         </div>

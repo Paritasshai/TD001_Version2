@@ -22,8 +22,10 @@
 
               <div class="panel panel-default">
                 <div class="panel-heading">เกี่ยวกับโปรเจค</div>
-                <div *ngIf="coursesPurchaseed.linkCourse != nullText" class="panel-body"><span> <p
-                  style="color: #b62415; font-size: 50px" class="fa fa-shopping-basket fa-lg"></p></span>
+                <div *ngIf="coursesPurchaseed.linkCourse != nullText" class="panel-body">
+                  <span>
+                    <p style="color: #b62415; font-size: 50px" class="fa fa-shopping-basket fa-lg"></p>
+                  </span>
                   <a href="{{coursesPurchaseed.linkCourse}}" style="color:black;">ซื้ออุปกรณ์ที่เกี่ยวข้อง</a>
                 </div>
                 <!--<div class="panel-body" [hidden]="coursesPurchaseed.price == empty"><span> <i-->
@@ -31,17 +33,19 @@
                 <!--ราคา: {{coursesPurchaseed.price}} บาท.-->
                 <!--</div>-->
                 <div class="panel-body" *ngIf="courses.price == empty">
-                  <span> <i class="fa fa-money"></i></span> ฟรี
+                  <span>
+                    <i class="fa fa-money"></i>
+                  </span> ฟรี
                 </div>
                 <div align="center">
                   <div *ngIf="coursesPurchaseed.price != empty">
                     <div [hidden]="coursesPurchaseed.showLock == zero" style="margin: 1%; padding: 1%">
-                      <button type="button" class="btn btn-danger btn-md" (click)="buyCourse(coursesPurchaseed.id, user.balance,coursesPurchaseed.price,coursesPurchaseed.name, currentUser.id)">
+                      <button type="button" class="btn btn-danger btn-md" (click)="buyCourse(coursesPurchaseed.countPurchase, coursesPurchaseed.id, user.balance,coursesPurchaseed.price,coursesPurchaseed.name, currentUser.id)">
                         เข้าเรียนใช้ {{coursesPurchaseed.price}} แต้ม
                       </button>
                     </div>
                     <div *ngIf="coursesPurchaseed.showLock == zero" style="margin: 1%; padding: 1%">
-                      <button type="button" class="btn btn-danger btn-md" disabled (click)="buyCourse(coursesPurchaseed.id, user.balance,coursesPurchaseed.price,coursesPurchaseed.name, currentUser.id)">
+                      <button type="button" class="btn btn-danger btn-md" disabled (click)="buyCourse(coursesPurchaseed.countPurchase, coursesPurchaseed.id, user.balance,coursesPurchaseed.price,coursesPurchaseed.name, currentUser.id)">
                         เข้าเรียนใช้ {{coursesPurchaseed.price}} แต้ม
                       </button>
                     </div>
@@ -62,7 +66,8 @@
                             <div class="col-sm-12">
                               <div align="center">
                                 <div class="circular--portrait">
-                                  <img src="data:{{user?.userImages[0].contentType}};base64,{{user?.userImages[0].content}}" (click)="insProfile(user.id)" style="cursor: pointer">
+                                  <img src="data:{{user?.userImages[0].contentType}};base64,{{user?.userImages[0].content}}" (click)="insProfile(user.id)"
+                                    style="cursor: pointer">
                                 </div>
                                 <p style="cursor: pointer" (click)="insProfile(user.id)" title="ดูโปรเจคทั้งหมด">
                                   {{user.firstName}}</p>
@@ -188,56 +193,54 @@
 
                                       <div *ngIf="course.canPreview != truePreview">
                                         <a type="text" data-toggle="modal" [attr.data-target]="'#myModal' + course.id" style="cursor: pointer;color: #404040" (click)="buyCourse(coursesPurchaseed.id, user.balance,coursesPurchaseed.price,coursesPurchaseed.name, currentUser.id)">
-          <span *ngIf="course.courseType == video"
-                class="glyphicon glyphicon-facetime-video"></span>
-                                      <span *ngIf="course.courseType == image"
-                                            class="glyphicon glyphicon-picture"></span>
-                                      <span *ngIf="course.courseType == text"
-                                            class="glyphicon glyphicon-list-alt"></span>
-                                      {{course.name}}
-                                    </a>
+                                          <span *ngIf="course.courseType == video" class="glyphicon glyphicon-facetime-video"></span>
+                                          <span *ngIf="course.courseType == image" class="glyphicon glyphicon-picture"></span>
+                                          <span *ngIf="course.courseType == text" class="glyphicon glyphicon-list-alt"></span>
+                                          {{course.name}}
+                                        </a>
                                       </div>
 
                                       <div *ngIf="course.canPreview == truePreview">
 
-                                          <div [hidden]="course.courseType == image || course.courseType == text">
-                                              <div *ngIf="course.courseText != null">
-                                                <a type="text" data-toggle="modal" [attr.data-target]="'#myModal' + course.id" style="cursor: pointer; color: #404040">
-                                                  <span *ngIf="course.courseType == video" class="glyphicon glyphicon-facetime-video"></span>
-                                                  <span *ngIf="course.courseType == image" class="glyphicon glyphicon-picture"></span>
-                                                  <span *ngIf="course.courseType == text" class="glyphicon glyphicon-list-alt"></span>
-                                                  {{course.name}}
-                                                </a>
-                                              </div>
-                                            </div>
-    
-                                            <div [hidden]="course.courseType == video || course.courseType == text">
-                                              <div *ngIf="course.imageItems[0]?.id != undefined">
-                                                <a type="text" data-toggle="modal" [attr.data-target]="'#myModal' + course.id" style="cursor: pointer; color: #404040">
-                                                  <span *ngIf="course.courseType == video" class="glyphicon glyphicon-facetime-video"></span>
-                                                  <span *ngIf="course.courseType == image" class="glyphicon glyphicon-picture"></span>
-                                                  <span *ngIf="course.courseType == text" class="glyphicon glyphicon-list-alt"></span>
-                                                  {{course.name}}
-                                                </a>
-                                              </div>
-                                            </div>
-    
-                                            <div [hidden]="course.courseType == image || course.courseType == video">
-                                              <div [hidden]="course.videoClips[0]?.id != undefined">
-                                                <a target="_blank" [href]="course.courseText" style="cursor: pointer; color: #404040">
-                                                  <span *ngIf="course.courseType == video" class="glyphicon glyphicon-facetime-video"></span>
-                                                  <span *ngIf="course.courseType == image" class="glyphicon glyphicon-picture"></span>
-                                                  <span *ngIf="course.courseType == text" class="glyphicon glyphicon-list-alt"></span>
-                                                  <!--<a target="_blank" [href]="url + 'playVideo/' + course.videoClips[0]?.id">Link</a>-->
-                                                  {{course.name}}
-                                                </a>
-                                              </div>
-                                            </div>
+                                        <div [hidden]="course.courseType == image || course.courseType == text">
+                                          <div *ngIf="course.courseText != null">
+                                            <a type="text" data-toggle="modal" [attr.data-target]="'#myModal' + course.id" style="cursor: pointer; color: #404040">
+                                              <span *ngIf="course.courseType == video" class="glyphicon glyphicon-facetime-video"></span>
+                                              <span *ngIf="course.courseType == image" class="glyphicon glyphicon-picture"></span>
+                                              <span *ngIf="course.courseType == text" class="glyphicon glyphicon-list-alt"></span>
+                                              {{course.name}}
+                                            </a>
+                                          </div>
+                                        </div>
+
+                                        <div [hidden]="course.courseType == video || course.courseType == text">
+                                          <div *ngIf="course.imageItems[0]?.id != undefined">
+                                            <a type="text" data-toggle="modal" [attr.data-target]="'#myModal' + course.id" style="cursor: pointer; color: #404040">
+                                              <span *ngIf="course.courseType == video" class="glyphicon glyphicon-facetime-video"></span>
+                                              <span *ngIf="course.courseType == image" class="glyphicon glyphicon-picture"></span>
+                                              <span *ngIf="course.courseType == text" class="glyphicon glyphicon-list-alt"></span>
+                                              {{course.name}}
+                                            </a>
+                                          </div>
+                                        </div>
+
+                                        <div [hidden]="course.courseType == image || course.courseType == video">
+                                          <div [hidden]="course.videoClips[0]?.id != undefined">
+                                            <a target="_blank" [href]="course.courseText" style="cursor: pointer; color: #404040">
+                                              <span *ngIf="course.courseType == video" class="glyphicon glyphicon-facetime-video"></span>
+                                              <span *ngIf="course.courseType == image" class="glyphicon glyphicon-picture"></span>
+                                              <span *ngIf="course.courseType == text" class="glyphicon glyphicon-list-alt"></span>
+                                              <!--<a target="_blank" [href]="url + 'playVideo/' + course.videoClips[0]?.id">Link</a>-->
+                                              {{course.name}}
+                                            </a>
+                                          </div>
+                                        </div>
 
                                       </div>
 
                                       <!--Modal-->
-                                      <div data-target="#myModal" data-toggle="modal" data-backdrop="static" data-keyboard="false" class="modal fade" [id]="'myModal' + course.id" role="dialog" *ngIf="course.canPreview == truePreview">
+                                      <div data-target="#myModal" data-toggle="modal" data-backdrop="static" data-keyboard="false" class="modal fade" [id]="'myModal' + course.id"
+                                        role="dialog" *ngIf="course.canPreview == truePreview">
                                         <div class="modal-dialog">
                                           <div class="card-content">
 
@@ -246,7 +249,7 @@
                                                 <img class="img" style="width: 800px; height: 450px" src="{{url + 'displayImageItem/' + course.imageItems[0]?.id}}" />
                                                 <div align="center">
                                                   <button style="cursor: pointer; margin-top: 6px" data-dismiss="modal" class="btn btn-md btn-danger" type="button">ปิดรูปภาพ X
-                                              </button>
+                                                  </button>
                                                 </div>
                                               </div>
 
@@ -255,13 +258,12 @@
 
                                                   <div class="video">
                                                     <video controls [id]="course.videoClips[0]?.id" preload="auto" width="800" height="450">
-                                                  <source *ngIf="course.courseType == video"
-                                                          src="{{url + 'playVideo/' + course.videoClips[0]?.id}}"
-                                                          type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"'>
-                                                </video>
+                                                      <source *ngIf="course.courseType == video" src="{{url + 'playVideo/' + course.videoClips[0]?.id}}" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"'>
+                                                    </video>
                                                     <div align="center">
-                                                      <button style="cursor: pointer" (click)="playPause(course.videoClips[0]?.id)" data-dismiss="modal" class="btn btn-md btn-danger" type="button">ปิดวิดีโอ X
-                                                  </button>
+                                                      <button style="cursor: pointer" (click)="playPause(course.videoClips[0]?.id)" data-dismiss="modal" class="btn btn-md btn-danger"
+                                                        type="button">ปิดวิดีโอ X
+                                                      </button>
                                                     </div>
                                                   </div>
 
@@ -289,14 +291,15 @@
                                                   </div>
                                                   <div align="center">
                                                     <button style="cursor: pointer; margin-top: 4px" data-dismiss="modal" class="btn btn-md btn-danger" type="button">ปิดรูปภาพ X
-                                                </button>
+                                                    </button>
                                                   </div>
                                                 </div>
                                               </div>
                                               <div align="center" [hidden]="course.courseType == image || course.courseType == video">
                                                 <div *ngIf="course.courseText != null">
                                                   <div class="panel panel-default">
-                                                    <textarea maxlength="2000" [(ngModel)]="course.courseText" name="textItem" style="width: 800px; height: 430px" type="text" class="form-control">
+                                                    <textarea maxlength="2000" [(ngModel)]="course.courseText" name="textItem" style="width: 800px; height: 430px" type="text"
+                                                      class="form-control">
                                             </textarea>
                                                     <!--<div align="left">-->
                                                     <!--<p style="font-family: kanit, sans-serif; font-size: 14px; padding: 2%; margin: 2%">{{course.courseText}}</p>-->
@@ -304,7 +307,7 @@
                                                   </div>
                                                   <div align="center">
                                                     <button style="cursor: pointer;" data-dismiss="modal" class="btn btn-md btn-danger" type="button">ปิดรูปภาพ X
-                                                </button>
+                                                    </button>
                                                   </div>
                                                 </div>
                                               </div>
@@ -324,7 +327,9 @@
                                     </div>
                                   </div>
                                 </td>
-                                <td>{{course.videoTime}}</td>
+                                <td>
+                                  <p [hidden]="course.videoTime == empty">{{course.videoTime}}</p>
+                                </td>
                               </tr>
                             </tbody>
                           </table>
@@ -379,39 +384,39 @@
                                   <div class="container-fluid">
                                     <div class="row col-sm-12">
 
-                                        <div [hidden]="course.courseType == image || course.courseType == text">
-                                            <div *ngIf="course.courseText != null">
-                                              <a type="text" data-toggle="modal" [attr.data-target]="'#myModal' + course.id" style="cursor: pointer; color: #404040" (click)="open()">
-                                                <span *ngIf="course.courseType == video" class="glyphicon glyphicon-facetime-video"></span>
-                                                <span *ngIf="course.courseType == image" class="glyphicon glyphicon-picture"></span>
-                                                <span *ngIf="course.courseType == text" class="glyphicon glyphicon-list-alt"></span>
-                                                {{course.name}}
-                                              </a>
-                                            </div>
-                                          </div>
-  
-                                          <div [hidden]="course.courseType == video || course.courseType == text">
-                                            <div *ngIf="course.imageItems[0]?.id != undefined">
-                                              <a type="text" data-toggle="modal" [attr.data-target]="'#myModal' + course.id" style="cursor: pointer; color: #404040" (click)="open()">
-                                                <span *ngIf="course.courseType == video" class="glyphicon glyphicon-facetime-video"></span>
-                                                <span *ngIf="course.courseType == image" class="glyphicon glyphicon-picture"></span>
-                                                <span *ngIf="course.courseType == text" class="glyphicon glyphicon-list-alt"></span>
-                                                {{course.name}}
-                                              </a>
-                                            </div>
-                                          </div>
-  
-                                          <div [hidden]="course.courseType == image || course.courseType == video">
-                                            <div [hidden]="course.videoClips[0]?.id != undefined">
-                                              <a target="_blank" [href]="course.courseText" style="cursor: pointer; color: #404040" (click)="open()">
-                                                <span *ngIf="course.courseType == video" class="glyphicon glyphicon-facetime-video"></span>
-                                                <span *ngIf="course.courseType == image" class="glyphicon glyphicon-picture"></span>
-                                                <span *ngIf="course.courseType == text" class="glyphicon glyphicon-list-alt"></span>
-                                                <!--<a target="_blank" [href]="url + 'playVideo/' + course.videoClips[0]?.id">Link</a>-->
-                                                {{course.name}}
-                                              </a>
-                                            </div>
-                                          </div>
+                                      <div [hidden]="course.courseType == image || course.courseType == text">
+                                        <div *ngIf="course.courseText != null">
+                                          <a type="text" data-toggle="modal" [attr.data-target]="'#myModal' + course.id" style="cursor: pointer; color: #404040" (click)="open()">
+                                            <span *ngIf="course.courseType == video" class="glyphicon glyphicon-facetime-video"></span>
+                                            <span *ngIf="course.courseType == image" class="glyphicon glyphicon-picture"></span>
+                                            <span *ngIf="course.courseType == text" class="glyphicon glyphicon-list-alt"></span>
+                                            {{course.name}}
+                                          </a>
+                                        </div>
+                                      </div>
+
+                                      <div [hidden]="course.courseType == video || course.courseType == text">
+                                        <div *ngIf="course.imageItems[0]?.id != undefined">
+                                          <a type="text" data-toggle="modal" [attr.data-target]="'#myModal' + course.id" style="cursor: pointer; color: #404040" (click)="open()">
+                                            <span *ngIf="course.courseType == video" class="glyphicon glyphicon-facetime-video"></span>
+                                            <span *ngIf="course.courseType == image" class="glyphicon glyphicon-picture"></span>
+                                            <span *ngIf="course.courseType == text" class="glyphicon glyphicon-list-alt"></span>
+                                            {{course.name}}
+                                          </a>
+                                        </div>
+                                      </div>
+
+                                      <div [hidden]="course.courseType == image || course.courseType == video">
+                                        <div [hidden]="course.videoClips[0]?.id != undefined">
+                                          <a target="_blank" [href]="course.courseText" style="cursor: pointer; color: #404040" (click)="open()">
+                                            <span *ngIf="course.courseType == video" class="glyphicon glyphicon-facetime-video"></span>
+                                            <span *ngIf="course.courseType == image" class="glyphicon glyphicon-picture"></span>
+                                            <span *ngIf="course.courseType == text" class="glyphicon glyphicon-list-alt"></span>
+                                            <!--<a target="_blank" [href]="url + 'playVideo/' + course.videoClips[0]?.id">Link</a>-->
+                                            {{course.name}}
+                                          </a>
+                                        </div>
+                                      </div>
 
                                       <!-- <a type="text" data-toggle="modal" [attr.data-target]="'#myModal' + course.id" style="cursor: pointer;color: #404040" (click)="open()">
           <span *ngIf="course.courseType == video"
@@ -422,13 +427,14 @@
                                           class="glyphicon glyphicon-list-alt"></span>
                                     {{course.name}}
                                     <!--{{course.videoPath}}-->
-                                  <!-- </a> -->
+                                      <!-- </a> -->
 
                                       <!-- Modal -->
                                       <div *ngFor="let userCourse of user?.courses">
                                         <div *ngIf="userCourse.id == coursesPurchaseed.id">
 
-                                          <div data-target="#myModal" data-toggle="modal" data-backdrop="static" data-keyboard="false" class="modal fade" [id]="'myModal' + course.id" role="dialog">
+                                          <div data-target="#myModal" data-toggle="modal" data-backdrop="static" data-keyboard="false" class="modal fade" [id]="'myModal' + course.id"
+                                            role="dialog">
                                             <div class="modal-dialog">
                                               <div class="card-content">
                                                 <div align="center" class="video-responsive">
@@ -437,7 +443,7 @@
                                                     <img class="img" style="width: 800px; height: 450px" src="{{url + 'displayImageItem/' + course.imageItems[0]?.id}}" />
                                                     <div align="center">
                                                       <button style="cursor: pointer; margin-top: 6px" data-dismiss="modal" class="btn btn-md btn-danger" type="button">ปิดรูปภาพ X
-                                                  </button>
+                                                      </button>
                                                     </div>
                                                   </div>
 
@@ -446,13 +452,12 @@
 
                                                       <div class="video">
                                                         <video controls [id]="course.videoClips[0]?.id" preload="auto" width="800" height="450">
-                                                      <source *ngIf="course.courseType == video"
-                                                              src="{{url + 'playVideo/' + course.videoClips[0]?.id}}"
-                                                              type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"'>
-                                                    </video>
+                                                          <source *ngIf="course.courseType == video" src="{{url + 'playVideo/' + course.videoClips[0]?.id}}" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"'>
+                                                        </video>
                                                         <div align="center">
-                                                          <button style="cursor: pointer" (click)="playPause(course.videoClips[0]?.id)" data-dismiss="modal" class="btn btn-md btn-danger" type="button">ปิดวิดีโอ X
-                                                      </button>
+                                                          <button style="cursor: pointer" (click)="playPause(course.videoClips[0]?.id)" data-dismiss="modal" class="btn btn-md btn-danger"
+                                                            type="button">ปิดวิดีโอ X
+                                                          </button>
                                                         </div>
                                                       </div>
 
@@ -480,14 +485,15 @@
                                                       </div>
                                                       <div align="center">
                                                         <button style="cursor: pointer; margin-top: 6px" data-dismiss="modal" class="btn btn-md btn-danger" type="button">ปิดรูปภาพ X
-                                                    </button>
+                                                        </button>
                                                       </div>
                                                     </div>
                                                   </div>
                                                   <div align="center" [hidden]="course.courseType == image || course.courseType == video">
                                                     <div *ngIf="course.courseText != null">
                                                       <div class="panel panel-default">
-                                                        <textarea maxlength="2000" [(ngModel)]="course.courseText" name="textItem" style="width: 800px; height: 430px" type="text" class="form-control">
+                                                        <textarea maxlength="2000" [(ngModel)]="course.courseText" name="textItem" style="width: 800px; height: 430px" type="text"
+                                                          class="form-control">
                                             </textarea>
                                                         <!--<div align="left">-->
                                                         <!--<p style="font-family: kanit, sans-serif; font-size: 14px; padding: 2%; margin: 2%">{{course.courseText}}</p>-->
@@ -495,7 +501,7 @@
                                                       </div>
                                                       <div align="center">
                                                         <button style="cursor: pointer;" data-dismiss="modal" class="btn btn-md btn-danger" type="button">ปิดรูปภาพ X
-                                                    </button>
+                                                        </button>
                                                       </div>
 
                                                     </div>
@@ -626,7 +632,9 @@
                                     </div>
                                   </div>
                                 </td>
-                                <td>{{course.videoTime}}</td>
+                                <td>
+                                  <p [hidden]="course.videoTime == empty">{{course.videoTime}}</p>
+                                </td>
                               </tr>
                             </tbody>
                           </table>

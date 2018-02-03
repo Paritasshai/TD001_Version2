@@ -48,6 +48,7 @@
             </div>
           </a>
         </li>
+
         <!--<li><p style="font-family: Kanit, sans-serif; font-size: 24px; color: #1f2225; margin: 2%; opacity: 0.5">|</p></li>-->
         <li data-toggle="modal" data-target="#squarespaceModalSignUp" class="smoothScroll center-block" style="cursor: pointer">
           <a style="color: #bf2b2a">
@@ -87,7 +88,7 @@
 
 <!-- Modal -->
 
-<div id="searchModal" class="modal fade" role="dialog">
+<div id="searchModal" class="modal fade" role="dialog" *ngFor="let course of courseSearch">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -97,7 +98,34 @@
         <h4 class="modal-title">ผลลัพท์การค้นหาโปรเจค</h4>
       </div>
       <div class="modal-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12" style="float:left;">
+              <div align="center">
+                <div class="thumbnail">
+                  <div class="crop" style="border: solid 1px #e59999;">
 
+                    <img style="cursor: pointer" (click)="click(course.id)" class="img" src="{{ url + '/displayImage/' + course.imageCourses[0]?.id}}"
+                      alt="" />
+
+                  </div>
+                  <div align="left" [hidden]="course.linkCourse == textNull">
+                    <a style="cursor: pointer">
+                      <span style="font-size: 20px; color: #bf2b2a; float: right; margin-top: -115px; margin-right: 5px" class="glyphicon glyphicon glyphicon-shopping-cart"></span>
+                    </a>
+                  </div>
+
+                  <div class="caption" align="left">
+                    <div id="div1">{{course.name}}</div>
+                    <h6 [hidden]="course.price == empty" class="group inner list-group-item-heading">
+                      {{course.price}} บาท.</h6>
+                    <h6 *ngIf="course.price == empty" class="animated pulse infinite group inner list-group-item-heading" style="color: #bf2b2a">ฟรี</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="modal-footer" style="padding: 2%">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

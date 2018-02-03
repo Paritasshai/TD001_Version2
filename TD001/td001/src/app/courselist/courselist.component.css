@@ -281,9 +281,15 @@ h2 {
   text-overflow: ellipsis;
 }
 
-.stuck {
-  position: fixed;
+.sticky {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
   /*max-height: 100%;*/
   /*width: 320px;*/
   /*background-color: #eee;*/
+}
+
+.stuck{
+  position: fixed;
 }

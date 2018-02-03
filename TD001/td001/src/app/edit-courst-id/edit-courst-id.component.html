@@ -50,10 +50,9 @@
             </div>
 
             <div class="form-group">
-              <label>CourseType = </label>
               {{Course.courseType}}
               <div *ngFor="let TypeItem of TypeItems">
-                <input type="radio" name="option" (click)="model.options = TypeItem" [checked]="TypeItem === model.options"> {{TypeItem}}
+                <input type="checkbox" name="option" (click)="model.options = TypeItem" [checked]="TypeItem === model.options"> {{TypeItem}}
               </div>
             </div>
 

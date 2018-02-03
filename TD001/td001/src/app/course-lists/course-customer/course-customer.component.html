@@ -132,15 +132,15 @@
                                 </div>
 
                                 <div [hidden]="course.courseType == video || course.courseType == text">
-                                    <div *ngIf="course.imageItems[0]?.id != undefined">
-                                      <a type="text" data-toggle="modal" [attr.data-target]="'#myModal' + course.id" style="cursor: pointer; color: #404040">
-                                        <span *ngIf="course.courseType == video" class="glyphicon glyphicon-facetime-video"></span>
-                                        <span *ngIf="course.courseType == image" class="glyphicon glyphicon-picture"></span>
-                                        <span *ngIf="course.courseType == text" class="glyphicon glyphicon-list-alt"></span>
-                                        {{course.name}}
-                                      </a>
-                                    </div>
+                                  <div *ngIf="course.imageItems[0]?.id != undefined">
+                                    <a type="text" data-toggle="modal" [attr.data-target]="'#myModal' + course.id" style="cursor: pointer; color: #404040">
+                                      <span *ngIf="course.courseType == video" class="glyphicon glyphicon-facetime-video"></span>
+                                      <span *ngIf="course.courseType == image" class="glyphicon glyphicon-picture"></span>
+                                      <span *ngIf="course.courseType == text" class="glyphicon glyphicon-list-alt"></span>
+                                      {{course.name}}
+                                    </a>
                                   </div>
+                                </div>
 
                                 <div [hidden]="course.courseType == image || course.courseType == video">
                                   <div [hidden]="course.videoClips[0]?.id != undefined">
@@ -253,7 +253,9 @@
                         <td>
                           <span *ngIf="course.canPreview != truePreview" class="glyphicon glyphicon-lock"></span>
                         </td>
-                        <td>{{course.videoTime}}</td>
+                        <td>
+                          <p [hidden]="course.videoTime == empty">{{course.videoTime}}</p>
+                        </td>
                       </tr>
                     </tbody>
                   </table>

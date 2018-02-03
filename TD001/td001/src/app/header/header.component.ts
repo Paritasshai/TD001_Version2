@@ -4,6 +4,7 @@ import { AuthenticationService } from '../services/Authentication.service';
 import { User } from '../models/User';
 import { UserService } from '../services/User.service';
 import { Router } from '@angular/router';
+import {AppComponent} from '../app.component';
 
 @Component({
   selector: 'app-header',
@@ -12,13 +13,16 @@ import { Router } from '@angular/router';
 })
 
 export class HeaderComponent implements OnInit {
+
+  url = AppComponent.API_URL;
+
   ImgLogo: string;
   loading = false;
   currentUser: User;
   status: any;
   users: User[] = [];
   SearchAdvance: any = {};
-  courseSearch: any = [];
+  courseSearch: any[] = [];
   textPublic = 'true';
 
   constructor(private courseService: CourseService,
@@ -70,5 +74,10 @@ export class HeaderComponent implements OnInit {
     this.courseService.getSearchByName(this.SearchAdvance.Pname, this.textPublic).subscribe(response => {
       this.courseSearch = response;
     });
+  }
+
+  click(id) {
+    console.log('======================== Go to page')
+    this.router.navigate(['/CourseLists', id]);
   }
 }

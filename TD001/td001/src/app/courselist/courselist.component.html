@@ -53,7 +53,7 @@
     <div>
       <div class="col-xs-12 col-sm-12">
         <!--stuck-->
-        <div class="col-xs-12 col-sm-3">
+        <div class="col-xs-12 col-sm-3 sticky">
           <div class="container-fluid">
 
             <div class="well well-height" style="margin-top: 10px">
@@ -159,119 +159,176 @@
           <!--</div>-->
         </div>
 
-        <div class="col-xs-12 col-sm-9">
+        <div class="col-xs-12 col-sm-9 col-md-offset-3">
           <!--<spinner icon="bubbles" class="spinner-balanced" color="#e32d25" [size]="130" *ngIf="loading">Loading...</spinner>-->
           <!--*ngIf="show"-->
           <!--container-fluid-->
-          <div class="">
-            <div style="margin-top: 10px">
-              <div *ngIf="myVar">
 
-                <p style="color: #bf2b2a; font-size: 18px; font-family: kanit, sans-serif; margin-left: 4%">
-                  โปรเจคยอดนิยม</p>
-                <div align="center">
-                  <div class="blog" style="margin-left: 2.5%">
-                    <div class="row list-group">
-                      <div class="item animated fadeInRight col-xs-12 col-sm-4" style="width: 205px; margin-right: 14px; margin-bottom: 10px;"
-                        *ngFor="let course of coursesHot | slice:0:4;">
-                        <div>
-                          <div class="thumbnail" *ngIf="course.publicCourse == textTrue" style="box-shadow: 0 0 4px 4px #cfcfcf;">
-                            <div class="crop" style="border: solid 1px #e59999;">
+          <div style="margin-top: -450px">
+            <div *ngIf="myVar">
 
-                              <img style="cursor: pointer" (click)="click(course.id)" class="img" src="{{ url + '/displayImage/' + course.imageCourses[0]?.id}}"
-                                alt="" />
+              <p style="color: #bf2b2a; font-size: 18px; font-family: kanit, sans-serif; margin-left: 4%">
+                โปรเจคยอดนิยม</p>
+              <div align="center">
+                <div class="blog" style="margin-left: 2.5%">
+                  <div class="row list-group">
+                    <div class="item animated fadeInRight col-xs-12 col-sm-4" style="width: 205px; margin-right: 14px; margin-bottom: 10px;"
+                    *ngFor="let course of coursesss | sortObject:'countPurchase'| slice:0:4;">
+                      <div>
+                        <div class="thumbnail" *ngIf="course.publicCourse == textTrue" style="box-shadow: 0 0 4px 4px #cfcfcf;">
+                          <div class="crop" style="border: solid 1px #e59999;">
 
-                            </div>
-                            <div align="left" [hidden]="course.linkCourse == textNull">
-                              <a style="cursor: pointer">
-                                <span style="font-size: 20px; color: #bf2b2a; float: right; margin-top: -115px; margin-right: 5px" class="glyphicon glyphicon-shopping-cart"></span>
-                              </a>
-                            </div>
+                            <img style="cursor: pointer" (click)="click(course.id)" class="img" src="{{ url + '/displayImage/' + course.imageCourses[0]?.id}}"
+                              alt="" />
 
-                            <div class="caption" align="left">
-                              <div id="div11">{{course.name}}</div>
-                              <h6 [hidden]="course.price == empty" class="group inner list-group-item-heading">
-                                {{course.price}} แต้ม</h6>
-                              <h6 *ngIf="course.price == empty" class="animated pulse infinite group inner list-group-item-heading" style="color: #bf2b2a">ฟรี</h6>
-                              <a style="cursor: pointer">
-                                <span style="font-size: 15px; color: #bf2b2a; float: right; margin-top: -15px; margin-right: 5px" class="glyphicon glyphicon-plus"
-                                  title="เพิ่มลงในลิสต์" (click)="addToList(course.id)"></span>
-                              </a>
-                            </div>
+                          </div>
+                          <div align="left" [hidden]="course.linkCourse == textNull">
+                            <a style="cursor: pointer">
+                              <span style="font-size: 20px; color: #bf2b2a; float: right; margin-top: -115px; margin-right: 5px" class="glyphicon glyphicon-shopping-cart"></span>
+                            </a>
+                          </div>
+
+                          <div class="caption" align="left">
+                            <div id="div11">{{course.name}}</div>
+                            <h6 [hidden]="course.price == empty" class="group inner list-group-item-heading">
+                              {{course.price}} แต้ม</h6>
+                              <!-- <p>{{course.countPurchase}}</p>
+                              <p>{{course.id}}</p> -->
+                            <h6 *ngIf="course.price == empty" class="animated pulse infinite group inner list-group-item-heading" style="color: #bf2b2a">ฟรี</h6>
+                            <a style="cursor: pointer">
+                              <span style="font-size: 15px; color: #bf2b2a; float: right; margin-top: -15px; margin-right: 5px" class="glyphicon glyphicon-plus"
+                                title="เพิ่มลงในลิสต์" (click)="addToList(course.id)"></span>
+                            </a>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <hr>
+              </div>
+              <hr>
 
-                <p style="color: #bf2b2a; font-size: 18px;font-family: kanit, sans-serif; margin-left: 4%">
-                  โปรเจคใหม่</p>
-                <div align="center">
-                  <div class="blog" style="margin-left: 2.5%">
-                    <div id="products2" class="row list-group">
-                      <!--animated fadeInRight-->
-                      <div class="item animated fadeInRight col-xs-12 col-sm-4" style="width: 205px; margin-right: 14px; margin-bottom: 10px" *ngFor="let course of coursesNew | slice:0:8;">
-                        <div>
-                          <div class="thumbnail" *ngIf="course.publicCourse == textTrue" style="box-shadow: 0 0 4px 4px #cfcfcf;">
-                            <div class="crop" style="border: solid 1px #e59999;">
-                              <img style="cursor: pointer" (click)="click(course.id)" class="img" src="{{ url + '/displayImage/' + course.imageCourses[0]?.id}}"
-                                alt="" />
-                            </div>
-                            <div align="left" [hidden]="course.linkCourse == textNull">
-                              <a style="cursor: pointer">
-                                <span style="font-size: 20px; color: #bf2b2a; float: right; margin-top: -115px; margin-right: 5px" class="glyphicon glyphicon glyphicon-shopping-cart"></span>
-                              </a>
-                            </div>
+              <p style="color: #bf2b2a; font-size: 18px;font-family: kanit, sans-serif; margin-left: 4%">
+                โปรเจคใหม่</p>
+              <div align="center">
+                <div class="blog" style="margin-left: 2.5%">
+                  <div id="products2" class="row list-group">
+                    <!--animated fadeInRight-->
+                    <div class="item animated fadeInRight col-xs-12 col-sm-4" style="width: 205px; margin-right: 14px; margin-bottom: 10px" *ngFor="let course of courses | sortObject:'id'| slice:0:8;">
+                      <div>
+                        <div class="thumbnail" *ngIf="course.publicCourse == textTrue" style="box-shadow: 0 0 4px 4px #cfcfcf;">
+                          <div class="crop" style="border: solid 1px #e59999;">
+                            <img style="cursor: pointer" (click)="click(course.id)" class="img" src="{{ url + '/displayImage/' + course.imageCourses[0]?.id}}"
+                              alt="" />
+                          </div>
+                          <div align="left" [hidden]="course.linkCourse == textNull">
+                            <a style="cursor: pointer">
+                              <span style="font-size: 20px; color: #bf2b2a; float: right; margin-top: -115px; margin-right: 5px" class="glyphicon glyphicon glyphicon-shopping-cart"></span>
+                            </a>
+                          </div>
 
-                            <div class="caption" align="left">
-                              <div id="div1">{{course.name}}</div>
-                              <h6 [hidden]="course.price == empty" class="group inner list-group-item-heading">
-                                {{course.price}} แต้ม</h6>
-                              <h6 *ngIf="course.price == empty" class="animated pulse infinite group inner list-group-item-heading" style="color: #bf2b2a">ฟรี</h6>
-                              <a style="cursor: pointer">
-                                <span style="font-size: 15px; color: #bf2b2a; float: right; margin-top: -15px; margin-right: 5px" class="glyphicon glyphicon-plus"
-                                  title="เพิ่มลงในลิสต์" (click)="addToList(course.id)"></span>
-                              </a>
-                            </div>
+                          <div class="caption" align="left">
+                            <div id="div1">{{course.name}}</div>
+                            <h6 [hidden]="course.price == empty" class="group inner list-group-item-heading">
+                              {{course.price}} แต้ม</h6>
+                            <h6 *ngIf="course.price == empty" class="animated pulse infinite group inner list-group-item-heading" style="color: #bf2b2a">ฟรี</h6>
+                            <a style="cursor: pointer">
+                              <span style="font-size: 15px; color: #bf2b2a; float: right; margin-top: -15px; margin-right: 5px" class="glyphicon glyphicon-plus"
+                                title="เพิ่มลงในลิสต์" (click)="addToList(course.id)"></span>
+                            </a>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <hr>
+              </div>
+              <hr>
 
-                <p style="color: #bf2b2a; font-size: 18px; font-family: kanit, sans-serif; margin-left: 4%">
-                  โปรเจคแนะนำ</p>
+              <p style="color: #bf2b2a; font-size: 18px; font-family: kanit, sans-serif; margin-left: 4%">
+                โปรเจคแนะนำ</p>
+              <div align="center">
+                <div class="blog" style="margin-left: 2.5%">
+                  <div class="row list-group">
+                    <div class="item animated fadeInRight col-xs-12 col-sm-4" style="width: 205px; margin-right: 14px; margin-bottom: 10px" *ngFor="let course of coursesRecommend | slice:0:8;">
+                      <div>
+                        <div class="thumbnail" *ngIf="course.publicCourse == textTrue" style="box-shadow: 0 0 4px 4px #cfcfcf;">
+                          <div class="crop" style="border: solid 1px #e59999;">
+                            <img style="cursor: pointer" (click)="click(course.id)" class="img" src="{{ url + '/displayImage/' + course.imageCourses[0]?.id}}"
+                              alt="" />
+                          </div>
+                          <div align="left" [hidden]="course.linkCourse == textNull">
+                            <a style="cursor: pointer">
+                              <span style="font-size: 20px; color: #bf2b2a; float: right; margin-top: -115px; margin-right: 5px" class="glyphicon glyphicon glyphicon-shopping-cart"></span>
+                            </a>
+                          </div>
+
+                          <div class="caption" align="left">
+                            <div id="div8">{{course.name}}</div>
+                            <h6 [hidden]="course.price == empty" class="group inner list-group-item-heading">
+                              {{course.price}} แต้ม</h6>
+                            <h6 *ngIf="course.price == empty" class="animated pulse infinite group inner list-group-item-heading" style="color: #bf2b2a">ฟรี</h6>
+                            <a style="cursor: pointer">
+                              <span style="font-size: 15px; color: #bf2b2a; float: right; margin-top: -15px; margin-right: 5px" class="glyphicon glyphicon-plus"
+                                title="เพิ่มลงในลิสต์" (click)="addToList(course.id)"></span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr>
+
+            </div>
+            <div *ngIf="myVars">
+              <div>
+                <div>
+                  <p style="color: #bf2b2a; font-size: 18px; font-family: kanit, sans-serif; margin-left: 4%">
+                    โปรเจคทั้งหมด</p>
+                </div>
                 <div align="center">
                   <div class="blog" style="margin-left: 2.5%">
-                    <div class="row list-group">
-                      <div class="item animated fadeInRight col-xs-12 col-sm-4" style="width: 205px; margin-right: 14px; margin-bottom: 10px" *ngFor="let course of coursesRecommend | slice:0:8;">
-                        <div>
-                          <div class="thumbnail" *ngIf="course.publicCourse == textTrue" style="box-shadow: 0 0 4px 4px #cfcfcf;">
-                            <div class="crop" style="border: solid 1px #e59999;">
-                              <img style="cursor: pointer" (click)="click(course.id)" class="img" src="{{ url + '/displayImage/' + course.imageCourses[0]?.id}}"
-                                alt="" />
-                            </div>
-                            <div align="left" [hidden]="course.linkCourse == textNull">
-                              <a style="cursor: pointer">
-                                <span style="font-size: 20px; color: #bf2b2a; float: right; margin-top: -115px; margin-right: 5px" class="glyphicon glyphicon glyphicon-shopping-cart"></span>
-                              </a>
-                            </div>
+                    <div id="products" class="row list-group">
+                      <div class="item animated fadeInRight col-xs-12 col-sm-4" style="width: 205px; margin-right: 14px; margin-bottom: 10px" *ngFor="let course of courses| sortBy : 'id'; let i = index">
 
-                            <div class="caption" align="left">
-                              <div id="div8">{{course.name}}</div>
-                              <h6 [hidden]="course.price == empty" class="group inner list-group-item-heading">
-                                {{course.price}} แต้ม</h6>
-                              <h6 *ngIf="course.price == empty" class="animated pulse infinite group inner list-group-item-heading" style="color: #bf2b2a">ฟรี</h6>
-                              <a style="cursor: pointer">
-                                <span style="font-size: 15px; color: #bf2b2a; float: right; margin-top: -15px; margin-right: 5px" class="glyphicon glyphicon-plus"
-                                  title="เพิ่มลงในลิสต์" (click)="addToList(course.id)"></span>
-                              </a>
-                            </div>
+                        <div class="thumbnail" *ngIf="course.publicCourse == textTrue" style="box-shadow: 0 0 4px 4px #cfcfcf;">
+                          <div class="crop" style="border: solid 1px #e59999;">
+                            <img style="cursor: pointer" (click)="click(course.id)" class="img" src="{{ url + '/displayImage/' + course.imageCourses[0]?.id}}"
+                              alt="" />
+                            <!--<img style="cursor: pointer" (click)="click(course.id)" class="img"-->
+                            <!--src="data:{{course.courseImages[0]?.contentType}};base64,{{course.courseImages[0]?.content}}"-->
+                            <!--alt=""/>-->
                           </div>
+                          <div align="left" [hidden]="course.linkCourse == textNull">
+                            <a style="cursor: pointer">
+                              <span style="font-size: 20px; color: #bf2b2a; float: right; margin-top: -115px; margin-right: 5px" class="glyphicon glyphicon-shopping-cart"></span>
+                            </a>
+                          </div>
+
+                          <div class="caption" align="left">
+                            <div id="div10">{{course.name}}</div>
+                            <h6 [hidden]="course.price == empty" class="group inner list-group-item-heading">
+                              {{course.price}} แต้ม
+                            </h6>
+                            <h6 *ngIf="course.price == empty" class="animated pulse infinite group inner list-group-item-heading" style="color: #bf2b2a">ฟรี</h6>
+                            <a style="cursor: pointer">
+                              <span style="font-size: 15px; color: #bf2b2a; float: right; margin-top: -15px; margin-right: 5px" class="glyphicon glyphicon-plus"
+                                title="เพิ่มลงในลิสต์" (click)="addToList(course.id)"></span>
+                            </a>
+                            <!--<div class="row">-->
+                            <!--<div class="col-xs-12 col-md-6" align="right">-->
+                            <!---->
+                            <!--<div *ngFor="let user of users">-->
+                            <!--<div *ngIf="user.id == currentUser.id">-->
+                            <!---->
+                            <!--</div>-->
+                            <!--</div>-->
+                            <!--</div>-->
+                            <!--</div>-->
+                          </div>
+
                         </div>
                       </div>
                     </div>
@@ -280,33 +337,31 @@
                 <hr>
 
               </div>
-              <div *ngIf="myVars">
-                <div>
-                  <div>
-                    <p style="color: #bf2b2a; font-size: 18px; font-family: kanit, sans-serif; margin-left: 4%">
-                      โปรเจคทั้งหมด</p>
-                  </div>
-                  <div align="center">
-                    <div class="blog" style="margin-left: 2.5%">
-                      <div id="products" class="row list-group">
-                        <div class="item animated fadeInRight col-xs-12 col-sm-4" style="width: 205px; margin-right: 14px; margin-bottom: 10px" *ngFor="let course of courses| sortBy : 'id'; let i = index">
+            </div>
+            <div *ngIf="lego">
+              <div>
 
+                <div>
+                  <p style="color: #bf2b2a; font-size: 18px; font-family: kanit, sans-serif; margin-left: 4%">
+                    Lego Mindstrom</p>
+                </div>
+                <div align="center">
+                  <div class="blog" style="margin-left: 2.5%">
+                    <div id="productsLego" class="row list-group">
+                      <div class="item animated fadeInRight col-xs-12 col-sm-4" style="width: 205px; margin-right: 14px; margin-bottom: 10px" *ngFor="let course of coursesLego">
+                        <div *ngIf="course.catagory == LegoText">
                           <div class="thumbnail" *ngIf="course.publicCourse == textTrue" style="box-shadow: 0 0 4px 4px #cfcfcf;">
                             <div class="crop" style="border: solid 1px #e59999;">
                               <img style="cursor: pointer" (click)="click(course.id)" class="img" src="{{ url + '/displayImage/' + course.imageCourses[0]?.id}}"
                                 alt="" />
-                              <!--<img style="cursor: pointer" (click)="click(course.id)" class="img"-->
-                              <!--src="data:{{course.courseImages[0]?.contentType}};base64,{{course.courseImages[0]?.content}}"-->
-                              <!--alt=""/>-->
                             </div>
                             <div align="left" [hidden]="course.linkCourse == textNull">
                               <a style="cursor: pointer">
-                                <span style="font-size: 20px; color: #bf2b2a; float: right; margin-top: -115px; margin-right: 5px" class="glyphicon glyphicon-shopping-cart"></span>
+                                <span style="font-size: 20px; color: #bf2b2a; float: right; margin-top: -115px; margin-right: 5px" class="glyphicon glyphicon glyphicon-shopping-cart"></span>
                               </a>
                             </div>
-
                             <div class="caption" align="left">
-                              <div id="div10">{{course.name}}</div>
+                              <div id="div2">{{course.name}}</div>
                               <h6 [hidden]="course.price == empty" class="group inner list-group-item-heading">
                                 {{course.price}} แต้ม
                               </h6>
@@ -315,320 +370,266 @@
                                 <span style="font-size: 15px; color: #bf2b2a; float: right; margin-top: -15px; margin-right: 5px" class="glyphicon glyphicon-plus"
                                   title="เพิ่มลงในลิสต์" (click)="addToList(course.id)"></span>
                               </a>
-                              <!--<div class="row">-->
-                              <!--<div class="col-xs-12 col-md-6" align="right">-->
-                              <!---->
-                              <!--<div *ngFor="let user of users">-->
-                              <!--<div *ngIf="user.id == currentUser.id">-->
-                              <!---->
-                              <!--</div>-->
-                              <!--</div>-->
-                              <!--</div>-->
-                              <!--</div>-->
                             </div>
-
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <hr>
-
                 </div>
+
               </div>
-              <div *ngIf="lego">
+            </div>
+            <div *ngIf="household">
+              <div>
                 <div>
+                  <p style="color: #bf2b2a; font-size: 18px; font-family: kanit, sans-serif; margin-left: 4%">
+                    Tect Household</p>
+                </div>
 
-                  <div>
-                    <p style="color: #bf2b2a; font-size: 18px; font-family: kanit, sans-serif; margin-left: 4%">
-                      Lego Mindstrom</p>
-                  </div>
-                  <div align="center">
-                    <div class="blog" style="margin-left: 2.5%">
-                      <div id="productsLego" class="row list-group">
-                        <div class="item animated fadeInRight col-xs-12 col-sm-4" style="width: 205px; margin-right: 14px; margin-bottom: 10px" *ngFor="let course of coursesLego">
-                          <div *ngIf="course.catagory == LegoText">
-                            <div class="thumbnail" *ngIf="course.publicCourse == textTrue" style="box-shadow: 0 0 4px 4px #cfcfcf;">
-                              <div class="crop" style="border: solid 1px #e59999;">
-                                <img style="cursor: pointer" (click)="click(course.id)" class="img" src="{{ url + '/displayImage/' + course.imageCourses[0]?.id}}"
-                                  alt="" />
-                              </div>
-                              <div align="left" [hidden]="course.linkCourse == textNull">
-                                <a style="cursor: pointer">
-                                  <span style="font-size: 20px; color: #bf2b2a; float: right; margin-top: -115px; margin-right: 5px" class="glyphicon glyphicon glyphicon-shopping-cart"></span>
-                                </a>
-                              </div>
-                              <div class="caption" align="left">
-                                <div id="div2">{{course.name}}</div>
-                                <h6 [hidden]="course.price == empty" class="group inner list-group-item-heading">
-                                  {{course.price}} แต้ม
-                                </h6>
-                                <h6 *ngIf="course.price == empty" class="animated pulse infinite group inner list-group-item-heading" style="color: #bf2b2a">ฟรี</h6>
-                                <a style="cursor: pointer">
-                                  <span style="font-size: 15px; color: #bf2b2a; float: right; margin-top: -15px; margin-right: 5px" class="glyphicon glyphicon-plus"
-                                    title="เพิ่มลงในลิสต์" (click)="addToList(course.id)"></span>
-                                </a>
-                              </div>
+                <div align="center">
+                  <div class="blog" style="margin-left: 2.5%">
+                    <div id="productsHousehold" class="row list-group">
+                      <div class="item animated fadeInRight col-xs-12 col-sm-4" style="width: 205px; margin-right: 14px; margin-bottom: 10px" *ngFor="let course of coursesHousehold">
+                        <div *ngIf="course.catagory == HouseholdText">
+                          <div class="thumbnail" *ngIf="course.publicCourse == textTrue" style="box-shadow: 0 0 4px 4px #cfcfcf;">
+                            <div class="crop" style="border: solid 1px #e59999;">
+                              <img style="cursor: pointer" (click)="click(course.id)" class="img" src="{{ url + '/displayImage/' + course.imageCourses[0]?.id}}"
+                                alt="" />
+                            </div>
+                            <div align="left" [hidden]="course.linkCourse == textNull">
+                              <a style="cursor: pointer">
+                                <span style="font-size: 20px; color: #bf2b2a; float: right; margin-top: -115px; margin-right: 5px" class="glyphicon glyphicon glyphicon-shopping-cart"></span>
+                              </a>
+                            </div>
+                            <div class="caption" align="left">
+                              <div id="div3">{{course.name}}</div>
+                              <h6 [hidden]="course.price == empty" class="group inner list-group-item-heading">
+                                {{course.price}} แต้ม
+                              </h6>
+                              <h6 *ngIf="course.price == empty" class="animated pulse infinite group inner list-group-item-heading" style="color: #bf2b2a">ฟรี</h6>
+                              <a style="cursor: pointer">
+                                <span style="font-size: 15px; color: #bf2b2a; float: right; margin-top: -15px; margin-right: 5px" class="glyphicon glyphicon-plus"
+                                  title="เพิ่มลงในลิสต์" (click)="addToList(course.id)"></span>
+                              </a>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-
                 </div>
+
               </div>
-              <div *ngIf="household">
+            </div>
+            <div *ngIf="toy">
+              <div>
                 <div>
-                  <div>
-                    <p style="color: #bf2b2a; font-size: 18px; font-family: kanit, sans-serif; margin-left: 4%">
-                      Tect Household</p>
-                  </div>
+                  <p style="color: #bf2b2a; font-size: 18px; font-family: kanit, sans-serif; margin-left: 4%">
+                    Tech Toy</p>
+                </div>
 
-                  <div align="center">
-                    <div class="blog" style="margin-left: 2.5%">
-                      <div id="productsHousehold" class="row list-group">
-                        <div class="item animated fadeInRight col-xs-12 col-sm-4" style="width: 205px; margin-right: 14px; margin-bottom: 10px" *ngFor="let course of coursesHousehold">
-                          <div *ngIf="course.catagory == HouseholdText">
-                            <div class="thumbnail" *ngIf="course.publicCourse == textTrue" style="box-shadow: 0 0 4px 4px #cfcfcf;">
-                              <div class="crop" style="border: solid 1px #e59999;">
-                                <img style="cursor: pointer" (click)="click(course.id)" class="img" src="{{ url + '/displayImage/' + course.imageCourses[0]?.id}}"
-                                  alt="" />
-                              </div>
-                              <div align="left" [hidden]="course.linkCourse == textNull">
-                                <a style="cursor: pointer">
-                                  <span style="font-size: 20px; color: #bf2b2a; float: right; margin-top: -115px; margin-right: 5px" class="glyphicon glyphicon glyphicon-shopping-cart"></span>
-                                </a>
-                              </div>
-                              <div class="caption" align="left">
-                                <div id="div3">{{course.name}}</div>
-                                <h6 [hidden]="course.price == empty" class="group inner list-group-item-heading">
-                                  {{course.price}} แต้ม
-                                </h6>
-                                <h6 *ngIf="course.price == empty" class="animated pulse infinite group inner list-group-item-heading" style="color: #bf2b2a">ฟรี</h6>
-                                <a style="cursor: pointer">
-                                  <span style="font-size: 15px; color: #bf2b2a; float: right; margin-top: -15px; margin-right: 5px" class="glyphicon glyphicon-plus"
-                                    title="เพิ่มลงในลิสต์" (click)="addToList(course.id)"></span>
-                                </a>
-                              </div>
+                <div align="center">
+                  <div class="blog" style="margin-left: 2.5%">
+                    <div id="productsToy" class="row list-group">
+                      <div class="item animated fadeInRight col-xs-12 col-sm-4" style="width: 205px; margin-right: 14px; margin-bottom: 10px" *ngFor="let course of coursesToy">
+                        <div *ngIf="course.catagory == ToyText">
+                          <div class="thumbnail" *ngIf="course.publicCourse == textTrue" style="box-shadow: 0 0 4px 4px #cfcfcf;">
+                            <div class="crop" style="border: solid 1px #e59999;">
+                              <img style="cursor: pointer" (click)="click(course.id)" class="img" src="{{ url + '/displayImage/' + course.imageCourses[0]?.id}}"
+                                alt="" />
+                            </div>
+                            <div align="left" [hidden]="course.linkCourse == textNull">
+                              <a style="cursor: pointer">
+                                <span style="font-size: 20px; color: #bf2b2a; float: right; margin-top: -115px; margin-right: 5px" class="glyphicon glyphicon glyphicon-shopping-cart"></span>
+                              </a>
+                            </div>
+                            <div class="caption" align="left">
+                              <div id="div4">{{course.name}}</div>
+                              <h6 [hidden]="course.price == empty" class="group inner list-group-item-heading">
+                                {{course.price}} แต้ม
+                              </h6>
+                              <h6 *ngIf="course.price == empty" class="animated pulse infinite group inner list-group-item-heading" style="color: #bf2b2a">ฟรี</h6>
+                              <a style="cursor: pointer">
+                                <span style="font-size: 15px; color: #bf2b2a; float: right; margin-top: -15px; margin-right: 5px" class="glyphicon glyphicon-plus"
+                                  title="เพิ่มลงในลิสต์" (click)="addToList(course.id)"></span>
+                              </a>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-
                 </div>
+
               </div>
-              <div *ngIf="toy">
+            </div>
+            <div *ngIf="garden">
+              <div>
                 <div>
-                  <div>
-                    <p style="color: #bf2b2a; font-size: 18px; font-family: kanit, sans-serif; margin-left: 4%">
-                      Tech Toy</p>
-                  </div>
+                  <p style="color: #bf2b2a; font-size: 18px; font-family: kanit, sans-serif; margin-left: 4%">
+                    Tech Garden</p>
+                </div>
 
-                  <div align="center">
-                    <div class="blog" style="margin-left: 2.5%">
-                      <div id="productsToy" class="row list-group">
-                        <div class="item animated fadeInRight col-xs-12 col-sm-4" style="width: 205px; margin-right: 14px; margin-bottom: 10px" *ngFor="let course of coursesToy">
-                          <div *ngIf="course.catagory == ToyText">
-                            <div class="thumbnail" *ngIf="course.publicCourse == textTrue" style="box-shadow: 0 0 4px 4px #cfcfcf;">
-                              <div class="crop" style="border: solid 1px #e59999;">
-                                <img style="cursor: pointer" (click)="click(course.id)" class="img" src="{{ url + '/displayImage/' + course.imageCourses[0]?.id}}"
-                                  alt="" />
-                              </div>
-                              <div align="left" [hidden]="course.linkCourse == textNull">
-                                <a style="cursor: pointer">
-                                  <span style="font-size: 20px; color: #bf2b2a; float: right; margin-top: -115px; margin-right: 5px" class="glyphicon glyphicon glyphicon-shopping-cart"></span>
-                                </a>
-                              </div>
-                              <div class="caption" align="left">
-                                <div id="div4">{{course.name}}</div>
-                                <h6 [hidden]="course.price == empty" class="group inner list-group-item-heading">
-                                  {{course.price}} แต้ม
-                                </h6>
-                                <h6 *ngIf="course.price == empty" class="animated pulse infinite group inner list-group-item-heading" style="color: #bf2b2a">ฟรี</h6>
-                                <a style="cursor: pointer">
-                                  <span style="font-size: 15px; color: #bf2b2a; float: right; margin-top: -15px; margin-right: 5px" class="glyphicon glyphicon-plus"
-                                    title="เพิ่มลงในลิสต์" (click)="addToList(course.id)"></span>
-                                </a>
-                              </div>
+                <div align="center">
+                  <div class="blog" style="margin-left: 2.5%">
+                    <div id="productsGarden" class="row list-group">
+                      <div class="item animated fadeInRight col-xs-12 col-sm-4" style="width: 205px; margin-right: 14px; margin-bottom: 10px" *ngFor="let course of coursesGarden">
+                        <div *ngIf="course.catagory == GardenText">
+                          <div class="thumbnail" *ngIf="course.publicCourse == textTrue" style="box-shadow: 0 0 4px 4px #cfcfcf;">
+                            <div class="crop" style="border: solid 1px #e59999;">
+                              <img style="cursor: pointer" (click)="click(course.id)" class="img" src="{{ url + '/displayImage/' + course.imageCourses[0]?.id}}"
+                                alt="" />
+                            </div>
+                            <div align="left" [hidden]="course.linkCourse == textNull">
+                              <a style="cursor: pointer">
+                                <span style="font-size: 20px; color: #bf2b2a; float: right; margin-top: -115px; margin-right: 5px" class="glyphicon glyphicon glyphicon-shopping-cart"></span>
+                              </a>
+                            </div>
+                            <div class="caption" align="left">
+                              <div id="div5">{{course.name}}</div>
+                              <h6 [hidden]="course.price == empty" class="group inner list-group-item-heading">
+                                {{course.price}} แต้ม
+                              </h6>
+                              <h6 *ngIf="course.price == empty" class="animated pulse infinite group inner list-group-item-heading" style="color: #bf2b2a">ฟรี</h6>
+                              <a style="cursor: pointer">
+                                <span style="font-size: 15px; color: #bf2b2a; float: right; margin-top: -15px; margin-right: 5px" class="glyphicon glyphicon-plus"
+                                  title="เพิ่มลงในลิสต์" (click)="addToList(course.id)"></span>
+                              </a>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-
                 </div>
+
               </div>
-              <div *ngIf="garden">
+            </div>
+            <div *ngIf="iot">
+              <div>
                 <div>
-                  <div>
-                    <p style="color: #bf2b2a; font-size: 18px; font-family: kanit, sans-serif; margin-left: 4%">
-                      Tech Garden</p>
-                  </div>
+                  <p style="color: #bf2b2a; font-size: 18px; font-family: kanit, sans-serif; margin-left: 4%">
+                    IoT</p>
+                </div>
 
-                  <div align="center">
-                    <div class="blog" style="margin-left: 2.5%">
-                      <div id="productsGarden" class="row list-group">
-                        <div class="item animated fadeInRight col-xs-12 col-sm-4" style="width: 205px; margin-right: 14px; margin-bottom: 10px" *ngFor="let course of coursesGarden">
-                          <div *ngIf="course.catagory == GardenText">
-                            <div class="thumbnail" *ngIf="course.publicCourse == textTrue" style="box-shadow: 0 0 4px 4px #cfcfcf;">
-                              <div class="crop" style="border: solid 1px #e59999;">
-                                <img style="cursor: pointer" (click)="click(course.id)" class="img" src="{{ url + '/displayImage/' + course.imageCourses[0]?.id}}"
-                                  alt="" />
-                              </div>
-                              <div align="left" [hidden]="course.linkCourse == textNull">
-                                <a style="cursor: pointer">
-                                  <span style="font-size: 20px; color: #bf2b2a; float: right; margin-top: -115px; margin-right: 5px" class="glyphicon glyphicon glyphicon-shopping-cart"></span>
-                                </a>
-                              </div>
-                              <div class="caption" align="left">
-                                <div id="div5">{{course.name}}</div>
-                                <h6 [hidden]="course.price == empty" class="group inner list-group-item-heading">
-                                  {{course.price}} แต้ม
-                                </h6>
-                                <h6 *ngIf="course.price == empty" class="animated pulse infinite group inner list-group-item-heading" style="color: #bf2b2a">ฟรี</h6>
-                                <a style="cursor: pointer">
-                                  <span style="font-size: 15px; color: #bf2b2a; float: right; margin-top: -15px; margin-right: 5px" class="glyphicon glyphicon-plus"
-                                    title="เพิ่มลงในลิสต์" (click)="addToList(course.id)"></span>
-                                </a>
-                              </div>
+                <div align="center">
+                  <div class="blog" style="margin-left: 2.5%">
+                    <div id="productsIoT" class="row list-group">
+                      <div class="item animated fadeInRight col-xs-12 col-sm-4" style="width: 205px; margin-right: 14px; margin-bottom: 10px" *ngFor="let course of coursesIoT">
+                        <div *ngIf="course.catagory == IoTText">
+                          <div class="thumbnail" *ngIf="course.publicCourse == textTrue" style="box-shadow: 0 0 4px 4px #cfcfcf;">
+                            <div class="crop" style="border: solid 1px #e59999;">
+                              <img style="cursor: pointer" (click)="click(course.id)" class="img" src="{{ url + '/displayImage/' + course.imageCourses[0]?.id}}"
+                                alt="" />
+                            </div>
+                            <div align="left" [hidden]="course.linkCourse == textNull">
+                              <a style="cursor: pointer">
+                                <span style="font-size: 20px; color: #bf2b2a; float: right; margin-top: -115px; margin-right: 5px" class="glyphicon glyphicon glyphicon-shopping-cart"></span>
+                              </a>
+                            </div>
+                            <div class="caption" align="left">
+                              <div id="div6">{{course.name}}</div>
+                              <h6 [hidden]="course.price == empty" class="group inner list-group-item-heading">
+                                {{course.price}} แต้ม
+                              </h6>
+                              <h6 *ngIf="course.price == empty" class="animated pulse infinite group inner list-group-item-heading" style="color: #bf2b2a">ฟรี</h6>
+                              <a style="cursor: pointer">
+                                <span style="font-size: 15px; color: #bf2b2a; float: right; margin-top: -15px; margin-right: 5px" class="glyphicon glyphicon-plus"
+                                  title="เพิ่มลงในลิสต์" (click)="addToList(course.id)"></span>
+                              </a>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-
                 </div>
+
               </div>
-              <div *ngIf="iot">
+            </div>
+            <div *ngIf="querySearch">
+              <div>
                 <div>
-                  <div>
-                    <p style="color: #bf2b2a; font-size: 18px; font-family: kanit, sans-serif; margin-left: 4%">
-                      IoT</p>
-                  </div>
+                  <p style="color: #bf2b2a; font-size: 18px; font-family: kanit, sans-serif; margin-left: 4%">
+                    ผลลัพท์การค้นหาโปรเจค</p>
+                </div>
 
-                  <div align="center">
-                    <div class="blog" style="margin-left: 2.5%">
-                      <div id="productsIoT" class="row list-group">
-                        <div class="item animated fadeInRight col-xs-12 col-sm-4" style="width: 205px; margin-right: 14px; margin-bottom: 10px" *ngFor="let course of coursesIoT">
-                          <div *ngIf="course.catagory == IoTText">
-                            <div class="thumbnail" *ngIf="course.publicCourse == textTrue" style="box-shadow: 0 0 4px 4px #cfcfcf;">
-                              <div class="crop" style="border: solid 1px #e59999;">
-                                <img style="cursor: pointer" (click)="click(course.id)" class="img" src="{{ url + '/displayImage/' + course.imageCourses[0]?.id}}"
-                                  alt="" />
-                              </div>
-                              <div align="left" [hidden]="course.linkCourse == textNull">
-                                <a style="cursor: pointer">
-                                  <span style="font-size: 20px; color: #bf2b2a; float: right; margin-top: -115px; margin-right: 5px" class="glyphicon glyphicon glyphicon-shopping-cart"></span>
-                                </a>
-                              </div>
-                              <div class="caption" align="left">
-                                <div id="div6">{{course.name}}</div>
-                                <h6 [hidden]="course.price == empty" class="group inner list-group-item-heading">
-                                  {{course.price}} แต้ม
-                                </h6>
-                                <h6 *ngIf="course.price == empty" class="animated pulse infinite group inner list-group-item-heading" style="color: #bf2b2a">ฟรี</h6>
-                                <a style="cursor: pointer">
-                                  <span style="font-size: 15px; color: #bf2b2a; float: right; margin-top: -15px; margin-right: 5px" class="glyphicon glyphicon-plus"
-                                    title="เพิ่มลงในลิสต์" (click)="addToList(course.id)"></span>
-                                </a>
-                              </div>
+                <div align="center">
+                  <div class="blog" style="margin-left: 2.5%">
+                    <div id="productsCourseSearch" class="row list-group">
+                      <div class="item animated fadeInRight col-xs-12 col-sm-4" style="width: 205px; margin-right: 14px; margin-bottom: 10px" *ngFor="let course of courseSearch">
+                        <div>
+                          <div class="thumbnail" *ngIf="course.publicCourse == textTrue" style="box-shadow: 0 0 4px 4px #cfcfcf;">
+                            <div class="crop" style="border: solid 1px #e59999;">
+                              <img style="cursor: pointer" (click)="click(course.id)" class="img" src="{{ url + '/displayImage/' + course.imageCourses[0]?.id}}"
+                                alt="" />
+                            </div>
+                            <div align="left" [hidden]="course.linkCourse == textNull">
+                              <a style="cursor: pointer">
+                                <span style="font-size: 20px; color: #bf2b2a; float: right; margin-top: -115px; margin-right: 5px" class="glyphicon glyphicon glyphicon-shopping-cart"></span>
+                              </a>
+                            </div>
+                            <div class="caption" align="left">
+                              <div id="div7">{{course.name}}</div>
+                              <h6 [hidden]="course.price == empty" class="group inner list-group-item-heading">
+                                {{course.price}} แต้ม
+                              </h6>
+                              <h6 *ngIf="course.price == empty" class="animated pulse infinite group inner list-group-item-heading" style="color: #bf2b2a">ฟรี</h6>
+                              <a style="cursor: pointer">
+                                <span style="font-size: 15px; color: #bf2b2a; float: right; margin-top: -15px; margin-right: 5px" class="glyphicon glyphicon-plus"
+                                  title="เพิ่มลงในลิสต์" (click)="addToList(course.id)"></span>
+                              </a>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-
                 </div>
+
               </div>
-              <div *ngIf="querySearch">
+            </div>
+            <div *ngIf="querySearchPay">
+              <div>
                 <div>
-                  <div>
-                    <p style="color: #bf2b2a; font-size: 18px; font-family: kanit, sans-serif; margin-left: 4%">
-                      ผลลัพท์การค้นหาโปรเจค</p>
-                  </div>
+                  <p style="color: #bf2b2a; font-size: 18px; font-family: kanit, sans-serif; margin-left: 4%">
+                    ผลลัพท์การค้นหาโปรเจคใช้แต้ม</p>
+                </div>
 
-                  <div align="center">
-                    <div class="blog" style="margin-left: 2.5%">
-                      <div id="productsCourseSearch" class="row list-group">
-                        <div class="item animated fadeInRight col-xs-12 col-sm-4" style="width: 205px; margin-right: 14px; margin-bottom: 10px" *ngFor="let course of courseSearch">
-                          <div>
-                            <div class="thumbnail" *ngIf="course.publicCourse == textTrue" style="box-shadow: 0 0 4px 4px #cfcfcf;">
-                              <div class="crop" style="border: solid 1px #e59999;">
-                                <img style="cursor: pointer" (click)="click(course.id)" class="img" src="{{ url + '/displayImage/' + course.imageCourses[0]?.id}}"
-                                  alt="" />
-                              </div>
-                              <div align="left" [hidden]="course.linkCourse == textNull">
-                                <a style="cursor: pointer">
-                                  <span style="font-size: 20px; color: #bf2b2a; float: right; margin-top: -115px; margin-right: 5px" class="glyphicon glyphicon glyphicon-shopping-cart"></span>
-                                </a>
-                              </div>
-                              <div class="caption" align="left">
-                                <div id="div7">{{course.name}}</div>
-                                <h6 [hidden]="course.price == empty" class="group inner list-group-item-heading">
-                                  {{course.price}} แต้ม
-                                </h6>
-                                <h6 *ngIf="course.price == empty" class="animated pulse infinite group inner list-group-item-heading" style="color: #bf2b2a">ฟรี</h6>
-                                <a style="cursor: pointer">
-                                  <span style="font-size: 15px; color: #bf2b2a; float: right; margin-top: -15px; margin-right: 5px" class="glyphicon glyphicon-plus"
-                                    title="เพิ่มลงในลิสต์" (click)="addToList(course.id)"></span>
-                                </a>
-                              </div>
+                <div align="center">
+                  <div class="blog" style="margin-left: 2.5%">
+                    <div id="productsCourseSearch1" class="row list-group">
+                      <div class="item animated fadeInRight col-xs-12 col-sm-4" style="width: 205px; margin-right: 14px; margin-bottom: 10px" *ngFor="let course of courseSearch">
+                        <div [hidden]="course.price == empty">
+                          <div class="thumbnail" *ngIf="course.publicCourse == textTrue" style="box-shadow: 0 0 4px 4px #cfcfcf; float: left;">
+                            <div class="crop" style="border: solid 1px #e59999;">
+                              <img style="cursor: pointer" (click)="click(course.id)" class="img" src="{{ url + '/displayImage/' + course.imageCourses[0]?.id}}"
+                                alt="" />
+                            </div>
+                            <div align="left" [hidden]="course.linkCourse == textNull">
+                              <a style="cursor: pointer">
+                                <span style="font-size: 20px; color: #bf2b2a; float: right; margin-top: -115px; margin-right: 5px" class="glyphicon glyphicon glyphicon-shopping-cart"></span>
+                              </a>
+                            </div>
+                            <div class="caption" align="left">
+                              <div id="div15">{{course.name}}</div>
+                              <h6 [hidden]="course.price == empty" class="group inner list-group-item-heading">
+                                {{course.price}} แต้ม
+                              </h6>
+                              <h6 *ngIf="course.price == empty" class="animated pulse infinite group inner list-group-item-heading" style="color: #bf2b2a">ฟรี</h6>
+                              <a style="cursor: pointer">
+                                <span style="font-size: 15px; color: #bf2b2a; float: right; margin-top: -15px; margin-right: 5px" class="glyphicon glyphicon-plus"
+                                  title="เพิ่มลงในลิสต์" (click)="addToList(course.id)"></span>
+                              </a>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-
                 </div>
-              </div>
-              <div *ngIf="querySearchPay">
-                <div>
-                  <div>
-                    <p style="color: #bf2b2a; font-size: 18px; font-family: kanit, sans-serif; margin-left: 4%">
-                      ผลลัพท์การค้นหาโปรเจคใช้แต้ม</p>
-                  </div>
 
-                  <div align="center">
-                    <div class="blog" style="margin-left: 2.5%">
-                      <div id="productsCourseSearch1" class="row list-group">
-                        <div class="item animated fadeInRight col-xs-12 col-sm-4" style="width: 205px; margin-right: 14px; margin-bottom: 10px" *ngFor="let course of courseSearch">
-                          <div [hidden]="course.price == empty">
-                            <div class="thumbnail" *ngIf="course.publicCourse == textTrue" style="box-shadow: 0 0 4px 4px #cfcfcf; float: left;">
-                              <div class="crop" style="border: solid 1px #e59999;">
-                                <img style="cursor: pointer" (click)="click(course.id)" class="img" src="{{ url + '/displayImage/' + course.imageCourses[0]?.id}}"
-                                  alt="" />
-                              </div>
-                              <div align="left" [hidden]="course.linkCourse == textNull">
-                                <a style="cursor: pointer">
-                                  <span style="font-size: 20px; color: #bf2b2a; float: right; margin-top: -115px; margin-right: 5px" class="glyphicon glyphicon glyphicon-shopping-cart"></span>
-                                </a>
-                              </div>
-                              <div class="caption" align="left">
-                                <div id="div15">{{course.name}}</div>
-                                <h6 [hidden]="course.price == empty" class="group inner list-group-item-heading">
-                                  {{course.price}} แต้ม
-                                </h6>
-                                <h6 *ngIf="course.price == empty" class="animated pulse infinite group inner list-group-item-heading" style="color: #bf2b2a">ฟรี</h6>
-                                <a style="cursor: pointer">
-                                  <span style="font-size: 15px; color: #bf2b2a; float: right; margin-top: -15px; margin-right: 5px" class="glyphicon glyphicon-plus"
-                                    title="เพิ่มลงในลิสต์" (click)="addToList(course.id)"></span>
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
               </div>
             </div>
           </div>

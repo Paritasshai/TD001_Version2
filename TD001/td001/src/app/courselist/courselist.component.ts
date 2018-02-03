@@ -19,6 +19,7 @@ export class CourselistComponent implements OnInit {
   Img1: string;
   list: any = [];
   courses: any = [];
+  coursesss: any = [];
   coursesLego: any = [];
   coursesHousehold: any = [];
   coursesToy: any = [];
@@ -121,6 +122,8 @@ export class CourselistComponent implements OnInit {
     // if (this.currentUser !== undefined) {
     //   this.getUserList();
     // }
+    this.getCourses();
+    this.getCourseList();
     this.getCourseNewType();
     this.getCourseRecommendType();
     this.getCourseHotType();
@@ -334,6 +337,12 @@ export class CourselistComponent implements OnInit {
   //   });
   // }
 
+  private getCourses() {
+    this.courseService.getCourseItemsByPublic(this.textPublic).subscribe(coursesss => {
+      this.coursesss = coursesss;
+      // console.log(this.courses);
+    });
+  }
 
   private getCourseList() {
     this.courseService.getCourseItemsByPublic(this.textPublic).subscribe(courses => {

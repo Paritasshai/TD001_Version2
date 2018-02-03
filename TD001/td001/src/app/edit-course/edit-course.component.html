@@ -54,7 +54,6 @@
       </thead>
       <tbody *ngFor="let userCourse of courses | sortBy : 'id'; let i = index">
         <tr *ngIf="userCourse.userId == currentUser.id">
-          <td>{{i+1}}</td>
           <td><a (click)="click(userCourse.id)" style="cursor: pointer">{{userCourse.name}}</a></td>
           <td>{{userCourse.dateCreateCourse}}</td>
           <td>{{userCourse.price}}</td>

@@ -161,7 +161,7 @@ export class CourseMemberComponent implements OnInit {
     });
   }
 
-  buyCourse(id, balance, price, name) {
+  buyCourse(countPurchase, id, balance, price, name) {
 
     const that = this;
     this.alertService.confirmThis('ยืนยันการใช้แต้มเข้าเรียน?',
@@ -171,12 +171,13 @@ export class CourseMemberComponent implements OnInit {
         that.name = ' Yes clicked ';
         that.userId = that.currentUser.id;
         that.userBalance = balance;
+        console.log('Count: ' + countPurchase);
         // console.log("your ID: " + id);
         // console.log("your balance: " + balance);
         // console.log("course price: " + price);
         // console.log("name: " + name);
 
-        that.purchaseCourseService.createBuyCourse(that.userId, id, that.purchaseCart, that.userBalance, price, name).subscribe(
+        that.purchaseCourseService.createBuyCourse(countPurchase, that.userId, id, that.purchaseCart, that.userBalance, price, name).subscribe(
           data => {
             // alert('กรุณาตรวจสอบแต้มคงเหลือ..... \nยืนยันการใช้แต้มเข้าเรียน');
             location.reload();

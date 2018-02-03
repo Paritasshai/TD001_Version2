@@ -77,20 +77,20 @@ export class CourseInsComponent implements OnInit {
 
   ngOnInit() {
 
-    setTimeout(() => {    //<<<---    using ()=> syntax
+    setTimeout(() => {
       this.loading = false;
       this.show = true;
     }, 3000);
 
     this.getUserList();
     this.getCoursesById();
-    if (this.currentUser != undefined) {
+    if (this.currentUser !== undefined) {
       this.getCoursesByIdPurchased();
     }
-    if (this.courses != undefined) {
+    if (this.courses !== undefined) {
       this.getCourseList();
     }
-    if (this.currentUser != undefined) {
+    if (this.currentUser !== undefined) {
       this.getUserList();
     }
     this.open();
@@ -134,70 +134,70 @@ export class CourseInsComponent implements OnInit {
     this.router.navigate(['/addItem', id]);
   }
 
-  buyCourse(id, balance, price, name) {
-    this.userId = this.currentUser.id;
-    // console.log("ID: " + id);
-    console.log('your balance: ' + balance);
-    console.log('course price: ' + price);
-    // console.log("name: " + name);
-    // console.log("user ID: " + this.userId);
-    // console.log("course price fix 30 bath: "+this.coursePrice);
+  // buyCourse(id, balance, price, name) {
+  //   this.userId = this.currentUser.id;
+  //   // console.log("ID: " + id);
+  //   console.log('your balance: ' + balance);
+  //   console.log('course price: ' + price);
+  //   // console.log("name: " + name);
+  //   // console.log("user ID: " + this.userId);
+  //   // console.log("course price fix 30 bath: "+this.coursePrice);
 
-    if (balance > price) {
-      this.result = parseInt(balance) - parseInt(price);
-      console.log('Result: ' + this.result);
+  //   if (balance > price) {
+  //     this.result = parseInt(balance) - parseInt(price);
+  //     console.log('Result: ' + this.result);
 
-      return this.purchaseCourseService.createBuyCourse(this.userId, id, this.purchaseCart, this.result, price, name).subscribe(
-        data => {
-          alert('Success');
-          location.reload();
-        },
-        error => {
-          alert('Failed');
-        });
-    } else if (balance == price) {
-      this.result = parseInt(balance) - parseInt(price);
-      console.log('Result: ' + this.result);
+  //     return this.purchaseCourseService.createBuyCourse(this.userId, id, this.purchaseCart, this.result, price, name).subscribe(
+  //       data => {
+  //         alert('Success');
+  //         location.reload();
+  //       },
+  //       error => {
+  //         alert('Failed');
+  //       });
+  //   } else if (balance == price) {
+  //     this.result = parseInt(balance) - parseInt(price);
+  //     console.log('Result: ' + this.result);
 
-      return this.purchaseCourseService.createBuyCourse(this.userId, id, this.purchaseCart, this.result, price, name).subscribe(
-        data => {
-          alert('Success');
-          location.reload();
-        },
-        error => {
-          alert('Failed');
-        });
-    } else if (balance < price) {
-      alert('Your balance not enough!');
-    } else {
-      alert('failed');
-    }
+  //     return this.purchaseCourseService.createBuyCourse(this.userId, id, this.purchaseCart, this.result, price, name).subscribe(
+  //       data => {
+  //         alert('Success');
+  //         location.reload();
+  //       },
+  //       error => {
+  //         alert('Failed');
+  //       });
+  //   } else if (balance < price) {
+  //     alert('Your balance not enough!');
+  //   } else {
+  //     alert('failed');
+  //   }
 
-    //  (balance < price) {
-    //   alert("Your balance not enough!!")
-    // }
-    // else if (balance = price) {
-    //     this.result = balance - price;
-    //     console.log(this.result);
-    //     this.purchaseCourseService.createBuyCourse(this.userId, id, this.purchaseCart, this.result, price, name).subscribe(
-    //       data => {
-    //         alert("Success");
-    //         location.reload();
-    //       },
-    //       error => {
-    //         alert("Failed");
-    //       });
-    //   }
+  //   //  (balance < price) {
+  //   //   alert("Your balance not enough!!")
+  //   // }
+  //   // else if (balance = price) {
+  //   //     this.result = balance - price;
+  //   //     console.log(this.result);
+  //   //     this.purchaseCourseService.createBuyCourse(this.userId, id, this.purchaseCart, this.result, price, name).subscribe(
+  //   //       data => {
+  //   //         alert("Success");
+  //   //         location.reload();
+  //   //       },
+  //   //       error => {
+  //   //         alert("Failed");
+  //   //       });
+  //   //   }
 
-  }
+  // }
 
   buyCourseNull() {
     alert('เข้าสู่ระบบหรือสมัครสมาชิก');
   }
 
   TeacherHistory(email) {
-    //console.log(email);
-    //console.log("Get Teacher History");
+    // console.log(email);
+    // console.log("Get Teacher History");
     this.courseService.getTeacherHistory(email)
       .subscribe(historyIns => {
         this.historyIns = historyIns;
