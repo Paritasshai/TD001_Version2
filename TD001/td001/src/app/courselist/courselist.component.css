@@ -5,7 +5,6 @@ body {
 .box-border{
   box-shadow: 0 0 2px 2px #cfcfcf; /*THIS does not work as expected*/
   max-height: 100%;
-  margin-bottom: -2%;
 }
 
 .container-fluid{
@@ -284,7 +283,8 @@ h2 {
 .sticky {
     position: -webkit-sticky; /* Safari */
     position: sticky;
-    top: 0;
+    top: 50px;
+    bottom: 50px
   /*max-height: 100%;*/
   /*width: 320px;*/
   /*background-color: #eee;*/

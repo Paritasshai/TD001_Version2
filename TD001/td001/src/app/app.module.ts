@@ -80,8 +80,9 @@ import { StoreComponent } from './alertContent/store/store.component';
 
 import { VgCoreModule } from 'videogular2/core';
 import { VgControlsModule } from 'videogular2/controls';
-import { VgOverlayPlayModule } from "videogular2/overlay-play";
+import { VgOverlayPlayModule } from 'videogular2/overlay-play';
 import { YoutubePlayerModule } from 'ngx-youtube-player';
+import { HeaderSearchComponent } from './header/header-search/header-search.component';
 
 @NgModule({
   declarations: [
@@ -132,7 +133,8 @@ import { YoutubePlayerModule } from 'ngx-youtube-player';
     CustomModalContextComponent,
     CourseComponent,
     CourseDecisionComponent,
-    StoreComponent
+    StoreComponent,
+    HeaderSearchComponent
   ],
   imports: [
     BrowserModule,

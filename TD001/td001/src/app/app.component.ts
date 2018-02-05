@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +8,13 @@ import {Component} from '@angular/core';
 
 
 export class AppComponent {
-   public static API_URL = 'http://localhost:8080/';
-  // public static API_URL = 'http://103.76.180.120:8080/tamdai-service/';
+  // public static API_URL = 'http://localhost:8080/';
+  public static API_URL = 'http://103.76.180.120:8080/tamdai-service/';
   ImgLogo: string;
+
+  onActivate() {
+    window.scrollTo(0, 0);
+  }
 
   constructor() {
     this.ImgLogo = '../../assets/images/logo.png';

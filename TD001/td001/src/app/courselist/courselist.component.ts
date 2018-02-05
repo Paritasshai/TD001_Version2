@@ -110,11 +110,12 @@ export class CourselistComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    setTimeout(() => {
-      this.loading = false;
-      this.show = true;
-    }, 3000);
+    this.show = true;
+    this.loading = false;
+    // setTimeout(() => {
+    //   this.loading = false;
+    //   this.show = true;
+    // }, 3000);
 
     if (this.courses !== undefined) {
       this.getCourseList();

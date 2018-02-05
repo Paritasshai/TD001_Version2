@@ -75,7 +75,7 @@
         <!--</div>-->
 
         <div class="form-group">
-          <h4>จำนวนครั้งเรียนที่เหลือ</h4>
+          <h4>Mileage</h4>
           <input style="padding: 1%; border-color:#b62415" type="text" class="btn" [(ngModel)]="Content.stTime"
                  #stTime="ngModel" name="stTime" placeholder=""><br>
         </div>
@@ -99,19 +99,22 @@
           <thead>
           <tr>
             <th>Content Date</th>
-            <th>Student ID</th>
+            <th>Mileage</th>
             <th>Robotic Group</th>
             <th>Robotic Name</th>
+            <th>Picture</th>
             <th>Edit</th>
             <th>Delete</th>
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let content of students?.contents | sortObject:'id'">
+          <tr *ngFor="let content of students?.contents | sortObject:'contentDate'">
             <td>{{content.contentDate | date: 'dd/MM/yyyy'}}</td>
-            <td>{{content.stStudentId}}</td>
+            <td>{{content.stTime}}</td>
             <td>{{content.rbGroup}}</td>
             <td>{{content.rbName}}</td>
+            <!-- [hidden]="content?.contentImgs[0].fileName != null" -->
+            <!-- <td><p>{{content?.contentImgs[0].fileName}}</p></td> -->
             <td align="center"><i class="glyphicon glyphicon-edit" style="cursor: pointer"
                                   (click)="edit(content.id)"></i></td>
             <td align="center"><i class="glyphicon glyphicon-trash" style="cursor: pointer"

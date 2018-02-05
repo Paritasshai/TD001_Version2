@@ -3,6 +3,10 @@
   width: 50%;
 }
 
+.container-fluid{
+  width: 80%;
+}
+
 .image {
   display: block;
   width: 100%;

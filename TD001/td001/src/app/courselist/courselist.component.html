@@ -1,6 +1,6 @@
-<app-header></app-header>
+<!-- <app-header></app-header> -->
 <!--<div class="container-fluid">-->
-<div class="box-border">
+<div class="">
   <div class="row" style="margin-top: -65px">
 
     <!-- <div style="margin-top: 6px; margin-left: 800px" class="navbar-fixed-top">
@@ -50,10 +50,11 @@
       </div> -->
 
     </div>
+
     <div>
       <div class="col-xs-12 col-sm-12">
         <!--stuck-->
-        <div class="col-xs-12 col-sm-3 sticky">
+        <div class="col-xs-12 col-sm-3 sticky hidden-xs hidden-md">
           <div class="container-fluid">
 
             <div class="well well-height" style="margin-top: 10px">
@@ -173,7 +174,7 @@
                 <div class="blog" style="margin-left: 2.5%">
                   <div class="row list-group">
                     <div class="item animated fadeInRight col-xs-12 col-sm-4" style="width: 205px; margin-right: 14px; margin-bottom: 10px;"
-                    *ngFor="let course of coursesss | sortObject:'countPurchase'| slice:0:4;">
+                      *ngFor="let course of coursesss | sortObject:'countPurchase'| slice:0:4;">
                       <div>
                         <div class="thumbnail" *ngIf="course.publicCourse == textTrue" style="box-shadow: 0 0 4px 4px #cfcfcf;">
                           <div class="crop" style="border: solid 1px #e59999;">
@@ -192,8 +193,8 @@
                             <div id="div11">{{course.name}}</div>
                             <h6 [hidden]="course.price == empty" class="group inner list-group-item-heading">
                               {{course.price}} แต้ม</h6>
-                              <!-- <p>{{course.countPurchase}}</p>
-                              <p>{{course.id}}</p> -->
+                            <!-- <p>{{course.countPurchase}}</p> -->
+                            <!-- <p>{{course.id}}</p> -->
                             <h6 *ngIf="course.price == empty" class="animated pulse infinite group inner list-group-item-heading" style="color: #bf2b2a">ฟรี</h6>
                             <a style="cursor: pointer">
                               <span style="font-size: 15px; color: #bf2b2a; float: right; margin-top: -15px; margin-right: 5px" class="glyphicon glyphicon-plus"

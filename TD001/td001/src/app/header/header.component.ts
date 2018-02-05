@@ -71,13 +71,14 @@ export class HeaderComponent implements OnInit {
   Search() {
     console.log('========================');
     console.log(this.SearchAdvance.Pname);
-    this.courseService.getSearchByName(this.SearchAdvance.Pname, this.textPublic).subscribe(response => {
-      this.courseSearch = response;
-    });
+    this.router.navigate(['/HeaderSearch', this.SearchAdvance.Pname]);
+    // this.courseService.getSearchByName(this.SearchAdvance.Pname, this.textPublic).subscribe(response => {
+    //   this.courseSearch = response;
+    // });
   }
 
   click(id) {
-    console.log('======================== Go to page')
+    console.log('======================== Go to page');
     this.router.navigate(['/CourseLists', id]);
   }
 }

@@ -7,9 +7,9 @@ import { User } from '../../models/User';
 import { AppComponent } from '../../app.component';
 
 import { BSModalContext, Modal } from 'angular2-modal/plugins/bootstrap';
-import { overlayConfigFactory } from "angular2-modal";
-import { CustomModalContextComponent } from "../../alertContent/custom-modal-context/custom-modal-context.component";
-import { VgAPI, VgFullscreenAPI } from "videogular2/core";
+import { overlayConfigFactory } from 'angular2-modal';
+import { CustomModalContextComponent } from '../../alertContent/custom-modal-context/custom-modal-context.component';
+import { VgAPI, VgFullscreenAPI } from 'videogular2/core';
 
 @Component({
   selector: 'app-course-customer',
@@ -109,7 +109,7 @@ export class CourseCustomerComponent implements OnInit {
     this.http.get('//api.ipify.org?format=json')
       .subscribe(response => {
         this.ipObj = response;
-        console.log(this.ipObj)
+        console.log(this.ipObj);
       });
     //     // this.http.get(this.url + 'getClientIp')
     //     //   .subscribe(response => {
@@ -119,13 +119,13 @@ export class CourseCustomerComponent implements OnInit {
   }
 
   PauseYoutube(videoPath) {
-    console.log("Close Video Youtube : " + videoPath);
-    const myVideo: HTMLIFrameElement = <HTMLIFrameElement>document.getElementById("player");
-  };
+    console.log('Close Video Youtube : ' + videoPath);
+    const myVideo: HTMLIFrameElement = <HTMLIFrameElement>document.getElementById('player');
+  }
 
   playPause(id) {
-    console.log("Close Video : " + id);
-    // let inputFields = document.getElementsByClassName("settings") as HTMLInputElement
+    console.log('Close Video : ' + id);
+    // let inputFields = document.getElementsByClassName('settings') as HTMLInputElement
     const myVideo: HTMLVideoElement = <HTMLVideoElement>document.getElementById(id);
     if (myVideo.paused)
       myVideo.pause();
@@ -139,7 +139,7 @@ export class CourseCustomerComponent implements OnInit {
   }
 
   ngOnInit() {
-    setTimeout(() => {    //<<<---    using ()=> syntax
+    setTimeout(() => {
       this.loading = false;
       this.show = true;
     }, 3000);
@@ -173,8 +173,8 @@ export class CourseCustomerComponent implements OnInit {
   }
 
   TeacherHistory(email) {
-    //console.log(email);
-    //console.log("Get Teacher History");
+    // console.log(email);
+    // console.log('Get Teacher History');
     this.courseService.getTeacherHistory(email)
       .subscribe(historyIns => {
         this.historyIns = historyIns;

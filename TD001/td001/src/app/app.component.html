@@ -1,7 +1,4 @@
 <body>
-<!--<app-header></app-header>-->
-<router-outlet></router-outlet>
-<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <router-outlet (activate)="onActivate()" #outlet></router-outlet>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 </body>
-
-
