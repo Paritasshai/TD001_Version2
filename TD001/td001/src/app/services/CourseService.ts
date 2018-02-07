@@ -91,11 +91,11 @@ export class CourseService {
     return this.http.get(AppComponent.API_URL + 'getSearchObject/' + '?Pname=' + Pname + '&' + 'textPublic=' + textPublic + '&' + 'textNull=' + textNull + '&' + 'rbGroup=' + rbGroup, options).map((response: Response) => response.json());
   }
 
-  getSearchObjectPay(Pname: any, textNull: any, rbGroup: any, textPublic: any): Observable<CourseItem[]> {
+  getSearchObjectPay(textNull: any, textPublic: any): Observable<CourseItem[]> {
     const headers = new Headers({ 'Authorization': 'Bearer ' });
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.get(AppComponent.API_URL + 'getSearchObjectPay/' + '?Pname=' + Pname + '&' + 'textPublic=' + textPublic + '&' + 'textNull=' + textNull + '&' + 'rbGroup=' + rbGroup, options).map((response: Response) => response.json());
+    return this.http.get(AppComponent.API_URL + 'getSearchObjectPay/' + '?textPublic=' + textPublic + '&' + 'textNull=' + textNull, options).map((response: Response) => response.json());
   }
 
   getSearchByDate(day: any, textPublic: any): Observable<CourseItem[]> {

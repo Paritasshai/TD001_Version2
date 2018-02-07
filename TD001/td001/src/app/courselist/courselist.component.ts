@@ -75,7 +75,7 @@ export class CourselistComponent implements OnInit {
   }
 
   deviceObjects = [
-    { name: '---เลือก---' },
+    { name: '---All---' },
     { name: 'Lego' },
     { name: 'Tech Household' },
     { name: 'Tech Toy' },
@@ -339,7 +339,7 @@ export class CourselistComponent implements OnInit {
   // }
 
   private getCourses() {
-    this.courseService.getCourseItemsByPublic(this.textPublic).subscribe(coursesss => {
+    this.courseService.getSearchObjectPay(this.textNull, this.textPublic).subscribe(coursesss => {
       this.coursesss = coursesss;
       // console.log(this.courses);
     });

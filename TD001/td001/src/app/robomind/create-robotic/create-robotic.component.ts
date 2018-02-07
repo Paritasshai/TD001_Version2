@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
-import {User} from "../../models/User";
-import {StudentService} from "../../services/StudentService";
+import {Router} from '@angular/router';
+import {User} from '../../models/User';
+import {StudentService} from '../../services/StudentService';
 
 @Component({
   selector: 'app-create-robotic',
@@ -17,17 +17,18 @@ export class CreateRoboticComponent implements OnInit {
   name: any;
 
   deviceObjects = [
-    {name: "Select Group"},
-    {name: "EV3 Model Group 1"},
-    {name: "EV3 Model Group 2"},
-    {name: "EV3 Model Group 3"},
-    {name: "EV3 Model Group 4"},
-    {name: "EV3 Model Group 5"},
-    {name: "NXT Model Group 1"},
-    {name: "NXT Model Group 2"},
-    {name: "NXT Model Group 3"},
-    {name: "NXT Model Group 4"},
-    {name: "NXT Model Group 5"},
+    {name: 'Select Group'},
+    {name: 'EV3 Model Group 1'},
+    {name: 'EV3 Model Group 2'},
+    {name: 'EV3 Model Group 3'},
+    {name: 'EV3 Model Group 4'},
+    {name: 'EV3 Model Group 5'},
+    {name: 'NXT Model Group 1'},
+    {name: 'NXT Model Group 2'},
+    {name: 'NXT Model Group 3'},
+    {name: 'NXT Model Group 4'},
+    {name: 'NXT Model Group 5'},
+    {name: 'Test'}
   ];
   selectedDeviceObj = this.deviceObjects[0];
 
@@ -62,13 +63,13 @@ export class CreateRoboticComponent implements OnInit {
   }
 
   RoboticName() {
-    console.log("ddddddddddd");
+    console.log('ddddddddddd');
     this.router.navigate(['/createRobotic']);
   }
 
   save(selectedValue) {
     console.log(selectedValue);
-    console.log("OK!!");
+    console.log('OK!!');
     this.name = this.selectedDeviceObj.name;
     this.Robotic.nameGroup = this.name;
     console.log(this.name);
@@ -76,15 +77,15 @@ export class CreateRoboticComponent implements OnInit {
       .subscribe(
         data => {
           location.reload();
-          //alert("success");
+          //alert('success');
         },
         error => {
-          alert("Failed!!");
+          alert('Failed!!');
         });
   }
 
   DeleteRobotic(id) {
-    console.log("delete");
+    console.log('delete');
     console.log(id);
     this.studentService.roboticDelete(id)
       .subscribe(

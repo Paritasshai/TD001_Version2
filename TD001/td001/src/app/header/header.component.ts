@@ -77,6 +77,10 @@ export class HeaderComponent implements OnInit {
     // });
   }
 
+  load() {
+    location.reload();
+  }
+
   click(id) {
     console.log('======================== Go to page');
     this.router.navigate(['/CourseLists', id]);

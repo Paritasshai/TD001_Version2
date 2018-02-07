@@ -1,3 +1,7 @@
+.styleSign{
+  margin: 12px 20px 8px 8px;
+}
+
 .navbar{
   position: fixed;
 }
@@ -157,4 +161,9 @@ img{
   width: 10em;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.set-width{
+  width: 50%;
+  margin-right: -150px;
 }

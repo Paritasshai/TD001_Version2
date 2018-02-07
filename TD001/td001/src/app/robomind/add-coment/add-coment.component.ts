@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {StudentService} from '../../services/StudentService';
 import {User} from '../../models/User';
-import {AppComponent} from "../../app.component";
+import {AppComponent} from '../../app.component';
 
 @Component({
   selector: 'app-add-coment',
@@ -30,7 +30,8 @@ export class AddComentComponent implements OnInit {
   show = false;
   groupSearch: any = [];
   showName = false;
-
+  empty = 'null';
+  
   deviceObjects = [
     {name: 'Select Group'},
     {name: 'EV3 Model Group 1'},
@@ -94,7 +95,7 @@ export class AddComentComponent implements OnInit {
 
     //this.stIdPath = this.Content.stStudentId;
     this.stIdPath = this.students.stId;
-    console.log("Student ID: " + this.stIdPath);
+    console.log('Student ID: ' + this.stIdPath);
 
     this.Content.stStudentId = this.stIdPath;
     this.Content.rbGroup = this.selectedDeviceObj.name;

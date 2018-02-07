@@ -38,6 +38,7 @@ export class EditCommentComponent implements OnInit {
     {name: 'NXT Model Group 3'},
     {name: 'NXT Model Group 4'},
     {name: 'NXT Model Group 5'},
+    {name: 'Test'}
   ];
 
   selectedDeviceObj = this.deviceObjects[0];

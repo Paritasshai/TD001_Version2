@@ -1,8 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {Router} from "@angular/router";
-import {StudentService} from "../../services/StudentService";
+import {Router} from '@angular/router';
+import {StudentService} from '../../services/StudentService';
 import {Student} from '../../../app/models/Student';
-import {User} from "../../models/User";
+import {User} from '../../models/User';
 
 @Component({
   selector: 'app-create-profile',
@@ -29,7 +29,7 @@ export class CreateProfileComponent implements OnInit {
   }
 
   RobomindContent(id) {
-    console.log("Student ID :" + id);
+    console.log('Student ID :' + id);
     this.router.navigate(['/RobomindContent', id]);
   }
 
@@ -42,7 +42,7 @@ export class CreateProfileComponent implements OnInit {
   }
 
   RoboticName() {
-    console.log("ddddddddddd");
+    console.log('ddddddddddd');
     this.router.navigate(['/createRobotic']);
   }
 
@@ -55,12 +55,12 @@ export class CreateProfileComponent implements OnInit {
       .subscribe(
         data => {
           // this.alertService.success('Registration successful', true);
-          alert("create success");
-          //location.reload();
+          alert('create success');
+          location.reload();
         },
         error => {
           // this.alertService.error('This email already exists', true);
-          alert("create Failed!!");
+          alert('create Failed!!');
         });
   }
 
@@ -72,7 +72,7 @@ export class CreateProfileComponent implements OnInit {
 
   edit(id) {
     console.log(id);
-    console.log("edit");
+    console.log('edit');
     this.router.navigate(['/editProfile', id]);
     // this.studentService.getStudentId(id).subscribe(studentsId => {
     //   this.studentsId = studentsId;
@@ -80,14 +80,14 @@ export class CreateProfileComponent implements OnInit {
   }
 
   delete(id) {
-    console.log("Student ID:" + id);
+    console.log('Student ID:' + id);
     this.studentService.deleteProfile(id).subscribe(
       data => {
-        //alert("Delete Image Success");
+        //alert('Delete Image Success');
         location.reload();
       },
       error => {
-        alert("Error")
+        alert('Error')
       });
   }
 
