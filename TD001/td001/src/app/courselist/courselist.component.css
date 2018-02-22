@@ -87,8 +87,8 @@ body {
 .thumbnail {
   margin-bottom: 20px;
   padding: 0px;
-  -webkit-border-radius: 0px;
-  -moz-border-radius: 0px;
+  /* -webkit-border-radius: 0px;
+  -moz-border-radius: 0px; */
   border: solid 2px rgba(191, 0, 0, .4);;
   border-radius: 3px;
 }
@@ -159,12 +159,12 @@ h2 {
   margin-top: -250px !important; /* Don't copy this */
 }
 
-.all-copy p {
-  -webkit-user-select: all; /* Chrome all / Safari all */
-  -moz-user-select: all; /* Firefox all */
-  -ms-user-select: all; /* IE 10+ */
-  user-select: all; /* Likely future */
-}
+/* .all-copy p {
+  -webkit-user-select: all;
+  -moz-user-select: all; 
+  -ms-user-select: all; 
+  user-select: all; 
+} */
 
 /* enable absolute positioning */
 .inner-addon {
@@ -281,7 +281,7 @@ h2 {
 }
 
 .sticky {
-    position: -webkit-sticky; /* Safari */
+    /* position: -webkit-sticky; */
     position: sticky;
     top: 50px;
     bottom: 50px
@@ -292,4 +292,37 @@ h2 {
 
 .stuck{
   position: fixed;
+}
+
+.containerImg {
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: rgba(19, 20, 20, 0.603);
+}
+
+.containerImg:hover .overlay {
+  opacity: 1;
+}
+
+.text {
+  color: rgb(255, 255, 255);
+  /* text-shadow: -1px 0 wheat, 0 1px wheat, 1px 0 wheat, 0 -1px wheat; */
+  font-size: 18px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
 }

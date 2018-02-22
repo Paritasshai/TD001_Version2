@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import {BrowserModule, DomSanitizer} from '@angular/platform-browser';
 import { CourseService } from '../../services/CourseService';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../services/User.service';
@@ -75,6 +76,7 @@ export class CourseCustomerComponent implements OnInit {
   private stEvent;
 
   ShowIp = false;
+  pdfUrl;
 
   // public version = config.map['ngx-youtube-player'].split('@')[1];
 
@@ -83,7 +85,7 @@ export class CourseCustomerComponent implements OnInit {
     private router: Router,
     private userService: UserService,
     private http: Http,
-    public modal: Modal) {
+    public modal: Modal, private sanitizer: DomSanitizer) {
 
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
@@ -139,6 +141,7 @@ export class CourseCustomerComponent implements OnInit {
   }
 
   ngOnInit() {
+    // this.pdfUrl = this.sanitizer.bypassSecurityTrustResourceUrl('https://github.com/Paritasshai/TD001/blob/master/td001/README.md');
     setTimeout(() => {
       this.loading = false;
       this.show = true;

@@ -39,8 +39,6 @@ import {EditCourstIdComponent} from './edit-courst-id/edit-courst-id.component';
 import {ImageUploadModule} from 'angular2-image-upload';
 import {AddVideoItemComponent} from './add-video-item/add-video-item.component';
 import {PurchaseCourseService} from './services/PurchaseCourseService';
-// import {Ng2OrderModule} from 'ng2-order-pipe';
-// import {FacebookModule} from 'ngx-facebook';
 import {HttpClientModule} from '@angular/common/http';
 import {SortingPipe} from './pipes/sorting.pipe';
 import {CourseHistoryComponent} from './course-history/course-history.component';
@@ -49,10 +47,6 @@ import {MapKeyPipe} from './pipes/map-key.pipe';
 import {SortObjectPipe} from './pipes/sort-object.pipe';
 import {EditUserComponent} from './edit-user/edit-user.component';
 import {SafetyPipe} from './pipes/safety.pipe';
-// import {VgCoreModule} from 'videogular2/core';
-// import {VgControlsModule} from 'videogular2/controls';
-// import {VgOverlayPlayModule} from 'videogular2/overlay-play';
-// import {VgBufferingModule} from 'videogular2/buffering';
 import {TrustAsResourceUrlPipe} from './pipes/trust-as-resource-url.pipe';
 import {RandomPipe} from './pipes/random.pipe';
 import {CourseCustomerComponent} from './course-lists/course-customer/course-customer.component';
@@ -77,12 +71,9 @@ import {CustomModalContextComponent} from './alertContent/custom-modal-context/c
 import {CourseComponent} from './alertContent/course/course.component';
 import {CourseDecisionComponent} from './alertContent/course-decision/course-decision.component';
 import { StoreComponent } from './alertContent/store/store.component';
-
-import { VgCoreModule } from 'videogular2/core';
-import { VgControlsModule } from 'videogular2/controls';
-import { VgOverlayPlayModule } from 'videogular2/overlay-play';
 import { YoutubePlayerModule } from 'ngx-youtube-player';
 import { HeaderSearchComponent } from './header/header-search/header-search.component';
+import { ProjectRecomComponent } from './course-lists/project-recom/project-recom.component';
 
 @NgModule({
   declarations: [
@@ -134,7 +125,8 @@ import { HeaderSearchComponent } from './header/header-search/header-search.comp
     CourseComponent,
     CourseDecisionComponent,
     StoreComponent,
-    HeaderSearchComponent
+    HeaderSearchComponent,
+    ProjectRecomComponent
   ],
   imports: [
     BrowserModule,
@@ -144,19 +136,10 @@ import { HeaderSearchComponent } from './header/header-search/header-search.comp
     MyDatePickerModule,
     FileUploadModule,
     ImageUploadModule.forRoot(),
-    // Ng2OrderModule,
-    // FacebookModule.forRoot(),
     HttpClientModule,
-    // VgCoreModule,
-    // VgControlsModule,
-    // VgOverlayPlayModule,
-    // VgBufferingModule,
     ModalModule.forRoot(),
     BootstrapModalModule,
     SpinnerModule.forRoot({}),
-    VgCoreModule,
-    VgControlsModule,
-    VgOverlayPlayModule,
     YoutubePlayerModule
   ],
   providers: [

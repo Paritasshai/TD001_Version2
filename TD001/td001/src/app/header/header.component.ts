@@ -22,7 +22,6 @@ export class HeaderComponent implements OnInit {
   status: any;
   users: User[] = [];
   SearchAdvance: any = {};
-  courseSearch: any[] = [];
   textPublic = 'true';
 
   constructor(private courseService: CourseService,
@@ -72,9 +71,12 @@ export class HeaderComponent implements OnInit {
     console.log('========================');
     console.log(this.SearchAdvance.Pname);
     this.router.navigate(['/HeaderSearch', this.SearchAdvance.Pname]);
-    // this.courseService.getSearchByName(this.SearchAdvance.Pname, this.textPublic).subscribe(response => {
-    //   this.courseSearch = response;
-    // });
+  }
+
+  keyDownFunction(event) {
+    if (event.keyCode === 13) {
+      this.router.navigate(['/HeaderSearch', this.SearchAdvance.Pname]);
+    }
   }
 
   load() {

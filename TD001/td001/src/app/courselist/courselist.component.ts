@@ -75,12 +75,13 @@ export class CourselistComponent implements OnInit {
   }
 
   deviceObjects = [
-    { name: '---All---' },
+    { name: '---เลือก---', value: null },
     { name: 'Lego' },
     { name: 'Tech Household' },
     { name: 'Tech Toy' },
     { name: 'Tech Garden' },
-    { name: 'IoT' }
+    { name: 'IoT' },
+    { name: 'All' }
   ];
 
   selectedDeviceObj = this.deviceObjects[0];
@@ -117,17 +118,17 @@ export class CourselistComponent implements OnInit {
     //   this.show = true;
     // }, 3000);
 
-    if (this.courses !== undefined) {
-      this.getCourseList();
-    }
+    // if (this.courses !== undefined) {
+    //   this.getCourseList();
+    // }
     // if (this.currentUser !== undefined) {
     //   this.getUserList();
     // }
     this.getCourses();
     this.getCourseList();
-    this.getCourseNewType();
+    // this.getCourseNewType();
     this.getCourseRecommendType();
-    this.getCourseHotType();
+    // this.getCourseHotType();
   }
 
   public searchItem(query) {
@@ -159,8 +160,8 @@ export class CourselistComponent implements OnInit {
 
     this.SearchAdvance.rbGroup = this.selectedDeviceObj.name;
     this.SearchAdvance.day = this.selectedDayObj.value;
-    // console.log('Day: ' + this.SearchAdvance.day);
-    // // console.log(this.SearchAdvance);
+    console.log('Day: ' + this.SearchAdvance.day);
+    // console.log(this.SearchAdvance);
 
     // this.courseService.getSearchByDate(this.SearchAdvance.day, this.textPublic).subscribe(courseSearch => {
     //   this.courseSearch = courseSearch;
@@ -227,6 +228,13 @@ export class CourselistComponent implements OnInit {
       this.querySearch = true;
       this.querySearchPay = false;
       this.courseService.getSearchObject(this.SearchAdvance.Pname, this.textNull, this.SearchAdvance.rbGroup, this.textPublic).subscribe(courseSearch => {
+        this.courseSearch = courseSearch;
+      });
+    } else if (this.SearchAdvance.day != null) {
+      // alert("Free True && Pname && Group");
+      this.querySearch = true;
+      this.querySearchPay = false;
+      this.courseService.getSearchByDate(this.SearchAdvance.day, this.textPublic).subscribe(courseSearch => {
         this.courseSearch = courseSearch;
       });
     } else {
@@ -352,12 +360,12 @@ export class CourselistComponent implements OnInit {
     });
   }
 
-  private getCourseNewType() {
-    this.courseService.getCoursenewType(this.newType, this.textPublic).subscribe(coursesNew => {
-      this.coursesNew = coursesNew;
-      // console.log(this.coursesNew);
-    });
-  }
+  // private getCourseNewType() {
+  //   this.courseService.getCoursenewType(this.newType, this.textPublic).subscribe(coursesNew => {
+  //     this.coursesNew = coursesNew;
+  //     // console.log(this.coursesNew);
+  //   });
+  // }
 
   private getCourseRecommendType() {
     this.courseService.getCourseRecommendType(this.recommendType, this.textPublic).subscribe(coursesRecommend => {
@@ -366,22 +374,22 @@ export class CourselistComponent implements OnInit {
     });
   }
 
-  private getCourseHotType() {
-    this.courseService.getCourseHotType(this.hotType, this.textPublic).subscribe(coursesHot => {
-      this.coursesHot = coursesHot;
-      // console.log(this.coursesHot);
-    });
-  }
+  // private getCourseHotType() {
+  //   this.courseService.getCourseHotType(this.hotType, this.textPublic).subscribe(coursesHot => {
+  //     this.coursesHot = coursesHot;
+  //     // console.log(this.coursesHot);
+  //   });
+  // }
 
   click(id) {
     this.router.navigate(['/CourseLists', id]);
   }
 
-  private getUserList() {
-    this.userService.getAll().subscribe(users => {
-      this.users = users;
-    });
-  }
+  // private getUserList() {
+  //   this.userService.getAll().subscribe(users => {
+  //     this.users = users;
+  //   });
+  // }
 
   addToList(id) {
     if (this.currentUser == null) {
@@ -394,12 +402,12 @@ export class CourselistComponent implements OnInit {
       // console.log("User ID: " + this.UserId);
       this.userService.createLists(id, this.UserId, this.List)
         .subscribe(
-        data => {
-          alert('เพิ่มโปรเจคลงในลิสต์เรียบร้อยแล้ว');
-        },
-        error => {
-          alert('Failed');
-        });
+          data => {
+            alert('เพิ่มโปรเจคลงในลิสต์เรียบร้อยแล้ว');
+          },
+          error => {
+            alert('Failed');
+          });
     }
   }
 

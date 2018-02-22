@@ -2,9 +2,7 @@
 
 #home {
   background: url('../../assets/images/cover.png') no-repeat;
-  /*background: url('https://firebasestorage.googleapis.com/v0/b/makehappen-cc730.appspot.com/o/Image_fa3e295.png?alt=media&token=5256259e-d477-4313-8834-8120cca6bd5a') no-repeat;*/
-  /*background: url('https://drive.google.com/open?id=0B-3_PQch_LsGS3ktdWRJSm1uVE0') 50% 0 repeat-y fixed;*/
-  -webkit-background-size: cover;
+  /* -webkit-background-size: cover; */
   background-size: cover;
   background-position: center;
   color: #ffffff;
@@ -12,9 +10,9 @@
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
+  /* -webkit-box-align: center;
   -webkit-align-items: center;
-  -ms-flex-align: center;
+  -ms-flex-align: center; */
   align-items: center;
   width: 100%;
   height: 250px;
@@ -36,7 +34,7 @@
     margin-right: 0;
     width: auto;
     border: 0;
-    border-bottom: 1px solid #000;
+    /* border-bottom: 1px solid #000; */
   }
 }
 
@@ -54,7 +52,7 @@
 }
 
 #imaginary_container{
-  margin-top:7%; /* Don't copy this */
+  margin-top:7%;
 }
 .stylish-input-group .input-group-addon{
   background: white !important;

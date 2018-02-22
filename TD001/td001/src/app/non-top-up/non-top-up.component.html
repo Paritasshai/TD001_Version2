@@ -9,35 +9,54 @@
           <br>
           <table class="table table-striped">
             <thead>
-            <tr>
-              <th><p>ลำดับคำสั่งซื้อ</p></th>
-              <th><p>เลขคำสั่งซื้อ</p></th>
-              <th><p>วันชำระเงิน</p></th>
-              <!--<th>User Email</th>-->
-              <th><p align="right">ยอดเงิน</p></th>
-              <th><p align="right">สถานะ</p></th>
-              <th></th>
-            </tr>
+              <tr>
+                <th>
+                  <p>ลำดับคำสั่งซื้อ</p>
+                </th>
+                <th>
+                  <p>เลขคำสั่งซื้อ</p>
+                </th>
+                <th>
+                  <p>วันชำระเงิน</p>
+                </th>
+                <!--<th>User Email</th>-->
+                <th>
+                  <p align="right">ยอดเงิน</p>
+                </th>
+                <th>
+                  <p>สถานะ</p>
+                </th>
+                <th></th>
+              </tr>
             </thead>
             <tbody *ngFor="let orderPayment of orderPayments| sortObject:'id'">
-            <tr *ngIf="orderPayment.users[0].id == currentUser.id">
-              <td>{{orderPayment.id}}</td>
-              <td>{{orderPayment.transRef}}</td>
-              <td>{{orderPayment.createDate}}</td>
-              <!--<td>{{orderPayment.users[0].email}}</td>-->
-              <td align="right">{{orderPayment.transAmount}}</td>
-              <td [hidden]="orderPayment.statusOrder == confirm">{{orderPayment.statusOrder}}</td>
-              <td align="right" *ngIf="orderPayment.statusOrder == confirm" style="color: green">
-                {{orderPayment.statusOrder}}
-              </td>
-              <td>
-                <div [hidden]="orderPayment.statusOrder == confirm">
-                  <button class="btn btn-success btn-sm" (click)="Submit(orderPayment.id)">แจ้งชำระเงิน
-                    <!--[routerLink]="['/topUpBank', orderPayment.id]"-->
-                  </button>
-                </div>
-              </td>
-            </tr>
+              <tr *ngIf="orderPayment.users[0].id == currentUser.id">
+                <td>{{orderPayment.id}}</td>
+                <td>{{orderPayment.transRef}}</td>
+                <td>{{orderPayment.createDate}}</td>
+                <td align="right">{{orderPayment.transAmount}}</td>
+                <td *ngIf="orderPayment.statusOrder == statusNonPaid">
+                  <p style="color: red">รอการชำระเงิน</p>
+
+                </td>
+                <td *ngIf="orderPayment.statusOrder == statusWaitPaid">
+                  <p>ระบบกำลังตรวจสอบ</p>
+
+                </td>
+                <td *ngIf="orderPayment.statusOrder == confirm">
+                  <p style="color: green">ผ่านการตรวจสอบแล้ว</p>
+
+                </td>
+                <td>
+
+                  <div [hidden]="orderPayment.statusOrder == confirm || orderPayment.statusOrder == statusWaitPaid">
+                    <button class="btn btn-success btn-sm" (click)="Submit(orderPayment.id)">แจ้งชำระเงิน
+
+                    </button>
+                  </div>
+
+                </td>
+              </tr>
             </tbody>
           </table>
 

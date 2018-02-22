@@ -1,3 +1,13 @@
+video {
+  width: 800px;
+  height: 450px;
+}
+
+.video-responsive {
+  width: 800px;
+  height: auto;
+}
+
 .container-fluid {
   background-color: #fafafa;
 }

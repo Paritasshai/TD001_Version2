@@ -7,7 +7,7 @@
         <span style="background-color: #bf2b2a" class="icon icon-bar"></span>
       </button>
       <!--<img disabled title="Logo" [src]="ImgLogo" routerLink="/home" style="cursor: pointer; margin-top: 7%">-->
-      <img (click)="home()" disabled [src]="ImgLogo" style="cursor: pointer; margin-top: -2px; height: 45px; width: 125px;">
+      <img alt="Logo" (click)="home()" disabled [src]="ImgLogo" style="cursor: pointer; margin-top: -2px; height: 45px; width: 125px;">
       <!--<a style="color: #bf2b2a; margin-top: 3%; cursor: hand" class="navbar-brand"><span routerLink="/home">Website-->
       <!--LOGO</span></a>-->
       <div style="margin-top: -30px; margin-left: 130px" class="hidden-xs">
@@ -29,7 +29,7 @@
           <li style="margin-top: -8px; margin-right: 20px" class="hidden-xs hidden-md">
             <div class="navbar-form" role="search">
               <div class="input-group">
-                <input type="text" style="width: 100%; height: 30px" class="form-control" [(ngModel)]="SearchAdvance.Pname" name="Pname"
+                <input (keydown)="keyDownFunction($event)" type="text" style="width: 100%; height: 30px" class="form-control" [(ngModel)]="SearchAdvance.Pname" name="Pname"
                   #Pname="ngModel" placeholder="ค้นหาโปรเจคเรียน">
                 <div class="input-group-btn">
                   <button style="width: 100%; height: 30px" data-toggle="modal" data-target="#searchModal" class="btn btn-default" (click)="Search()">

@@ -22,7 +22,7 @@
                   <span>
                     <p style="color: #b62415; font-size: 50px" class="fa fa-shopping-basket fa-lg"></p>
                   </span>
-                  <a href="{{courses.linkCourse}}" style="color:black;">ซื้ออุปกรณ์ที่เกี่ยวข้อง</a>
+                  <a target="_blank" href="{{courses.linkCourse}}" style="color:black;">ซื้ออุปกรณ์ที่เกี่ยวข้อง</a>
                 </div>
                 <div [hidden]="courses.price == empty" class="panel-body">
                   <span>
@@ -84,7 +84,7 @@
 
                     <div class="container-fluid">
                       <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <button name="toggleButton" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                           <span class="icon-bar"></span>
                           <span class="icon-bar"></span>
                           <span class="icon-bar"></span>
@@ -155,27 +155,32 @@
                                       </div>
                                     </div>
 
-                                    <!-- <a type="text" data-toggle="modal" [attr.data-target]="'#myModal' + course.id" style="cursor: pointer;color: #404040">
-                                      <span *ngIf="course.courseType == video" class="glyphicon glyphicon-facetime-video"></span>
-                                      <span *ngIf="course.courseType == image" class="glyphicon glyphicon-picture"></span>
-                                      <span *ngIf="course.courseType == text" class="glyphicon glyphicon-list-alt"></span>
-                                      {{course.name}}
-                                      <!-- {{course.videoPath}} -->
-                                    <!-- </a>  -->
-
                                     <!-- Modal -->
-                                    <div class="modal fade" [id]="'myModal' + course.id" role="dialog">
+                                    <div data-target="#myModal" data-toggle="modal" data-backdrop="static" data-keyboard="false" class="modal fade" [id]="'myModal' + course.id"
+                                      role="dialog">
                                       <div class="modal-dialog">
-                                        <div class="card-content container">
+                                        <div class="card-content">
                                           <div align="center" class="video-responsive">
-                                            <img class="img" *ngIf="course.courseType == image" style="width: 800px; height: 450px" src="{{url + 'displayImageItem/' + course.imageItems[0]?.id}}"
-                                            />
+                                            <div *ngIf="course.courseType == image">
+                                              <img class="img" style="width: 800px; height: 450px" src="{{url + 'displayImageItem/' + course.imageItems[0]?.id}}" />
+                                              <div align="center">
+                                                <button name="data3Button" style="cursor: pointer; margin-top: 6px" data-dismiss="modal" class="btn btn-md btn-danger" type="button">ปิดรูปภาพ X
+                                                </button>
+                                              </div>
+                                            </div>
                                             <div align="center" [hidden]="course.courseType == image || course.courseType == text">
                                               <div [hidden]="course.videoClips[0]?.id == undefined">
 
-                                                <video style="margin-left: -67%" controls preload="auto" width="800" height="450">
-                                                  <source *ngIf="course.courseType == video" src="{{url + 'playVideo/' + course.videoClips[0]?.id}}" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"'>
-                                                </video>
+                                                <div class="video">
+                                                  <video controls [id]="course.videoClips[0]?.id" preload="auto" width="800" height="450">
+                                                    <source *ngIf="course.courseType == video" src="{{url + 'playVideo/' + course.videoClips[0]?.id}}" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"'>
+                                                  </video>
+                                                  <div align="center">
+                                                    <button name="playButton" style="cursor: pointer" (click)="playPause(course.videoClips[0]?.id)" data-dismiss="modal" class="btn btn-md btn-danger"
+                                                      type="button">ปิดวิดีโอ X
+                                                    </button>
+                                                  </div>
+                                                </div>
 
                                                 <div class="overlay">
                                                   <form>
@@ -236,7 +241,9 @@
               </div>
 
             </div>
-
+            <div class="col-sm-12">
+              <app-project-recom></app-project-recom>
+            </div>
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 <div class="container-fluid custom-modal-container">
   <div class="row custom-modal-header">
     <div class="col-sm-12">
-      <button type="button" class="close" (click)="dialog.close()" aria-label="Close">
+      <button name="dialogButton" type="button" class="close" (click)="dialog.close()" aria-label="Close">
         <h4 style="color: white">X</h4>
       </button>
     </div>
@@ -20,6 +20,6 @@
     </div>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-default" (click)="dialog.close()">ตกลง</button>
+    <button name="dialog1Button" type="button" class="btn btn-default" (click)="dialog.close()">ตกลง</button>
   </div>
 </div>

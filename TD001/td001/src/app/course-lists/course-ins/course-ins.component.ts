@@ -214,4 +214,15 @@ export class CourseInsComponent implements OnInit {
     console.log(id);
     this.router.navigate(['/insProfile', id]);
   }
+
+  playPause(id) {
+    console.log('Close Video : ' + id);
+    // let inputFields = document.getElementsByClassName('settings') as HTMLInputElement
+    const myVideo: HTMLVideoElement = <HTMLVideoElement>document.getElementById(id);
+    if (myVideo.paused)
+      myVideo.pause();
+    else
+      myVideo.pause();
+  }
+
 }

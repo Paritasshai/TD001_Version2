@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
-import {Student} from "../models/Student";
-import {StudentService} from "../services/StudentService";
-import {User} from "../models/User";
-import {UserService} from "../services/User.service";
+import {Router} from '@angular/router';
+import {Student} from '../models/Student';
+import {StudentService} from '../services/StudentService';
+import {User} from '../models/User';
+import {UserService} from '../services/User.service';
 
 @Component({
   selector: 'app-robomind',
@@ -38,11 +38,11 @@ export class RobomindComponent implements OnInit {
     this.studentService.getStudentBySearch(this.Student.username, this.Student.date).subscribe(Profile => {
         // this.alertService.success('Registration successful', true);
         this.Profile = Profile;
-        //alert("ค้นพบรายชื่อ: " + this.Profile.stFirstname + " " + this.Profile.stLastname);
+        // alert('ค้นพบรายชื่อ: ' + this.Profile.stFirstname + ' ' + this.Profile.stLastname);
       },
       error => {
         // this.alertService.error('This email already exists', true);
-        alert("Not Found!!");
+        alert( 'Not Found!!');
         location.reload();
       });
   }
@@ -65,7 +65,7 @@ export class RobomindComponent implements OnInit {
   }
 
   RoboticName() {
-    console.log("ddddddddddd");
+    console.log( 'ddddddddddd' );
     this.router.navigate(['/createRobotic']);
   }
 
@@ -77,7 +77,7 @@ export class RobomindComponent implements OnInit {
 
   private getUserList() {
     this.userService.getAll().subscribe(users => {
-      if (this.users != undefined) {
+      if (this.users !== undefined) {
         this.users = users;
       }
     });

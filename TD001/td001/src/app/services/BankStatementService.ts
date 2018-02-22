@@ -10,8 +10,8 @@ export class BankStatementService {
   constructor(private http: Http) {
   }
 
-  createBankStatements(bankStatement: BankStatement, userId: any) {
-    return this.http.post(AppComponent.API_URL + 'create/bankStatement' + '?userId=' + userId, bankStatement).map((response: Response) => response.json());
+  createBankStatements(id, bankStatement: BankStatement, userId: any) {
+    return this.http.post(AppComponent.API_URL + 'create/bankStatement/' + id + '?userId=' + userId, bankStatement).map((response: Response) => response.json());
   }
 
   getBankStatements(): Observable<BankStatement[]> {

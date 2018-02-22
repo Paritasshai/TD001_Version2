@@ -25,7 +25,7 @@
                   <span>
                     <p style="color: #b62415; font-size: 50px" class="fa fa-shopping-basket fa-lg"></p>
                   </span>
-                  <a href="{{coursesPurchaseed.linkCourse}}" style="color:black;">ซื้ออุปกรณ์ที่เกี่ยวข้อง</a>
+                  <a target="_blank" href="{{coursesPurchaseed.linkCourse}}" style="color:black;">ซื้ออุปกรณ์ที่เกี่ยวข้อง</a>
                 </div>
                 <!--<div class="panel-body" [hidden]="coursesPurchaseed.price == empty"><span> <i-->
                 <!--class="fa fa-money"></i></span>-->
@@ -39,12 +39,12 @@
                 <div align="center">
                   <div *ngIf="coursesPurchaseed.price != empty">
                     <div [hidden]="coursesPurchaseed.showLock == zero" style="margin: 1%; padding: 1%">
-                      <button type="button" class="btn btn-danger btn-md" (click)="buyCourse(coursesPurchaseed.countPurchase, coursesPurchaseed.id, user.balance,coursesPurchaseed.price,coursesPurchaseed.name, currentUser.id)">
+                      <button name="buyButton" type="button" class="btn btn-danger btn-lg" (click)="buyCourse(coursesPurchaseed.countPurchase, coursesPurchaseed.id, user.balance,coursesPurchaseed.price,coursesPurchaseed.name, currentUser.id)">
                         เข้าเรียนใช้ {{coursesPurchaseed.price}} แต้ม
                       </button>
                     </div>
                     <div *ngIf="coursesPurchaseed.showLock == zero" style="margin: 1%; padding: 1%">
-                      <button type="button" class="btn btn-danger btn-md" disabled (click)="buyCourse(coursesPurchaseed.countPurchase, coursesPurchaseed.id, user.balance,coursesPurchaseed.price,coursesPurchaseed.name, currentUser.id)">
+                      <button name="buyCourseButton" type="button" class="btn btn-danger btn-lg" disabled (click)="buyCourse(coursesPurchaseed.countPurchase, coursesPurchaseed.id, user.balance,coursesPurchaseed.price,coursesPurchaseed.name, currentUser.id)">
                         เข้าเรียนใช้ {{coursesPurchaseed.price}} แต้ม
                       </button>
                     </div>
@@ -247,7 +247,7 @@
                                               <div *ngIf="course.courseType == image">
                                                 <img class="img" style="width: 800px; height: 450px" src="{{url + 'displayImageItem/' + course.imageItems[0]?.id}}" />
                                                 <div align="center">
-                                                  <button style="cursor: pointer; margin-top: 6px" data-dismiss="modal" class="btn btn-md btn-danger" type="button">ปิดรูปภาพ X
+                                                  <button name="dataButton" style="cursor: pointer; margin-top: 6px" data-dismiss="modal" class="btn btn-md btn-danger" type="button">ปิดรูปภาพ X
                                                   </button>
                                                 </div>
                                               </div>
@@ -260,7 +260,7 @@
                                                       <source *ngIf="course.courseType == video" src="{{url + 'playVideo/' + course.videoClips[0]?.id}}" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"'>
                                                     </video>
                                                     <div align="center">
-                                                      <button style="cursor: pointer" (click)="playPause(course.videoClips[0]?.id)" data-dismiss="modal" class="btn btn-md btn-danger"
+                                                      <button name="data1Button" style="cursor: pointer" (click)="playPause(course.videoClips[0]?.id)" data-dismiss="modal" class="btn btn-md btn-danger"
                                                         type="button">ปิดวิดีโอ X
                                                       </button>
                                                     </div>
@@ -289,7 +289,7 @@
                                                     <iframe width="800" height="450" [src]="course.videoPath | safety" frameborder="0" allowfullscreen></iframe>
                                                   </div>
                                                   <div align="center">
-                                                    <button style="cursor: pointer; margin-top: 4px" data-dismiss="modal" class="btn btn-md btn-danger" type="button">ปิดรูปภาพ X
+                                                    <button name="modalButton" style="cursor: pointer; margin-top: 4px" data-dismiss="modal" class="btn btn-md btn-danger" type="button">ปิดรูปภาพ X
                                                     </button>
                                                   </div>
                                                 </div>
@@ -305,7 +305,7 @@
                                                     <!--</div>-->
                                                   </div>
                                                   <div align="center">
-                                                    <button style="cursor: pointer;" data-dismiss="modal" class="btn btn-md btn-danger" type="button">ปิดรูปภาพ X
+                                                    <button name="closeButton" style="cursor: pointer;" data-dismiss="modal" class="btn btn-md btn-danger" type="button">ปิดรูปภาพ X
                                                     </button>
                                                   </div>
                                                 </div>
@@ -441,7 +441,7 @@
                                                   <div *ngIf="course.courseType == image">
                                                     <img class="img" style="width: 800px; height: 450px" src="{{url + 'displayImageItem/' + course.imageItems[0]?.id}}" />
                                                     <div align="center">
-                                                      <button style="cursor: pointer; margin-top: 6px" data-dismiss="modal" class="btn btn-md btn-danger" type="button">ปิดรูปภาพ X
+                                                      <button name="data2Button" style="cursor: pointer; margin-top: 6px" data-dismiss="modal" class="btn btn-md btn-danger" type="button">ปิดรูปภาพ X
                                                       </button>
                                                     </div>
                                                   </div>
@@ -454,7 +454,7 @@
                                                           <source *ngIf="course.courseType == video" src="{{url + 'playVideo/' + course.videoClips[0]?.id}}" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"'>
                                                         </video>
                                                         <div align="center">
-                                                          <button style="cursor: pointer" (click)="playPause(course.videoClips[0]?.id)" data-dismiss="modal" class="btn btn-md btn-danger"
+                                                          <button name="play2Button" name="play1Button" style="cursor: pointer" (click)="playPause(course.videoClips[0]?.id)" data-dismiss="modal" class="btn btn-md btn-danger"
                                                             type="button">ปิดวิดีโอ X
                                                           </button>
                                                         </div>
@@ -483,7 +483,7 @@
                                                         <iframe width="800" height="450" [src]="course.videoPath | safety" frameborder="0" allowfullscreen></iframe>
                                                       </div>
                                                       <div align="center">
-                                                        <button style="cursor: pointer; margin-top: 6px" data-dismiss="modal" class="btn btn-md btn-danger" type="button">ปิดรูปภาพ X
+                                                        <button name="modalButton" style="cursor: pointer; margin-top: 6px" data-dismiss="modal" class="btn btn-md btn-danger" type="button">ปิดรูปภาพ X
                                                         </button>
                                                       </div>
                                                     </div>
@@ -499,7 +499,7 @@
                                                         <!--</div>-->
                                                       </div>
                                                       <div align="center">
-                                                        <button style="cursor: pointer;" data-dismiss="modal" class="btn btn-md btn-danger" type="button">ปิดรูปภาพ X
+                                                        <button name="modal1Button" style="cursor: pointer;" data-dismiss="modal" class="btn btn-md btn-danger" type="button">ปิดรูปภาพ X
                                                         </button>
                                                       </div>
 
@@ -650,9 +650,13 @@
               </div>
 
             </div>
+
+            <div class="col-sm-12">
+              <app-project-recom></app-project-recom>
+            </div>
+
           </div>
         </div>
-
       </div>
     </div>
   </div>

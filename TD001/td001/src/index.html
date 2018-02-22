@@ -1,28 +1,43 @@
 <!doctype html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
-  <title>TamDai D.I.Y</title>
+  <meta name="description" content="Tamdai.net">
+  <meta name="keywords" content="Tamdai,tamdai.net,DIY,diy">
+  <meta name="author" content="Tamdai">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>TamDai.net</title>
   <base href="/">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
 
 <body>
   <app-root>Loading...</app-root>
 </body>
 
+<!-- Global site tag (gtag.js) - Google Analytics --> 
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-114442657-1"></script> 
+<script> 
+  window.dataLayer = window.dataLayer || []; 
+  function gtag(){dataLayer.push(arguments);} 
+  gtag('js', new Date()); 
+
+  gtag('config', 'UA-114442657-1'); 
+</script>
+
 <script>
-  $('input[type="date"], input[type="month"], input[type="year"]').each(function() {
+  $('input[type="date"], input[type="month"], input[type="year"]').each(function () {
     var el = this,
       type = $(el).attr('type');
     if ($(el).val() == '') $(el).attr('type', 'text');
-    $(el).focus(function() {
+    $(el).focus(function () {
       $(el).attr('type', type);
       el.click();
     });
-    $(el).blur(function() {
+    $(el).blur(function () {
       if ($(el).val() == '') $(el).attr('type', 'text');
     });
   });
@@ -33,7 +48,6 @@
     keyboard: false
   })
 </script>
-
 <script>
   // When the user scrolls down 20px from the top of the document, show the button
   window.onscroll = function () {
@@ -53,6 +67,14 @@
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
   }
+</script>
+<script>
+  $(document).ready(function() {
+  $('#media').carousel({
+    pause: true,
+    interval: 1000,
+  });
+});
 </script>
 
 </html>

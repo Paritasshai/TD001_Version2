@@ -5,7 +5,7 @@
                                                                                      [src]="ImgLogo"
                                                                                      style="cursor: pointer; height: 30px; width: 110px; margin-top: -5px"></a>
     </div>
-    <ul class="nav navbar-nav navbar-right" [hidden]="currentUser.status != instructor">
+    <ul class="nav navbar-nav navbar-right" [hidden]="!currentUser">
       <li><a (click)="RobomindCreate()" style="cursor: pointer"><span class="glyphicon glyphicon-new-window"></span>
         Create Student</a></li>
       <!--<li><a (click)="RobomindContent()" style="cursor: pointer"><span class="glyphicon glyphicon-link"></span>-->

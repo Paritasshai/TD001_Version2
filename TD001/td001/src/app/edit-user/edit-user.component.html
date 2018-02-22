@@ -7,20 +7,20 @@
       <div *ngFor="let user of users">
         <span class="navbar-text" *ngIf="user.id == currentUser.id">
 
-       <form (ngSubmit)="upload(user.id)">
-         <div class="row">
+          <form (ngSubmit)="upload(user.id)">
+            <div class="row">
 
-          <div class="col-md-3" *ngIf="user.userImages[0]?.id == null">
-            <br>
-            <div>
-          <input class="btn btn-danger btn-md" type="file" #fileInput/>
-          <button type="button" (click)="upload(user.id)">Upload</button>
-          </div>
-          </div>
-      </div>
-       </form>
+              <div class="col-md-3" *ngIf="user.userImages[0]?.id == null">
+                <br>
+                <div>
+                  <input class="btn btn-danger btn-md" type="file" #fileInput/>
+                  <button type="button" (click)="upload(user.id)">Upload</button>
+                </div>
+              </div>
+            </div>
+          </form>
 
-    </span>
+        </span>
       </div>
     </div>
 
@@ -33,8 +33,10 @@
       <div *ngIf="user.id == currentUser.id">
         <div>
           <button type="button" class="close" aria-label="Close" *ngIf="user.userImages[0]?.id != null" (click)="DeleteImage(user.userImages[0]?.id)">
-  <span aria-hidden="true"><i class="glyphicon glyphicon-trash">DeleteImage</i></span>
-</button>
+            <span aria-hidden="true">
+              <i class="glyphicon glyphicon-trash">DeleteImage</i>
+            </span>
+          </button>
           <img src="data:{{user.userImages[0]?.contentType}};base64,{{user.userImages[0]?.content}}">
         </div>
         <br>

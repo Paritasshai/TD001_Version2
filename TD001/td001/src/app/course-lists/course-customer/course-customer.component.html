@@ -3,12 +3,13 @@
     <spinner icon="bubbles" class="spinner-balanced" color="#e32d25" [size]="130" *ngIf="loading">Loading...</spinner>
 
     <div class="row" *ngIf="show">
+
       <div class="col-sm-4">
 
         <div class="thumbnail">
           <div class="crops">
             <div align="center">
-              <img style="width: 100%; height: 230px" src="{{ url + '/displayImage/' + courses.imageCourses[0]?.id}}" alt="" />
+              <img style="width: 100%; height: 230px;" src="{{ url + '/displayImage/' + courses.imageCourses[0]?.id}}" alt="" />
             </div>
           </div>
         </div>
@@ -19,7 +20,7 @@
             <span>
               <p style="color: #b62415; font-size: 50px" class="fa fa-shopping-basket fa-lg"></p>
             </span>
-            <a href="{{courses.linkCourse}}" style="color: black">ซื้ออุปกรณ์ที่เกี่ยวข้อง</a>
+            <a target="_blank" href="{{courses.linkCourse}}" style="color: black">ซื้ออุปกรณ์ที่เกี่ยวข้อง</a>
           </div>
           <div class="panel-body" *ngIf="courses.price == empty">
             <span>
@@ -29,23 +30,10 @@
           <div align="center">
             <div [hidden]="courses.price == empty">
               <div style="margin: 1%; padding: 1%">
-                <button type="button" class="btn btn-danger btn-md" (click)="openCustom()">
+                <button name="openButton" type="button" class="btn btn-danger btn-lg" (click)="openCustom()">
                   เข้าเรียนใช้ {{courses.price}} แต้ม
                 </button>
-                <!--<button type="button" class="btn btn-danger btn-md" (click)="modal.show()">เข้าเรียนใช้-->
-                <!--{{courses.price}} แต้ม-->
-                <!--</button>-->
-                <!--<alert #modal>-->
-                <!--&lt;!&ndash;<div class="app-modal-header">&ndash;&gt;-->
-                <!--&lt;!&ndash;เข้าเรียน&ndash;&gt;-->
-                <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                <!--<div class="app-modal-body">-->
-                <!--เข้าสู่ระบบหรือสมัครสมาชิก-->
-                <!--</div>-->
-                <!--<div class="app-modal-footer">-->
-                <!--<button type="button" class="btn btn-default" (click)="modal.hide()">Close</button>-->
-                <!--</div>-->
-                <!--</alert>-->
+
               </div>
             </div>
           </div>
@@ -72,11 +60,7 @@
                         <br>
                         <p>{{user.instructorBio}}</p>
                       </div>
-                      <!--<div class="col-lg-6">-->
-                      <!--<a data-toggle="modal" data-target="#myModal"-->
-                      <!--style="cursor: pointer; color: black; margin-top: -3%; margin-left: -70%"-->
-                      <!--(click)="TeacherHistory(user.email)"> {{user.firstName}}</a>-->
-                      <!--</div>-->
+
                     </div>
                   </div>
                 </div>
@@ -86,6 +70,7 @@
         </div>
 
       </div>
+
       <div class="col-sm-8">
         <div class="panel panel-default">
           <div class="panel-heading">{{courses.name}}
@@ -143,6 +128,7 @@
 
                                 <div [hidden]="course.courseType == image || course.courseType == video">
                                   <div [hidden]="course.videoClips[0]?.id != undefined">
+                                    <!-- <a type="text" data-toggle="modal" [attr.data-target]="'#myModal' + course.id" style="cursor: pointer; color: #404040"> -->
                                     <a target="_blank" [href]="course.courseText" style="cursor: pointer; color: #404040">
                                       <span *ngIf="course.courseType == video" class="glyphicon glyphicon-facetime-video"></span>
                                       <span *ngIf="course.courseType == image" class="glyphicon glyphicon-picture"></span>
@@ -174,7 +160,7 @@
                                       <div *ngIf="course.courseType == image">
                                         <img class="img" style="width: 800px; height: 450px" src="{{url + 'displayImageItem/' + course.imageItems[0]?.id}}" />
                                         <div align="center">
-                                          <button style="cursor: pointer; margin-top: 6px" data-dismiss="modal" class="btn btn-md btn-danger" type="button">ปิดรูปภาพ X
+                                          <button name="dataButton" style="cursor: pointer; margin-top: 6px" data-dismiss="modal" class="btn btn-md btn-danger" type="button">ปิดรูปภาพ X
                                           </button>
                                         </div>
                                       </div>
@@ -186,7 +172,7 @@
                                               <source *ngIf="course.courseType == video" src="{{url + 'playVideo/' + course.videoClips[0]?.id}}" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"'>
                                             </video>
                                             <div align="center">
-                                              <button style="cursor: pointer" (click)="playPause(course.videoClips[0]?.id)" data-dismiss="modal" class="btn btn-md btn-danger"
+                                              <button name="playButton" style="cursor: pointer" (click)="playPause(course.videoClips[0]?.id)" data-dismiss="modal" class="btn btn-md btn-danger"
                                                 type="button">ปิดวิดีโอ X
                                               </button>
                                             </div>
@@ -219,8 +205,8 @@
                                             </div>
 
                                             <div align="center">
-                                              <button (click)="PauseYoutube(course.videoPath + '?enablejsapi=1')" style="cursor: pointer; margin-top: 6px" data-dismiss="modal"
-                                                class="btn btn-md btn-danger" type="button">ปิดวิดีโอ X
+                                              <button name="pauseButton" (click)="PauseYoutube(course.videoPath + '?enablejsapi=1')" style="cursor: pointer; margin-top: 6px"
+                                                data-dismiss="modal" class="btn btn-md btn-danger" type="button">ปิดวิดีโอ X
                                               </button>
                                             </div>
 
@@ -230,12 +216,16 @@
                                       <div align="center" [hidden]="course.courseType == image || course.courseType == video">
                                         <div *ngIf="course.courseText != null">
                                           <div class="panel panel-default">
-                                            <textarea maxlength="2000" [(ngModel)]="course.courseText" id="textItem" name="textItem" style="width: 800px; height: 430px"
+                                            <div>
+                                              <h2>Hello {{name}}</h2>
+                                              <iframe [src]="pdfUrl" width="500" height="600" type='application/pdf'></iframe>
+                                            </div>
+                                            <!-- <textarea maxlength="2000" [(ngModel)]="course.courseText" id="textItem" name="textItem" style="width: 800px; height: 430px"
                                               type="text" class="form-control">
-                                            </textarea>
+                                            </textarea> -->
                                           </div>
                                           <div align="center">
-                                            <button style="cursor: pointer;" data-dismiss="modal" class="btn btn-md btn-danger" type="button">ปิดรูปภาพ X
+                                            <button name="data1Button" style="cursor: pointer;" data-dismiss="modal" class="btn btn-md btn-danger" type="button">ปิดรูปภาพ X
                                             </button>
                                           </div>
                                         </div>
@@ -264,7 +254,13 @@
 
           </body>
         </div>
+
       </div>
+
+      <div class="col-sm-12">
+        <app-project-recom></app-project-recom>
+      </div>
+
     </div>
 
   </div>

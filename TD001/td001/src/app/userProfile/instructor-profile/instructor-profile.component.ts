@@ -47,7 +47,6 @@ export class InstructorProfileComponent implements OnInit {
   private getUserId() {
     this.userService.getUserId(this.route.snapshot.params['id']).subscribe(usersId => {
       this.usersId = usersId;
-      // console.log(this.userId);
     });
   }
 

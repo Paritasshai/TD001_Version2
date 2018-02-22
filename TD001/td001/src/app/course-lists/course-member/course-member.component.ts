@@ -1,15 +1,15 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {Http} from '@angular/http';
-import {PurchaseCourseService} from '../../services/PurchaseCourseService';
-import {UserService} from '../../services/User.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {CourseService} from '../../services/CourseService';
-import {User} from '../../models/User';
-import {AppComponent} from '../../app.component';
-import {Modal, overlayConfigFactory} from 'angular2-modal';
-import {CourseComponent} from '../../alertContent/course/course.component';
-import {BSModalContext} from 'angular2-modal/plugins/bootstrap/src/modal-context';
-import {AlertService} from '../../alertContent/AlertService';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Http } from '@angular/http';
+import { PurchaseCourseService } from '../../services/PurchaseCourseService';
+import { UserService } from '../../services/User.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CourseService } from '../../services/CourseService';
+import { User } from '../../models/User';
+import { AppComponent } from '../../app.component';
+import { Modal, overlayConfigFactory } from 'angular2-modal';
+import { CourseComponent } from '../../alertContent/course/course.component';
+import { BSModalContext } from 'angular2-modal/plugins/bootstrap/src/modal-context';
+import { AlertService } from '../../alertContent/AlertService';
 
 @Component({
   selector: 'app-course-member',
@@ -67,13 +67,13 @@ export class CourseMemberComponent implements OnInit {
   name: any;
 
   constructor(private courseService: CourseService,
-              private route: ActivatedRoute,
-              private router: Router,
-              private userService: UserService,
-              private purchaseCourseService: PurchaseCourseService,
-              private http: Http,
-              public modal: Modal,
-              private alertService: AlertService) {
+    private route: ActivatedRoute,
+    private router: Router,
+    private userService: UserService,
+    private purchaseCourseService: PurchaseCourseService,
+    private http: Http,
+    public modal: Modal,
+    private alertService: AlertService) {
 
     const id = this.route.snapshot.params['id'];
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -98,7 +98,7 @@ export class CourseMemberComponent implements OnInit {
   playPause(id) {
     console.log(id);
     // let inputFields = document.getElementsByClassName("settings") as HTMLInputElement
-    const myVideo: HTMLVideoElement = <HTMLVideoElement> document.getElementById(id);
+    const myVideo: HTMLVideoElement = <HTMLVideoElement>document.getElementById(id);
     // tslint:disable-next-line:curly
     if (myVideo.paused)
       myVideo.pause();
@@ -180,6 +180,7 @@ export class CourseMemberComponent implements OnInit {
         that.purchaseCourseService.createBuyCourse(countPurchase, that.userId, id, that.purchaseCart, that.userBalance, price, name).subscribe(
           data => {
             // alert('กรุณาตรวจสอบแต้มคงเหลือ..... \nยืนยันการใช้แต้มเข้าเรียน');
+            alert('แต้มคงเหลือ ' + (balance - price));
             location.reload();
           },
           error => {
@@ -231,7 +232,7 @@ export class CourseMemberComponent implements OnInit {
   }
 
   buyyy() {
-     return this.modal.open(CourseComponent, overlayConfigFactory({num1: 2, num2: 3}, BSModalContext));
+    return this.modal.open(CourseComponent, overlayConfigFactory({ num1: 2, num2: 3 }, BSModalContext));
     // alert('กรุณายันการใช้แต้มเข้าเรียนก่อน');
   }
 

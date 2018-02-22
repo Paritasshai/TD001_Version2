@@ -27,7 +27,7 @@ export class EditCourseComponent implements OnInit {
   ngOnInit() {
     this.getCourseList();
     // this.getUserList();
-    this.courses.sort(function(id1, id2) {
+    this.courses.sort(function (id1, id2) {
       if (id1.id < id2.id) {
         return -1;
       } else if (id1.id > id2.id) {
@@ -37,7 +37,17 @@ export class EditCourseComponent implements OnInit {
       }
     });
 
-    //this.getUserList();
+    // this.getUserList();
+  }
+
+
+  RobomindCreate() {
+    this.router.navigate(['/RobomindCreate']);
+  }
+
+  RoboticName() {
+    console.log('ddddddddddd');
+    this.router.navigate(['/createRobotic']);
   }
 
   private getCourseList() {

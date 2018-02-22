@@ -4,6 +4,7 @@ import {UserService} from '../services/User.service';
 import {FileUploader} from 'ng2-file-upload';
 import {Http, RequestOptions, Headers} from '@angular/http';
 import {AppComponent} from '../app.component';
+import {Router} from '@angular/router';
 
 const URL = AppComponent.API_URL;
 
@@ -21,7 +22,8 @@ export class EditUserComponent implements OnInit {
   @ViewChild('fileInput') fileInput;
   User: any = {};
 
-  constructor(private userService: UserService,
+  constructor(private router: Router,
+    private userService: UserService,
               private http: Http) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.getUserId = this.currentUser.id;

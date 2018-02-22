@@ -74,7 +74,7 @@ export class TopUpOnlinePageComponent implements OnInit {
           setTimeout(function () {
           }, 1000);
           this.router.navigate(['/nonTopUp']);
-          //alert('Success');
+          // alert('Success');
         },
         error => {
           alert('Error');

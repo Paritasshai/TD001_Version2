@@ -1,9 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {BankStatementService} from '../services/BankStatementService';
-import {User} from '../models/User';
-import {ActivatedRoute, Router} from '@angular/router';
-import {OrderService} from '../services/OrderService';
-import {IMyDpOptions} from 'mydatepicker';
+import { Component, Input, OnInit } from '@angular/core';
+import { BankStatementService } from '../services/BankStatementService';
+import { User } from '../models/User';
+import { ActivatedRoute, Router } from '@angular/router';
+import { OrderService } from '../services/OrderService';
+import { IMyDpOptions } from 'mydatepicker';
 
 @Component({
   selector: 'app-top-up-bank-page',
@@ -32,7 +32,7 @@ export class TopUpBankPageComponent implements OnInit {
   public orderDetail;
   orderPaymentsIds: any = {};
   radioItems = 'KBANK KTB BBK SCB'.split(' ');
-  model = {options: ''};
+  model = { options: '' };
   modelDate: any;
 
   get debug() {
@@ -40,9 +40,9 @@ export class TopUpBankPageComponent implements OnInit {
   }
 
   constructor(private bankStatementService: BankStatementService,
-              private router: Router,
-              private orderService: OrderService,
-              private route: ActivatedRoute) {
+    private router: Router,
+    private orderService: OrderService,
+    private route: ActivatedRoute) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.userId = this.currentUser.id;
     console.clear();
@@ -83,20 +83,20 @@ export class TopUpBankPageComponent implements OnInit {
     this.bankStatement.statementDate = this.modelDate.formatted;
     // console.log(this.bankStatement.statementAmount);
     // console.log(this.bankStatement.statementTime);
+    console.log(this.bankStatement);
 
-
-    this.bankStatementService.createBankStatements(this.bankStatement, this.userId)
+    this.bankStatementService.createBankStatements(this.route.snapshot.params['id'], this.bankStatement, this.userId)
       .subscribe(
-        data => {
-          setTimeout(function () {
-            location.reload();
-          }, 2000);
-          this.router.navigate(['/userProfile']);
-          //alert('Success');
-        },
-        error => {
-          alert('Error');
-        });
+      data => {
+        setTimeout(function () {
+          // location.reload();
+        }, 2000);
+        this.router.navigate(['/userProfile']);
+        // alert('Success');
+      },
+      error => {
+        alert('Error');
+      });
   }
 
 }

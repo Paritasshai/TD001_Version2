@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {Order} from '../models/Order';
-import {OrderService} from '../services/OrderService';
-import {User} from '../models/User';
-import {Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Order } from '../models/Order';
+import { OrderService } from '../services/OrderService';
+import { User } from '../models/User';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-non-top-up',
@@ -15,9 +15,11 @@ export class NonTopUpComponent implements OnInit {
   currentUser: User;
   orderPaymentsId: Order[] = [];
   confirm = 'confirm';
+  statusNonPaid = 'NonPaid';
+  statusWaitPaid = 'waitPaid';
 
   constructor(private orderService: OrderService,
-              private router: Router) {
+    private router: Router) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
