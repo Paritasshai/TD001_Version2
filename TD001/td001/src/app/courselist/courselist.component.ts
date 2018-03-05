@@ -88,10 +88,10 @@ export class CourselistComponent implements OnInit {
 
   daysObjects = [
     { name: '---เลือก---', value: null },
-    { name: '1 วันที่แล้ว', value: 1 },
-    { name: '1 สัปดาห์ที่แล้ว', value: 7 },
-    { name: '1 เดือนที่แล้ว', value: 30 },
-    { name: '1 ปีที่แล้ว', value: 365 }
+    { name: '1 วัน', value: 1 },
+    { name: '1 สัปดาห์', value: 7 },
+    { name: '1 เดือน', value: 30 },
+    { name: '1 ปี', value: 365 }
   ];
 
   selectedDayObj = this.daysObjects[0];
@@ -232,6 +232,7 @@ export class CourselistComponent implements OnInit {
       });
     } else if (this.SearchAdvance.day != null) {
       // alert("Free True && Pname && Group");
+      console.log(this.SearchAdvance.day);
       this.querySearch = true;
       this.querySearchPay = false;
       this.courseService.getSearchByDate(this.SearchAdvance.day, this.textPublic).subscribe(courseSearch => {

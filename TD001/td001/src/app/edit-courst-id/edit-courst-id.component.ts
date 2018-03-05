@@ -20,6 +20,7 @@ export class EditCourstIdComponent implements OnInit {
   Course: any = {};
   public CourseId;
   name: any;
+  expired: any;
   description: any;
   dateCreateCourse: any;
   price: any;
@@ -76,6 +77,7 @@ export class EditCourstIdComponent implements OnInit {
     // console.log(this.Course.price);
 
     this.name = this.Course.name;
+    this.expired = this.Course.expired;
     this.description = this.Course.description;
     this.dateCreateCourse = this.Course.dateCreateCourse;
     console.log(' Date Create Course: ' + this.dateCreateCourse);
@@ -90,7 +92,7 @@ export class EditCourstIdComponent implements OnInit {
     console.log(this.courseType);
     console.log(this.catagory);
 
-    this.courseService.updateCourse(id, this.name, this.description, this.price, this.publicCourse, this.linkCourse, this.Course, this.courseType, this.catagory, this.dateCreateCourse)
+    this.courseService.updateCourse(id, this.name,this.expired, this.description, this.price, this.publicCourse, this.linkCourse, this.Course, this.courseType, this.catagory, this.dateCreateCourse)
       .subscribe(
         data => {
           // this.alertService.success('Edit Successful', true);

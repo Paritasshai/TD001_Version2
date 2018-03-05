@@ -8,4 +8,5 @@ export class Course {
   public courseType: any;
   public catagory: any;
   public showLock: any;
+  public courseAge: any;
 }
