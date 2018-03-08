@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-  public static API_URL = 'http://localhost:8080/';
-  // public static API_URL = 'http://www.tamdai.net/tamdaiapi/';
+   public static API_URL = 'http://localhost:8080/';
+   // public static API_URL = 'http://www.tamdai.net/tamdaiapi/';
   ImgLogo: string;
 
   onActivate() {
