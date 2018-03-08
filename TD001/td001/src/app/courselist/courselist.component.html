@@ -33,7 +33,7 @@
             </div>
 
             <div class="form-group">
-              <label>ระยะเวลาที่เผยแพร่</label>
+              <label>วันที่เผยแพร่</label>
               <select class="form-control" [ngModel]="selectedDayObj" (ngModelChange)="onChangeObjj($event)" name="sel4">
                 <option [ngValue]="i" *ngFor="let i of daysObjects">{{i.name}}</option>
               </select>
@@ -432,7 +432,7 @@
         <div align="center">
           <div class="blog" style="margin-left: 5%">
             <div id="productsCourseSearch" class="row list-group">
-              <div class="item col-sm-3" style="width: 205px; margin-right: 14px; margin-bottom: 10px;" *ngFor="let course of courseSearch">
+              <div class="item col-sm-3" style="width: 205px; margin-right: 14px; margin-bottom: 10px" *ngFor="let course of courseSearch">
                 <div>
                   <div class="thumbnail" *ngIf="course.publicCourse == textTrue" style="box-shadow: 0 0 4px 4px #cfcfcf;">
                     <div class="crop" style="border: solid 1px #e59999;">

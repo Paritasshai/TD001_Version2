@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
-import {StudentService} from '../../../app/services/StudentService';
-import {AppComponent} from '../../app.component';
-import {User} from '../../models/User';
+import {Router, ActivatedRoute} from "@angular/router";
+import {StudentService} from "../../../app/services/StudentService";
+import {AppComponent} from "../../app.component";
+import {User} from "../../models/User";
 
 @Component({
   selector: 'app-review-profile',
@@ -47,7 +47,7 @@ export class ReviewProfileComponent implements OnInit {
   }
 
   RoboticName() {
-    console.log('ddddddddddd');
+    console.log("ddddddddddd");
     this.router.navigate(['/createRobotic']);
   }
 
@@ -80,12 +80,12 @@ export class ReviewProfileComponent implements OnInit {
       .subscribe(
         data => {
           // this.alertService.success('Registration successful', true);
-          // alert('create success');
+          // alert("create success");
           location.reload();
         },
         error => {
           // this.alertService.error('This email already exists', true);
-          alert('create Failed!!');
+          alert("create Failed!!");
         });
   }
 

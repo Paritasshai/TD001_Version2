@@ -189,8 +189,8 @@ export class CourseService {
     return this.http.get(AppComponent.API_URL + 'courseItem/' + id, options).map((response: Response) => response.json());
   }
 
-  updateCourse(id, name, expired, description, price, publicCourse, linkCourse, course: Course, courseType: any, catagory: any, dateCreateCourse: any) {
-    return this.http.put(AppComponent.API_URL + 'update/course/' + id + '?name=' + name + '&' + 'courseAge=' + expired + '&' + 'description=' + description + '&' + 'price=' + price + '&' + 'publicCourse=' + publicCourse + '&' + 'linkCourse=' + linkCourse + '&' + 'courseType=' + courseType + '&' + 'catagory=' + catagory + '&' + 'dateCreateCourse=' + dateCreateCourse, course).map((response: Response) => response.json());
+  updateCourse(id, name, description, price, publicCourse, linkCourse, course: Course, courseType: any, catagory: any, dateCreateCourse: any) {
+    return this.http.put(AppComponent.API_URL + 'update/course/' + id + '?name=' + name + '&' + 'description=' + description + '&' + 'price=' + price + '&' + 'publicCourse=' + publicCourse + '&' + 'linkCourse=' + linkCourse + '&' + 'courseType=' + courseType + '&' + 'catagory=' + catagory + '&' + 'dateCreateCourse=' + dateCreateCourse, course).map((response: Response) => response.json());
   }
 
   editVideoName(id: any, lessonName: any, video: Video) {

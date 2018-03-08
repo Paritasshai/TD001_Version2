@@ -38,10 +38,6 @@ export class RobomindComponent implements OnInit {
     this.studentService.getStudentBySearch(this.Student.username, this.Student.date).subscribe(Profile => {
         // this.alertService.success('Registration successful', true);
         this.Profile = Profile;
-        console.log(this.Profile);
-        console.log(this.Profile.id);
-        this.router.navigate(['/RobomindReview', this.Profile.id]);
-        // this.router.navigate(['/RobomindReview', this.Profile]);
         // alert('ค้นพบรายชื่อ: ' + this.Profile.stFirstname + ' ' + this.Profile.stLastname);
       },
       error => {
@@ -63,10 +59,10 @@ export class RobomindComponent implements OnInit {
     this.router.navigate(['/RobomindHome']);
   }
 
-  // Review(id) {
-  //   console.log(id);
-  //   this.router.navigate(['/RobomindReview', id]);
-  // }
+  Review(id) {
+    console.log(id);
+    this.router.navigate(['/RobomindReview', id]);
+  }
 
   RoboticName() {
     console.log( 'ddddddddddd' );

@@ -127,7 +127,7 @@ export class CourseMemberComponent implements OnInit {
       this.getUserList();
       this.getUserId();
     }
-    // this.open();
+    this.open();
   }
 
   private getUserId() {

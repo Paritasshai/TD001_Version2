@@ -1,9 +1,8 @@
 <app-header></app-header>
-
+<!--<hr style="border: solid 2px #dd1d0a; font-weight: 900">-->
 <br>
 <br>
 <br>
-
 <div class="container-fluid">
   <nav class="navbar navbar-default">
     <div align="center">
@@ -47,6 +46,63 @@
               </div>
             </div>
 
+            <!--<div class="col-xs-3 col-md-3">-->
+            <!--<div align="center">-->
+            <!--<div class="blog">-->
+            <!--<div class="row list-group">-->
+            <!--<div class="item col-xs-4 col-sm-4 col-md-4 col-lg-4"-->
+            <!--style="width: 205px; margin-right: 2%; margin-bottom: 2%"-->
+            <!--*ngFor="let courseHis of user?.courses">-->
+            <!--<div>-->
+            <!--<div class="thumbnail">-->
+            <!--<div class="crop" style="border: solid 1px #e59999;">-->
+
+            <!--<img style="cursor: pointer" (click)="click(courseHis.id)" class="img"-->
+            <!--src="{{ url + '/displayImage/' + courseHis.imageCourses[0]?.id}}" alt=""/>-->
+
+            <!--</div>-->
+            <!--<div align="left" [hidden]="courseHis.linkCourse == textNull">-->
+            <!--<a style="cursor: pointer"><span-->
+            <!--style="font-size: 20px; color: #bf2b2a; float: right; margin-top: -115px; margin-right: 5px"-->
+            <!--class="glyphicon glyphicon glyphicon-shopping-cart"></span></a>-->
+            <!--</div>-->
+
+            <!--<div class="caption" align="left">-->
+            <!--<div id="div1">{{courseHis.name}}</div>-->
+            <!--<h6 [hidden]="courseHis.price == empty" class="group inner list-group-item-heading">-->
+            <!--{{courseHis.price}} บาท.</h6>-->
+            <!--<h6 *ngIf="courseHis.price == empty"-->
+            <!--class="animated pulse infinite group inner list-group-item-heading"-->
+            <!--style="color: #bf2b2a">ฟรี</h6>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="col-xs-3 col-md-3" *ngFor="let courseHis of user?.courses">-->
+            <!--<div align="center">-->
+
+            <!--<div *ngFor="let courseImage of courseHis?.imageCourses">-->
+            <!--<div (click)="click(courseHis.id)" style="cursor: pointer" class="container thumbnail">-->
+            <!--<div class="crop">-->
+            <!--<img src="{{ url + '/displayImage/' + courseImage.id}}" alt="Avatar" class="image">-->
+            <!--</div>-->
+            <!--<div class="overlay">-->
+            <!--<div class="text">Click</div>-->
+            <!--</div>-->
+            <!--<div class="caption" align="left">-->
+            <!--<div id="div11">{{courseHis.name}}</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+
+            <!--</div>-->
+            <!--</div>-->
+
           </div>
         </div>
       </div>
@@ -55,6 +111,80 @@
       </div>
     </div>
   </nav>
+  <!--<nav class="navbar navbar-default">-->
+  <!--<div align="center">-->
+  <!--<h1>โปรเจคทีชื่นชอบ</h1>-->
+  <!--<br>-->
+  <!--</div>-->
+  <!--<div class="row">-->
+  <!--<div class="col-lg-8">-->
+  <!--<div *ngFor="let user of users">-->
+  <!--<div class="row" *ngIf="user.id == currentUser.id">-->
 
+  <!--<div class="col-xs-3 col-md-3">-->
+  <!--<div align="center">-->
+  <!--<div class="blog">-->
+  <!--<div class="row list-group">-->
+  <!--<div class="item col-xs-4 col-sm-4 col-md-4 col-lg-4"-->
+  <!--style="width: 205px; margin-right: 2%; margin-bottom: 2%"-->
+  <!--*ngFor="let courseHis of user?.courses">-->
+  <!--<div>-->
+  <!--<div class="thumbnail">-->
+  <!--<div class="crop" style="border: solid 1px #e59999;">-->
+
+  <!--<img style="cursor: pointer" (click)="click(courseHis.id)" class="img"-->
+  <!--src="{{ url + '/displayImage/' + courseHis.imageCourses[0]?.id}}" alt=""/>-->
+
+  <!--</div>-->
+  <!--<div align="left" [hidden]="courseHis.linkCourse == textNull">-->
+  <!--<a style="cursor: pointer"><span-->
+  <!--style="font-size: 20px; color: #bf2b2a; float: right; margin-top: -115px; margin-right: 5px"-->
+  <!--class="glyphicon glyphicon glyphicon-shopping-cart"></span></a>-->
+  <!--</div>-->
+
+  <!--<div class="caption" align="left">-->
+  <!--<div id="div2">{{courseHis.name}}</div>-->
+  <!--<h6 [hidden]="courseHis.price == empty" class="group inner list-group-item-heading">-->
+  <!--{{courseHis.price}} บาท.</h6>-->
+  <!--<h6 *ngIf="courseHis.price == empty"-->
+  <!--class="animated pulse infinite group inner list-group-item-heading"-->
+  <!--style="color: #bf2b2a">ฟรี</h6>-->
+  <!--</div>-->
+  <!--</div>-->
+  <!--</div>-->
+  <!--</div>-->
+  <!--</div>-->
+  <!--</div>-->
+  <!--</div>-->
+  <!--</div>-->
+
+  <!--&lt;!&ndash;<div class="col-xs-3 col-md-3" *ngFor="let courseHis of user?.courses">&ndash;&gt;-->
+  <!--&lt;!&ndash;<div align="center">&ndash;&gt;-->
+
+  <!--&lt;!&ndash;<div *ngFor="let courseImage of courseHis?.imageCourses">&ndash;&gt;-->
+  <!--&lt;!&ndash;<div (click)="click(courseHis.id)" style="cursor: pointer" class="container thumbnail">&ndash;&gt;-->
+  <!--&lt;!&ndash;<div class="crop">&ndash;&gt;-->
+  <!--&lt;!&ndash;<img src="{{ url + '/displayImage/' + courseImage.id}}" alt="Avatar" class="image">&ndash;&gt;-->
+  <!--&lt;!&ndash;</div>&ndash;&gt;-->
+  <!--&lt;!&ndash;<div class="overlay">&ndash;&gt;-->
+  <!--&lt;!&ndash;<div class="text">Click</div>&ndash;&gt;-->
+  <!--&lt;!&ndash;</div>&ndash;&gt;-->
+  <!--&lt;!&ndash;<div class="caption" align="left">&ndash;&gt;-->
+  <!--&lt;!&ndash;<div id="div11">{{courseHis.name}}</div>&ndash;&gt;-->
+  <!--&lt;!&ndash;</div>&ndash;&gt;-->
+  <!--&lt;!&ndash;</div>&ndash;&gt;-->
+  <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+  <!--&lt;!&ndash;</div>&ndash;&gt;-->
+  <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+  <!--</div>-->
+  <!--</div>-->
+  <!--</div>-->
+  <!--<div class="col-lg-4">-->
+
+  <!--</div>-->
+  <!--</div>-->
+  <!--</nav>-->
 </div>
 <app-footer></app-footer>

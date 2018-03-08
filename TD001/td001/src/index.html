@@ -18,18 +18,18 @@
   <app-root>Loading...</app-root>
 </body>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-114442657-1"></script>
+<!-- Global site tag (gtag.js) - Google Analytics --> 
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-114442657-1"></script> 
 <script> 
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
+  window.dataLayer = window.dataLayer || []; 
+  function gtag(){dataLayer.push(arguments);} 
+  gtag('js', new Date()); 
 
   gtag('config', 'UA-114442657-1'); 
 </script>
 
 <script>
-  $('input[type="year"], input[type="month"],input[type="date"]').each(function () {
+  $('input[type="date"], input[type="month"], input[type="year"]').each(function () {
     var el = this,
       type = $(el).attr('type');
     if ($(el).val() == '') $(el).attr('type', 'text');
@@ -69,12 +69,12 @@
   }
 </script>
 <script>
-  $(document).ready(function () {
-    $('#media').carousel({
-      pause: true,
-      interval: 1000,
-    });
+  $(document).ready(function() {
+  $('#media').carousel({
+    pause: true,
+    interval: 1000,
   });
+});
 </script>
 
 </html>
