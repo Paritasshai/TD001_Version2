@@ -4,15 +4,12 @@
   <div class="container-fluid" *ngFor="let user of users">
     <div class="container" *ngIf="user.id == currentUser.id">
       <div style="margin-top: 2%" class="fb-profile">
-        <br>
-        <br>
-        <div class="fb-profile-text">
-          <!--<h2>{{currentUser.firstName}}</h2>-->
+        <!-- <div class="fb-profile-text">
           <div [hidden]="user.status != active">
             <br>
             <h3><b>แต้มพร้อมใช้งาน {{user.balance}}</b></h3>
           </div>
-        </div>
+        </div> -->
         <br>
         <nav class="navbar navbar-inverse" [hidden]="user.status == instructor">
           <div class="container-fluid">
@@ -98,8 +95,8 @@
                   <td>
                     <div [hidden]="bankStatement.statusBank == confirm">
                       <button class="btn btn-primary btn-md" (click)="ConfirmPayment(bankStatement.id, bankStatement.users[0].email, bankStatement.paymentId, bankStatement.statementAmount, bankStatement.users[0].balance, bankStatement.bankOrderId)">
-                      Confirm
-                    </button>
+                        Confirm
+                      </button>
                     </div>
                   </td>
                 </tr>

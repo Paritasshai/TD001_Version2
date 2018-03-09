@@ -14,6 +14,10 @@ export class PurchaseCourseService {
     return this.http.post(AppComponent.API_URL + 'saveCart/' + '?userId=' + userId + '&' + 'countPurchase=' + countPurchase + '&' + 'courseId=' + id + '&' + 'transAmount=' + price + '&' + 'userBalance=' + userBalance + '&' + 'courseName=' + name, purchaseCart).map((response: Response) => response.json());
   }
 
+  getPurchaseCardList() {
+    return this.http.get(AppComponent.API_URL + 'getPurchaseCartList').map((response: Response) => response.json());
+  }
+
   getCarts(): Observable<PurchaseCard[]> {
     const headers = new Headers({'Authorization': 'Bearer '});
     const options = new RequestOptions({headers: headers});

@@ -1,70 +1,63 @@
 <body>
-<app-header></app-header>
-<hr style="border: solid 2px #dd1d0a; font-weight: 900">
-<div class="container-fluid">
-  <form name="form" novalidate (ngSubmit)="upLoad(currentUser.id)">
-    <div class="container-default">
+  <app-header></app-header>
+  <div class="container-fluid">
+    <form name="form" novalidate (ngSubmit)="upLoad(currentUser.id)">
+      <div class="container-default">
 
-      <nav class="navbar navbar-default bg-faded">
-    <span class="navbar-text">
-    <h4 align="center">Create Course</h4>
-      <alert>
-      <div class="alert alert-success" ng-reflect-ng-class="[object Object]">
-        successful
-      </div>
-      </alert>
-    </span>
-      </nav>
+        <nav class="navbar navbar-default bg-faded">
+          <span class="navbar-text">
+            <h4 align="center">Create Course</h4>
 
-      <div class="row">
+          </span>
+        </nav>
 
-        <div class="col-sm-12">
+        <div class="row">
 
-          <div class="form-group">
-            <input type="text" class="form-control" name="name" placeholder="Name Course.."
-                   [(ngModel)]="Course.name"
-                   #name="ngModel" required/>
-          </div>
+          <div class="col-sm-12">
 
-          <div class="form-group">
-      <textarea class="form-control" name="description" placeholder="Course description.."
-                maxlength="2000" [(ngModel)]="Course.description"
+            <div class="form-group">
+              <input type="text" class="form-control" name="name" placeholder="Name Course.." [(ngModel)]="Course.name" #name="ngModel"
+                required/>
+            </div>
+
+            <div class="form-group">
+              <textarea class="form-control" name="description" placeholder="Course description.." maxlength="2000" [(ngModel)]="Course.description"
                 #name="ngModel"></textarea>
-          </div>
+            </div>
 
-          <div class="form-group">
-            <input type="number" (keypress)="keyPress($event)" class="form-control" name="price" placeholder="Price.."
-                   [(ngModel)]="Course.price"
-                   #price="ngModel" required/>
-          </div>
+            <div class="form-group">
+              <input type="number" (keypress)="keyPress($event)" class="form-control" name="price" placeholder="Price.." [(ngModel)]="Course.price"
+                #price="ngModel" required/>
+            </div>
 
-          <!--<div class="form-group">-->
+            <!--<div class="form-group">-->
             <!--<label>CourseType</label>-->
             <!--<div *ngFor="let TypeItem of TypeItems">-->
-              <!--<input type="radio" name="option" (click)="model.options = TypeItem"-->
-                     <!--[checked]="TypeItem === model.options">-->
-              <!--{{TypeItem}}-->
+            <!--<input type="radio" name="option" (click)="model.options = TypeItem"-->
+            <!--[checked]="TypeItem === model.options">-->
+            <!--{{TypeItem}}-->
             <!--</div>-->
-          <!--</div>-->
+            <!--</div>-->
 
-          <!--<div class="form-group">-->
+            <!--<div class="form-group">-->
             <!--<label>Catagory</label>-->
             <!--<div *ngFor="let CatagoriesItem of CatagoriesItems">-->
-              <!--<input type="radio" name="options" (click)="models.options = CatagoriesItem"-->
-                     <!--[checked]="CatagoriesItem === models.options">-->
-              <!--{{CatagoriesItem}}-->
+            <!--<input type="radio" name="options" (click)="models.options = CatagoriesItem"-->
+            <!--[checked]="CatagoriesItem === models.options">-->
+            <!--{{CatagoriesItem}}-->
             <!--</div>-->
-          <!--</div>-->
+            <!--</div>-->
 
-          <div class="form-group">
-            <button name="createButton" class="btn btn-success btn-md"><span class="glyphicon glyphicon-ok"></span> Create Course</button>
+            <div class="form-group">
+              <button name="createButton" class="btn btn-success btn-md">
+                <span class="glyphicon glyphicon-ok"></span> Create Course</button>
+            </div>
+
+            <hr class="style1">
           </div>
-
-          <hr class="style1">
         </div>
-      </div>
 
-    </div>
-  </form>
-</div>
+      </div>
+    </form>
+  </div>
 </body>

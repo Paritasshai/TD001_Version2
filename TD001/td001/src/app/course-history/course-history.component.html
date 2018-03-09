@@ -17,29 +17,40 @@
 
             <div class="container">
               <div class="row">
-                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12" style="float:left;"
-                     *ngFor="let courseHis of user?.courses">
+                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12" style="float:left;" *ngFor="let courseHis of user?.courses">
                   <div align="center">
                     <div class="thumbnail">
                       <div class="crop" style="border: solid 1px #e59999;">
 
-                        <img style="cursor: pointer" (click)="click(courseHis.id)" class="img"
-                             src="{{ url + '/displayImage/' + courseHis.imageCourses[0]?.id}}" alt=""/>
+                        <img style="cursor: pointer" (click)="click(courseHis.id)" class="img" src="{{ url + '/displayImage/' + courseHis.imageCourses[0]?.id}}"
+                          alt="" />
 
                       </div>
                       <div align="left" [hidden]="courseHis.linkCourse == textNull">
-                        <a style="cursor: pointer"><span
-                          style="font-size: 20px; color: #bf2b2a; float: right; margin-top: -115px; margin-right: 5px"
-                          class="glyphicon glyphicon glyphicon-shopping-cart"></span></a>
+                        <a style="cursor: pointer">
+                          <span style="font-size: 20px; color: #bf2b2a; float: right; margin-top: -115px; margin-right: 5px" class="glyphicon glyphicon glyphicon-shopping-cart"></span>
+                        </a>
                       </div>
 
                       <div class="caption" align="left">
                         <div id="div1">{{courseHis.name}}</div>
                         <h6 [hidden]="courseHis.price == empty" class="group inner list-group-item-heading">
                           {{courseHis.price}} บาท.</h6>
-                        <h6 *ngIf="courseHis.price == empty"
-                            class="animated pulse infinite group inner list-group-item-heading"
-                            style="color: #bf2b2a">ฟรี</h6>
+                        <h6 *ngIf="courseHis.price == empty" class="animated pulse infinite group inner list-group-item-heading" style="color: #bf2b2a">ฟรี</h6>
+                        <div *ngFor="let PurchaseCard of PurchaseCards">
+                          <div *ngFor="let userCard of PurchaseCard?.users">
+                            <div *ngFor="let courseCard of PurchaseCard?.courses">
+                              <div *ngIf="user.id == userCard.id">
+                                <div *ngIf="courseHis.id == courseCard.id">
+                                  <!-- {{userCard.id}} 
+                                  {{courseCard.id}} 
+                                  {{PurchaseCard.id}}  -->
+                                  Date Expired: {{PurchaseCard.dateExpired}}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -50,9 +61,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-4">
 
-      </div>
     </div>
   </nav>
 
