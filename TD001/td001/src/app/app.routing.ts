@@ -27,7 +27,7 @@ import {EditCommentComponent} from './robomind/add-coment/edit-comment/edit-comm
 import {CreateRoboticComponent} from './robomind/create-robotic/create-robotic.component';
 import {InstructorProfileComponent} from './userProfile/instructor-profile/instructor-profile.component';
 import {StoreComponent} from './alertContent/store/store.component';
-import {CourseDecisionComponent} from './alertContent/course-decision/course-decision.component' ;
+import {DecistionService} from './alertContent/course-decision/course-decision.component' ;
 import { HeaderSearchComponent } from './header/header-search/header-search.component';
 
 const appRoutes: Routes = [
@@ -59,7 +59,7 @@ const appRoutes: Routes = [
   {path: 'insProfile/:id', component: InstructorProfileComponent},
   {path: 'store', component: StoreComponent},
   {path: 'HeaderSearch/:id', component: HeaderSearchComponent},
-  {path: 'courseVideo/:id', component: CourseDecisionComponent},
+  {path: 'courseVideo/:id', component: DecistionService},
 
 
   // otherwise redirect to home

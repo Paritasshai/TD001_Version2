@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
 import {Subject} from 'rxjs/Subject';
-import {NavigationStart, Router} from "@angular/router";
+import {NavigationStart, Router} from '@angular/router';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class AlertService {
@@ -35,13 +35,13 @@ export class AlertService {
 
 
   setConfirmation(message: string, siFn: () => void, noFn: () => void) {
-    let that = this;
+    const that = this;
     this.subject.next({
-      type: "confirm",
+      type: 'confirm',
       text: message,
       siFn:
         function () {
-          that.subject.next(); //this will close the modal
+          that.subject.next(); // this will close the modal
           siFn();
         },
       noFn: function () {

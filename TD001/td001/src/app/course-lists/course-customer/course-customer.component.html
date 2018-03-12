@@ -142,7 +142,7 @@
                               </div>
 
                               <div *ngIf="course.canPreview != truePreview">
-                                <a type="text" data-toggle="modal" (click)="buyyy()" [attr.data-target]="'#myModal' + course.id" style="cursor: pointer; color: #404040">
+                                <a type="text" data-toggle="modal" data-target="#squarespaceModalLogin" class="smoothScroll center-block" style="cursor: pointer">
                                   <span *ngIf="course.courseType == video" class="glyphicon glyphicon-facetime-video"></span>
                                   <span *ngIf="course.courseType == image" class="glyphicon glyphicon-picture"></span>
                                   <span *ngIf="course.courseType == text" class="glyphicon glyphicon-list-alt"></span>
@@ -265,3 +265,4 @@
 
   </div>
 </div>
+<app-loginpage></app-loginpage>

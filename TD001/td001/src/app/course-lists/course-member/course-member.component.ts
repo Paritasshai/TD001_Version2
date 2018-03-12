@@ -142,12 +142,6 @@ export class CourseMemberComponent implements OnInit {
     });
   }
 
-  // private getCourseList() {
-  //   this.courseService.getCourseItemsByPublic(this.textPublic).subscribe(courses => {
-  //     this.coursesList = courses;
-  //   });
-  // }
-
   getCoursesById() {
     this.courseService.getCoursesById(this.route.snapshot.params['id']).subscribe(courses => {
       this.courses = courses;
@@ -164,67 +158,40 @@ export class CourseMemberComponent implements OnInit {
   buyCourse(countPurchase, id, balance, price, name) {
 
     const that = this;
-    this.alertService.confirmThis('ยืนยันการใช้แต้มเข้าเรียน?',
+    this.alertService.confirmThis('คุณมีแต้มคงเหลือ ' + balance,
 
       function () {
         // ACTION: Do this If user says YES
-        that.name = ' Yes clicked ';
+        // that.name = ' Yes clicked ';
+        console.log('Accept');
         that.userId = that.currentUser.id;
         that.userBalance = balance;
         console.log('Count: ' + countPurchase);
-        // console.log("your ID: " + id);
-        // console.log("your balance: " + balance);
-        // console.log("course price: " + price);
-        // console.log("name: " + name);
 
         that.purchaseCourseService.createBuyCourse(countPurchase, that.userId, id, that.purchaseCart, that.userBalance, price, name).subscribe(
           data => {
+            alert('ซื้อเรียบร้อยแล้ว');
             // alert('กรุณาตรวจสอบแต้มคงเหลือ..... \nยืนยันการใช้แต้มเข้าเรียน');
-            alert('แต้มคงเหลือ ' + (balance - price));
-            location.reload();
+            // alert('แต้มคงเหลือ ' + (balance - price));
+            // location.reload();
           },
           error => {
-            alert('มีบางอย่างผิดพลาดระบบกำลังตรวจสอบ');
+            that.alertService.confirmThis('แต้มไม่เพียงพอยืนยันการชำระเงินไปยังหน้าเติมแต้ม',
+
+              function () {
+                that.router.navigate(['/topUpOnline']);
+              }, function () {
+                console.log('ไม่จ่าย');
+              });
           });
 
       }, function () {
         // ACTION: Do this if user says NO
-        that.name = ' No clicked ';
+        // that.name = ' No clicked ';
         console.log('Refuse');
       });
 
-    // const answer = confirm('\nยืนยันการใช้แต้มเข้าเรียน');
-    // if (answer) {
-    //
-    //   this.userId = this.currentUser.id;
-    //   this.userBalance = balance;
-    //   // console.log("your ID: " + id);
-    //   // console.log("your balance: " + balance);
-    //   // console.log("course price: " + price);
-    //   // console.log("name: " + name);
-    //
-    //   this.purchaseCourseService.createBuyCourse(this.userId, id, this.purchaseCart, this.userBalance, price, name).subscribe(
-    //     data => {
-    //       alert('กรุณาตรวจสอบแต้มคงเหลือ..... \nยืนยันการใช้แต้มเข้าเรียน');
-    //       location.reload();
-    //     },
-    //     error => {
-    //       alert('มีบางอย่างผิดพลาดระบบกำลังตรวจสอบ');
-    //     });
-    // } else {
-    //   console.log('Refuse');
-    // }
   }
-
-  // TeacherHistory(email) {
-  //   //console.log(email);
-  //   //console.log("Get Teacher History");
-  //   this.courseService.getTeacherHistory(email)
-  //     .subscribe(historyIns => {
-  //       this.historyIns = historyIns;
-  //       // console.log(this.historyIns);
-  //     });
-  // }
 
   click(id) {
     this.router.navigate(['/CourseLists', id]);
@@ -240,17 +207,5 @@ export class CourseMemberComponent implements OnInit {
     console.log(id);
     this.router.navigate(['/insProfile', id]);
   }
-
-  // openVideo() {
-  //   console.log('openVideo');
-  //   console.log(this.videoplayer);
-  //   this.videoplayer.nativeElement.pause();
-  // }
-  //
-  // openVideoBuy() {
-  //   console.log('openVideoBuy');
-  //   console.log(this.videoplayer1);
-  //   this.videoplayer1.nativeElement.pause();
-  // }
 
 }

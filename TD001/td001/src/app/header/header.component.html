@@ -1,57 +1,4 @@
-<!-- <nav class="navbar navbar-default" style="border-bottom: 1px solid #dd1d0a;">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <img alt="Logo" (click)="home()" disabled [src]="ImgLogo" style="cursor: pointer; height: 45px; width: 125px;">
-      <a class="navbar-brand" href="#"></a>
-    </div>
-    <ul class="nav navbar-nav" style="margin-top: 0.1em;">
-      <li>
-        <a style="color: #8c8b8b; font-size: 1.2em; font-weight: 900; font-family: Kanit, sans-serif;">"anyone CAN DO in anywhere and anytime"</a>
-      </li>
-      <li>
-        <div class="navbar-form" role="search">
-          <div class="input-group">
-            <input (keydown)="keyDownFunction($event)" type="text" style="width: 100%; height: 30px;" class="form-control" [(ngModel)]="SearchAdvance.Pname"
-              name="Pname" #Pname="ngModel" placeholder="ค้นหาโปรเจคเรียน">
-            <div class="input-group-btn">
-              <button style="width: 100%; height: 30px" data-toggle="modal" data-target="#searchModal" class="btn btn-default" (click)="Search()">
-                <i class="glyphicon glyphicon-search"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right" style="margin-top: -0.1em;">
-      <li>
-        <a *ngIf="currentUser == null" data-toggle="modal" data-target="#squarespaceModalLogin" style="margin-top: 0.3em; color: #bf2b2a; font-size: 1em; cursor: pointer; font-family: Kanit, sans-serif;">
-          เข้าสู่ระบบ</a>
-      </li>
-      <li>
-        <a *ngIf="currentUser == null" data-toggle="modal" data-target="#squarespaceModalSignUp" style="margin-top: 0.3em; color: #bf2b2a; font-size: 1em; cursor: pointer; font-family: Kanit, sans-serif;">
-          สมัครสมาชิก</a>
-      </li>
-      <li>
-        <a title="โปรไฟล์" style="cursor: pointer" *ngIf="currentUser != null" (click)="profile()">
-            <span style="color: #bf2b2a; font-size: 1em; cursor: pointer; font-family: Kanit, sans-serif;">{{currentUser.balance}} แต้ม</span>
-          <span style="color: #bf2b2a; font-size: 1em; cursor: pointer; font-family: Kanit, sans-serif;">{{currentUser.firstName}}</span>
-          <span class="glyphicon glyphicon-user" style="color: #bf2b2a; font-size: 20px"></span>
-        </a>
-      </li>
-      <li>
-        <a (click)="logOut()" title="ออกจากระบบ" style="cursor: pointer" *ngIf="currentUser != null">
-          <span style="color: #bf2b2a; font-size: 1em; cursor: pointer; font-family: Kanit, sans-serif;">ออกจากระบบ</span>
-          <span class="glyphicon glyphicon-log-out" style="color: #bf2b2a; font-size: 20px"></span>
-        </a>
-      </li>
-    </ul>
-  </div>
-</nav>
-
-<app-loginpage></app-loginpage>
-<app-signuppage></app-signuppage> -->
-
-<section class="navbar navbar-default navbar-fixed-top header-style" role="navigation" style="border-bottom: 4px solid #dd1d0a; width: 100%">
+<section class="navbar navbar-default navbar-fixed-top header-style" role="navigation" style="border-bottom: 2px solid #dd1d0a; width: 100%">
 
   <div class="container">
     <div class="navbar-header">
@@ -97,7 +44,7 @@
           <div class="styleSign" [hidden]="currentUser != null">
             <a style="color: #bf2b2a">
               <div title="Sign In">
-                <span class="glyphicon glyphicon-log-in" data-toggle="modal" data-target="#squarespaceModalLogin"></span>
+                <span class="glyphicon glyphicon-log-in"></span>
                 เข้าสู่ระบบ
               </div>
             </a>
