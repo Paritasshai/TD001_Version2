@@ -16,7 +16,7 @@ export class CreateProfileComponent implements OnInit {
   @ViewChild('fileInput') fileInput;
   ImgLogo: string;
   currentUser: User;
-  today: number = Date.now();
+  today: any = Date.now();
 
   constructor(private router: Router,
               private studentService: StudentService) {
@@ -49,17 +49,15 @@ export class CreateProfileComponent implements OnInit {
   createProfile() {
     console.log(this.Student);
     // console.log(this.Student.stDate);
-    // console.log(this.today);
+    // console.log(this.today.format('DD-MM-YYYY'));
 
     this.studentService.createProfile(this.Student)
       .subscribe(
         data => {
-          // this.alertService.success('Registration successful', true);
           alert('create success');
           location.reload();
         },
         error => {
-          // this.alertService.error('This email already exists', true);
           alert('create Failed!!');
         });
   }
@@ -83,11 +81,11 @@ export class CreateProfileComponent implements OnInit {
     console.log('Student ID:' + id);
     this.studentService.deleteProfile(id).subscribe(
       data => {
-        //alert('Delete Image Success');
+        // alert('Delete Image Success');
         location.reload();
       },
       error => {
-        alert('Error')
+        alert('Error');
       });
   }
 

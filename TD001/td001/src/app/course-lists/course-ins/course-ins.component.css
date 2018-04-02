@@ -26,7 +26,6 @@ video {
 
 .container-design {
   padding: 2%;
-  margin-top: 2%;
   margin-right: 10%;
   margin-left: 10%;
 }
@@ -45,16 +44,6 @@ video {
   margin-top: 2%;
   padding: 2%;
   height: 200px;
-}
-
-.video-responsive {
-  width: 800px;
-  height: auto;
-}
-
-video {
-  width: 800px;
-  height: 450px;
 }
 
 .card-content {

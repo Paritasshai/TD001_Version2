@@ -2,11 +2,6 @@
   background-color: #fafafa;
 }
 
-.contain {
-  width: 100%;
-  height: 1200px;
-}
-
 .bg {
   position: relative;
   /*background: linear-gradient(to bottom, #8ea4bd 0%, #7f91a9 100%);*/
@@ -16,7 +11,6 @@
 
 .container-design {
   padding: 2%;
-  margin-top: 2%;
   margin-right: 10%;
   margin-left: 10%;
   /*box-shadow: 0 0 2px 2px #cfcfcf; !*THIS does not work as expected*!*/

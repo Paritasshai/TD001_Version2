@@ -1,119 +1,111 @@
 <app-header></app-header>
-<!--<hr style="border: solid 2px #dd1d0a; font-weight: 900">-->
-<div class="bg">
-  <div class="container-fluid" *ngFor="let user of users">
-    <div class="container" *ngIf="user.id == currentUser.id">
-      <div style="margin-top: 2%" class="fb-profile">
-        <!-- <div class="fb-profile-text">
-          <div [hidden]="user.status != active">
-            <br>
-            <h3><b>แต้มพร้อมใช้งาน {{user.balance}}</b></h3>
-          </div>
-        </div> -->
-        <br>
-        <nav class="navbar navbar-inverse" [hidden]="user.status == instructor">
-          <div class="container-fluid">
-            <ul class="nav navbar-nav">
+<div class="container-fluid" *ngFor="let user of users">
+  <div class="container" *ngIf="user.id == currentUser.id">
 
-              <div [hidden]="user.status != active">
-                <button class="btn btn-danger navbar-btn" [routerLink]="['/topUpOnline']">เติมแต้ม</button>
-                <button class="btn btn-danger navbar-btn" [routerLink]="['/CourseHistory']">โปรเจคของฉัน</button>
-                <button class="btn btn-danger navbar-btn" [routerLink]="['/Favor']">โปรเจคที่ชื่นชอบ</button>
-              </div>
-              <div [hidden]="user.status != admin">
-                <button class="btn btn-danger navbar-btn" (click)="showU()">User Management</button>
-                <button class="btn btn-danger navbar-btn" (click)="showO()">Order Management</button>
-                <button class="btn btn-danger navbar-btn" (click)="showC()">Confirm Management</button>
-              </div>
-
-            </ul>
-          </div>
-        </nav>
-        <div [hidden]="user.status != active">
-          <!--<app-course-favor></app-course-favor>-->
-          <app-non-top-up></app-non-top-up>
-          <app-payment-history-list></app-payment-history-list>
+    <nav class="navbar navbar-inverse" [hidden]="user.status != admin">
+      <ul class="nav navbar-nav">
+        <!-- <div [hidden]="user.status != active">
+              <button class="btn btn-danger navbar-btn" [routerLink]="['/topUpOnline']">เติมแต้ม</button>
+              <button class="btn btn-danger navbar-btn" [routerLink]="['/CourseHistory']">โปรเจคของฉัน</button>
+              <button class="btn btn-danger navbar-btn" [routerLink]="['/Favor']">โปรเจคที่ชื่นชอบ</button>
+            </div> -->
+        <div>
+          <button class="btn btn-danger navbar-btn" (click)="showU()">User Management</button>
+          <button class="btn btn-danger navbar-btn" (click)="showO()">Order Management</button>
+          <button class="btn btn-danger navbar-btn" (click)="showC()">Confirm Management</button>
         </div>
-        <div [hidden]="user.status != instructor">
-          <div class="row">
-            <div>
-              <div class="col-sm-4">
-                <app-edit-user></app-edit-user>
-              </div>
-              <div class="col-sm-8">
-                <div class="well">โปรเจคทั้งหมดของ {{currentUser.firstName}}</div>
-                <app-edit-course></app-edit-course>
-              </div>
-            </div>
-          </div>
-        </div>
+      </ul>
+    </nav>
 
-        <div [hidden]="user.status != admin">
-          <div *ngIf="show1">
-            <br>
-            <h2>User Management</h2>
-            <app-user-management></app-user-management>
-          </div>
-
-          <div *ngIf="show2">
-            <br>
-            <h2>Order Management</h2>
-            <app-order-management></app-order-management>
-          </div>
-
-          <div *ngIf="show3">
-            <br>
-            <h2>Payment Management</h2>
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>User ID</th>
-                  <th>Payment Id</th>
-                  <th>Order ID</th>
-                  <th>Username</th>
-                  <th>Email</th>
-                  <th>Bank</th>
-                  <th>Date</th>
-                  <th>Time</th>
-                  <th>Status</th>
-                  <th>Amount</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr [hidden]="bankStatements == undefined" *ngFor="let bankStatement of bankStatements">
-                  <td>{{bankStatement.users[0].id}}</td>
-                  <td>{{bankStatement.paymentId}}</td>
-                  <td>{{bankStatement.bankOrderId}}</td>
-                  <td>{{bankStatement.users[0].firstName}}</td>
-                  <td>{{bankStatement.users[0].email}}</td>
-                  <td>{{bankStatement.bankName}}</td>
-                  <td>{{bankStatement.statementDate}}</td>
-                  <td>{{bankStatement.statementTime}}</td>
-                  <td>{{bankStatement.statusBank}}</td>
-                  <td align="right">{{bankStatement.statementAmount}}</td>
-                  <td>
-                    <div [hidden]="bankStatement.statusBank == confirm">
-                      <button class="btn btn-primary btn-md" (click)="ConfirmPayment(bankStatement.id, bankStatement.users[0].email, bankStatement.paymentId, bankStatement.statementAmount, bankStatement.users[0].balance, bankStatement.bankOrderId)">
-                        Confirm
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-        </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+    <div [hidden]="user.status != active">
+      <div>
+        <app-non-top-up></app-non-top-up>
+      </div>
+      <div>
+        <app-payment-history-list></app-payment-history-list>
       </div>
     </div>
+    <div [hidden]="user.status != instructor">
+      <div class="row">
+        <div>
+          <div class="col-sm-8">
+            <app-edit-user></app-edit-user>
+          </div>
+          <div class="col-sm-12">
+            <app-edit-course></app-edit-course>
+          </div>
+          <!-- <div class="col-sm-12">
+              <app-edit-course></app-edit-course>
+            </div> -->
+        </div>
+      </div>
+    </div>
+
+    <div [hidden]="user.status != admin">
+      <div *ngIf="show1">
+        <br>
+        <h2>User Management</h2>
+        <app-user-management></app-user-management>
+      </div>
+
+      <div *ngIf="show2">
+        <br>
+        <h2>Order Management</h2>
+        <app-order-management></app-order-management>
+      </div>
+
+      <div *ngIf="show3">
+        <br>
+        <h2>Payment Management</h2>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>User ID</th>
+              <th>Payment Id</th>
+              <th>Order ID</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Bank</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Status</th>
+              <th>Amount</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr [hidden]="bankStatements == undefined" *ngFor="let bankStatement of bankStatements">
+              <td>{{bankStatement.users[0].id}}</td>
+              <td>{{bankStatement.paymentId}}</td>
+              <td>{{bankStatement.bankOrderId}}</td>
+              <td>{{bankStatement.users[0].firstName}}</td>
+              <td>{{bankStatement.users[0].email}}</td>
+              <td>{{bankStatement.bankName}}</td>
+              <td>{{bankStatement.statementDate}}</td>
+              <td>{{bankStatement.statementTime}}</td>
+              <td>{{bankStatement.statusBank}}</td>
+              <td align="right">{{bankStatement.statementAmount}}</td>
+              <td>
+                <div [hidden]="bankStatement.statusBank == confirm">
+                  <button class="btn btn-primary btn-md" (click)="ConfirmPayment(bankStatement.id, bankStatement.users[0].email, bankStatement.paymentId, bankStatement.statementAmount, bankStatement.users[0].balance, bankStatement.bankOrderId)">
+                    Confirm
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
     <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
   </div>
+  <br>
 </div>
 <app-footer></app-footer>

@@ -1,102 +1,78 @@
-<section class="navbar navbar-default navbar-fixed-top header-style" role="navigation" style="border-bottom: 2px solid #dd1d0a; width: 100%">
+<nav class="navbar navbar-default">
 
-  <div class="container">
-    <div class="navbar-header">
-      <button class="navbar-toggle cc" data-toggle="collapse" data-target=".navbar-collapse" style="background-color: white; border: solid 1px #bf2b2a">
-        <span style="background-color: #bf2b2a" class="icon icon-bar"></span>
-        <span style="background-color: #bf2b2a" class="icon icon-bar"></span>
-      </button>
-      <!--<img disabled title="Logo" [src]="ImgLogo" routerLink="/home" style="cursor: pointer; margin-top: 7%">-->
-      <img alt="Logo" (click)="home()" disabled [src]="ImgLogo" style="cursor: pointer; margin-top: -2px; height: 45px; width: 125px;">
-      <!--<a style="color: #bf2b2a; margin-top: 3%; cursor: hand" class="navbar-brand"><span routerLink="/home">Website-->
-      <!--LOGO</span></a>-->
-      <div style="margin-top: -30px; margin-left: 130px" class="hidden-xs">
-        <p style="color: #8c8b8b; font-size: 18px; font-weight: 900; font-family: Kanit, sans-serif;">
-          "anyone CAN DO in anywhere and anytime"
-        </p>
-      </div>
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+      aria-expanded="false">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <div class="navbar-brand imgClass">
+      <img alt="Logo" class="img-in-class" (click)="home()" disabled [src]="ImgLogo" style="cursor: pointer">
     </div>
-
-    <div class="collapse navbar-collapse">
-      <ul class="set-width nav navbar-nav navbar-right margin-design">
-
-        <!-- <li style="margin-right: 280px">
-            <p style="color: #8c8b8b; font-size: 18px; font-weight: 900; font-family: Kanit, sans-serif; margin-top: 6px ">
-              "anyone CAN DO in anywhere and anytime"
-            </p>
-          </li> -->
-
-        <li style="margin-top: -8px; margin-right: 10px" class="hidden-xs hidden-md">
-          <div class="navbar-form" role="search">
-            <div class="input-group">
-              <input (keydown)="keyDownFunction($event)" type="text" style="width: 100%; height: 30px" class="form-control" [(ngModel)]="SearchAdvance.Pname"
-                name="Pname" #Pname="ngModel" placeholder="ค้นหาโปรเจคเรียน">
-              <div class="input-group-btn">
-                <button style="width: 100%; height: 30px" data-toggle="modal" data-target="#searchModal" class="btn btn-default" (click)="Search()">
-                  <i class="glyphicon glyphicon-search"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </li>
-
-        <li data-toggle="modal" data-target="#squarespaceModalLogin" class="smoothScroll center-block" style="cursor: pointer">
-          <div class="styleSign" [hidden]="currentUser != null">
-            <a style="color: #bf2b2a">
-              <div title="Sign In">
-                <span class="glyphicon glyphicon-log-in"></span>
-                เข้าสู่ระบบ
-              </div>
-            </a>
-          </div>
-        </li>
-
-        <!--<li><p style="font-family: Kanit, sans-serif; font-size: 24px; color: #1f2225; margin: 2%; opacity: 0.5">|</p></li>-->
-        <li data-toggle="modal" data-target="#squarespaceModalSignUp" class="smoothScroll center-block" style="cursor: pointer">
-          <div class="styleSign" [hidden]="currentUser != null">
-            <a style="color: #bf2b2a">
-              <div title="Sign Up">
-                <span class="" data-toggle="modal" data-target="#squarespaceModalSignUp"></span>
-                สมัครสมาชิก
-              </div>
-            </a>
-          </div>
-        </li>
-
-        <li>
-          <a class="smoothScroll" style="color: #bf2b2a">
-            <div *ngIf="currentUser != null">
-              <div>
-                <div *ngFor="let user of users">
-                  <b *ngIf="user.id == currentUser.id">{{user.balance}} แต้ม</b>
-                  <b *ngIf="user.id == currentUser.id">{{currentUser.firstName}}</b>
-                </div>
-              </div>
-            </div>
-          </a>
-        </li>
-
-        <li>
-          <a class="smoothScroll" style="color: #bf2b2a">
-            <div title="โปรไฟล์" [hidden]="!currentUser" style="font-size: 24px;margin-top: -10px; cursor: pointer" (click)="profile()">
-              <span class="glyphicon glyphicon-user"></span>
-            </div>
-          </a>
-        </li>
-        <li>
-
-          <a class="smoothScroll" style="color: #bf2b2a">
-            <div title="ออกจากระบบ" [hidden]="currentUser == null" (click)="logOut()" style="cursor: pointer; font-size: 28px; margin-top: -13px">
-              <span class="glyphicon glyphicon-log-out"></span>
-            </div>
-          </a>
-        </li>
-      </ul>
-    </div>
-
   </div>
-  <!--<hr style="border: solid 2px #dd1d0a; font-weight: 900; margin-top: -10px; width: 100%; position: fixed">-->
-</section>
+
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+    </ul>
+    <form class="navbar-form navbar-left" role="search">
+      <div class="form-group">
+        <input (keydown)="keyDownFunction($event)" [(ngModel)]="SearchAdvance.Pname" name="Pname" #Pname="ngModel" placeholder="ค้นหาโปรเจคเรียน"
+          type="text" class="form-control" placeholder="Search">
+      </div>
+      <button type="submit" class="btn btn-default" (click)="Search()">Search</button>
+    </form>
+    <ul class="nav navbar-nav navbar-right">
+      <li *ngIf="!show">
+        <a title="แต้ม">
+          <span class="fa fa-bitcoin"></span> {{users.balance}}</a>
+      </li>
+      <li *ngIf="!show">
+        <a style="cursor: pointer">
+          <span class="fa fa-bell-o" title="แจ้งเตือน"></span>
+        </a>
+      </li>
+      <li *ngIf="show">
+        <a href="#" data-toggle="modal" data-target="#squarespaceModalLogin">เข้าสู่ระบบ</a>
+      </li>
+      <li *ngIf="show">
+        <a href="#" data-toggle="modal" data-target="#squarespaceModalSignUp">สมัครสมาชิก</a>
+      </li>
+      <li class="dropdown" *ngIf="!show">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{users.firstName}}
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li>
+            <a style="cursor: pointer" (click)="profile()">
+              <span class="fa fa-user"></span> ดูโปรไฟล์ของฉัน
+              <span></span>
+            </a>
+          </li>
+          <li>
+            <a href="#" [routerLink]="['/topUpOnline']">เติมแต้ม</a>
+          </li>
+          <li>
+            <a href="#">โปรเจคของฉัน</a>
+          </li>
+          <li>
+            <a href="#" [routerLink]="['/CourseHistory']">โปรเจคที่ซื้อแล้ว</a>
+          </li>
+          <li>
+            <a href="#" [routerLink]="['/Favor']">โปรเจคที่ชื่นชอบ</a>
+          </li>
+          <li role="separator" class="divider"></li>
+          <li *ngIf="!show">
+            <a href="#" (click)="logOut()">
+              <span class="fa fa-sign-out"></span> ออกจากระบบ</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+</nav>
 
 <app-loginpage></app-loginpage>
 <app-signuppage></app-signuppage>

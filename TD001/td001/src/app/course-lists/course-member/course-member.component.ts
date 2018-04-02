@@ -20,9 +20,6 @@ export class CourseMemberComponent implements OnInit {
 
   url = AppComponent.API_URL;
 
-  // @ViewChild('videoPlayer') videoplayer: any;
-  // @ViewChild('videoPlayer1') videoplayer1: any;
-
   jsonp: any;
   courses: any = [];
   course: any = {};
@@ -38,7 +35,6 @@ export class CourseMemberComponent implements OnInit {
   statusInstructor = 'instructor';
   statusActive = 'active';
   admin = 'admin';
-  // users: User[] = [];
   currentUser: User;
   userId: any;
   purchaseCart: any = {};
@@ -46,7 +42,6 @@ export class CourseMemberComponent implements OnInit {
   pathId = this.route.snapshot.params['id'];
   userBalance: any;
   coursePrice = 30;
-  // result: any;
   balance: any;
   empty = 'null';
   historyIns: any = [];
@@ -158,7 +153,7 @@ export class CourseMemberComponent implements OnInit {
   buyCourse(countPurchase, id, balance, price, name) {
 
     const that = this;
-    this.alertService.confirmThis('คุณมีแต้มคงเหลือ ' + balance,
+    this.alertService.confirmThis('คุณมีแต้มคงเหลือ ' + balance + 'ต้องการซื้อโปรเจค?',
 
       function () {
         // ACTION: Do this If user says YES
@@ -170,14 +165,11 @@ export class CourseMemberComponent implements OnInit {
 
         that.purchaseCourseService.createBuyCourse(countPurchase, that.userId, id, that.purchaseCart, that.userBalance, price, name).subscribe(
           data => {
-            alert('ซื้อเรียบร้อยแล้ว');
-            // alert('กรุณาตรวจสอบแต้มคงเหลือ..... \nยืนยันการใช้แต้มเข้าเรียน');
-            // alert('แต้มคงเหลือ ' + (balance - price));
-            // location.reload();
+            alert('ซื้อโปรเจคเรียบร้อยแล้ว แต้มคงเหลือ' + (balance - price));
+            location.reload();
           },
           error => {
-            that.alertService.confirmThis('แต้มไม่เพียงพอยืนยันการชำระเงินไปยังหน้าเติมแต้ม',
-
+            that.alertService.confirmThis('แต้มไม่เพียงพอ ไปยังหน้าซื้อแต้ม',
               function () {
                 that.router.navigate(['/topUpOnline']);
               }, function () {
@@ -190,7 +182,6 @@ export class CourseMemberComponent implements OnInit {
         // that.name = ' No clicked ';
         console.log('Refuse');
       });
-
   }
 
   click(id) {
@@ -206,6 +197,15 @@ export class CourseMemberComponent implements OnInit {
   insProfile(id) {
     console.log(id);
     this.router.navigate(['/insProfile', id]);
+  }
+
+  PauseYoutube(videoPath) {
+    console.log('Close Video Youtube: ' + videoPath);
+    const frame: HTMLIFrameElement = <HTMLIFrameElement>document.getElementById(videoPath);
+    // console.log(myVideo);
+    // const frame = document.getElementById('player');
+    // console.log(frame);
+    frame.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
   }
 
 }

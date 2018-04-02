@@ -14,21 +14,25 @@
           </div>
         </div>
 
-        <div class="panel panel-default">
-          <div class="panel-heading">เกี่ยวกับโปรเจคนี้</div>
-          <div *ngIf="courses.linkCourse != nullText" class="panel-body">
-            <span>
-              <p style="color: #b62415; font-size: 50px" class="fa fa-shopping-basket fa-lg"></p>
-            </span>
-            <a target="_blank" href="{{courses.linkCourse}}" style="color: black">ซื้ออุปกรณ์ที่เกี่ยวข้อง</a>
+        <div class="panel">
+          <!-- <div class="panel-heading">เกี่ยวกับโปรเจคนี้</div> -->
+          <div align="center">
+            <div *ngIf="courses.linkCourse != nullText" class="panel-body">
+              <span>
+                <p style="color: #b62415; font-size: 30px" class="fa fa-shopping-basket fa-lg"></p>
+              </span>
+              <a target="_blank" href="{{courses.linkCourse}}">ซื้ออุปกรณ์ที่เกี่ยวข้อง</a>
+            </div>
           </div>
+
           <div class="panel-body" *ngIf="courses.price == empty">
             <span>
               <i class="fa fa-money"></i>
-            </span> ฟรี
+            </span> โปรเจคฟรี
           </div>
           <div align="center">
             <div [hidden]="courses.price == empty">
+              <!-- <p>โปรเจคนี้มีระยะเวลา {{courses.courseAge}} เดือน</p> -->
               <div style="margin: 1%; padding: 1%">
                 <button name="openButton" type="button" class="btn btn-danger btn-lg" (click)="openCustom()">
                   เข้าเรียนใช้ {{courses.price}} แต้ม
@@ -38,6 +42,7 @@
             </div>
           </div>
         </div>
+
         <div class="panel panel-default">
           <div class="panel-heading">
             <p>เกี่ยวกับผู้สอน</p>
@@ -78,7 +83,7 @@
           <div class="panel-body" style="word-wrap: break-word">{{courses.description}}</div>
         </div>
         <div class="panel panel-default">
-          <div class="panel-heading">คอร์สเรียน
+          <div class="panel-heading">เนื้อหาคอร์สเรียน
           </div>
 
           <body data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -201,12 +206,13 @@
                                           <div>
 
                                             <div class="video">
-                                              <iframe id="player" width="800" height="450" [src]="course.videoPath + '?enablejsapi=1' | safety" frameborder="0" allowfullscreen></iframe>
+                                              <iframe [id]="course.videoPath" width="800" height="450" [src]="course.videoPath + '?enablejsapi=1' | safety" frameborder="0"
+                                                allowfullscreen></iframe>
                                             </div>
 
                                             <div align="center">
-                                              <button name="pauseButton" (click)="PauseYoutube(course.videoPath + '?enablejsapi=1')" style="cursor: pointer; margin-top: 6px"
-                                                data-dismiss="modal" class="btn btn-md btn-danger" type="button">ปิดวิดีโอ X
+                                              <button name="pauseButton" (click)="PauseYoutube(course.videoPath)" style="cursor: pointer; margin-top: 6px" data-dismiss="modal"
+                                                class="btn btn-md btn-danger" type="button">ปิดวิดีโอยูทูป X
                                               </button>
                                             </div>
 
@@ -220,9 +226,7 @@
                                               <h2>Hello {{name}}</h2>
                                               <iframe [src]="pdfUrl" width="500" height="600" type='application/pdf'></iframe>
                                             </div>
-                                            <!-- <textarea maxlength="2000" [(ngModel)]="course.courseText" id="textItem" name="textItem" style="width: 800px; height: 430px"
-                                              type="text" class="form-control">
-                                            </textarea> -->
+
                                           </div>
                                           <div align="center">
                                             <button name="data1Button" style="cursor: pointer;" data-dismiss="modal" class="btn btn-md btn-danger" type="button">ปิดรูปภาพ X

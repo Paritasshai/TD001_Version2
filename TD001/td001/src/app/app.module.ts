@@ -74,6 +74,8 @@ import { StoreComponent } from './alertContent/store/store.component';
 import { YoutubePlayerModule } from 'ngx-youtube-player';
 import { HeaderSearchComponent } from './header/header-search/header-search.component';
 import { ProjectRecomComponent } from './course-lists/project-recom/project-recom.component';
+import { ProfileHeaderComponent } from './userProfile/profile-header/profile-header.component';
+import { AgePipePipe } from './pipes/age-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -125,7 +127,9 @@ import { ProjectRecomComponent } from './course-lists/project-recom/project-reco
     CourseComponent,
     StoreComponent,
     HeaderSearchComponent,
-    ProjectRecomComponent
+    ProjectRecomComponent,
+    ProfileHeaderComponent,
+    AgePipePipe
   ],
   imports: [
     BrowserModule,

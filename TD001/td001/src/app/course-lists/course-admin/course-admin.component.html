@@ -15,14 +15,18 @@
                 </div>
               </div>
 
-              <div class="panel panel-default br">
-                <div class="panel-heading">เกี่ยวกับโปรเจคนี้</div>
-                <div *ngIf="courses.linkCourse != nullText" class="panel-body">
-                  <span>
-                    <p style="color: #b62415; font-size: 50px" class="fa fa-shopping-basket fa-lg"></p>
-                  </span>
-                  <a target="_blank" href="{{courses.linkCourse}}" style="color:black;">ซื้ออุปกรณ์ที่เกี่ยวข้อง</a>
+              <div class="panel">
+                <!-- <div class="panel-heading">เกี่ยวกับโปรเจคนี้</div> -->
+
+                <div align="center">
+                  <div *ngIf="courses.linkCourse != nullText" class="panel-body">
+                    <span>
+                      <p style="color: #b62415; font-size: 30px" class="fa fa-shopping-basket fa-lg"></p>
+                    </span>
+                    <a target="_blank" href="{{courses.linkCourse}}">ซื้ออุปกรณ์ที่เกี่ยวข้อง</a>
+                  </div>
                 </div>
+
                 <div class="panel-body" [hidden]="courses.price == empty">
                   <span>
                     <i class="fa fa-money"></i>
@@ -33,7 +37,7 @@
                   <span>
                     <i class="fa fa-money"></i>
                   </span>
-                  ฟรี
+                  โปรเจคฟรี
                 </div>
               </div>
 
@@ -132,7 +136,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                       </button>
-                      <a class="navbar-brand" style="color: #404040">คอร์สเรียน</a>
+                      <a class="navbar-brand" style="color: #404040">เนื้อหาคอร์สเรียน</a>
                     </div>
                     <div>
                       <div class="collapse navbar-collapse" id="myNavbar3">
@@ -245,7 +249,18 @@
                                           <div align="center" [hidden]="course.courseType == image || course.courseType == text">
                                             <div [hidden]="course.videoClips[0]?.id != undefined">
                                               <div>
-                                                <iframe width="800" height="450" [src]="course.videoPath | safety" frameborder="0" allowfullscreen></iframe>
+
+                                                <div class="video">
+                                                  <iframe [id]="course.videoPath" width="800" height="450" [src]="course.videoPath + '?enablejsapi=1' | safety" frameborder="0"
+                                                    allowfullscreen></iframe>
+                                                </div>
+
+                                                <div align="center">
+                                                  <button name="pauseButton" (click)="PauseYoutube(course.videoPath)" style="cursor: pointer; margin-top: 6px" data-dismiss="modal"
+                                                    class="btn btn-md btn-danger" type="button">ปิดวิดีโอยูทูป X
+                                                  </button>
+                                                </div>
+
                                               </div>
                                             </div>
                                           </div>

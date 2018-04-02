@@ -94,8 +94,8 @@ export class CourseAdminComponent implements OnInit {
   }
 
   TeacherHistory(email) {
-    //console.log(email);
-    //console.log("Get Teacher History");
+    // console.log(email);
+    // console.log("Get Teacher History");
     this.courseService.getTeacherHistory(email)
       .subscribe(historyIns => {
         this.historyIns = historyIns;
@@ -111,5 +111,15 @@ export class CourseAdminComponent implements OnInit {
   insProfile(id) {
     console.log(id);
     this.router.navigate(['/insProfile', id]);
+  }
+
+
+  PauseYoutube(videoPath) {
+    console.log('Close Video Youtube: ' + videoPath);
+    const frame: HTMLIFrameElement = <HTMLIFrameElement>document.getElementById(videoPath);
+    // console.log(myVideo);
+    // const frame = document.getElementById('player');
+    // console.log(frame);
+    frame.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
   }
 }

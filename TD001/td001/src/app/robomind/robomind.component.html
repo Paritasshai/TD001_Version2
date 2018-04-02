@@ -1,17 +1,23 @@
 <nav class="navbar-light" style="background-color: #dd1d0a;">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" (click)="RobomindHome()" style="cursor: pointer"> <img disabled
-                                                                                     [src]="ImgLogo"
-                                                                                     style="cursor: pointer; height: 30px; width: 110px; margin-top: -5px"></a>
+      <a class="navbar-brand" target="_blank" [href]="www" style="cursor: pointer">
+        <img [src]="ImgLogo" style="cursor: pointer; height: 30px; width: 110px; margin-top: -5px">
+      </a>
     </div>
     <ul class="nav navbar-nav navbar-right" [hidden]="!currentUser">
-      <li><a (click)="RobomindCreate()" style="cursor: pointer"><span class="glyphicon glyphicon-new-window"></span>
-        Create Student</a></li>
+      <li>
+        <a (click)="RobomindCreate()" style="cursor: pointer">
+          <span class="glyphicon glyphicon-new-window"></span>
+          Create Student</a>
+      </li>
       <!--<li><a (click)="RobomindContent()" style="cursor: pointer"><span class="glyphicon glyphicon-link"></span>-->
       <!--Create Content</a></li>-->
-      <li><a (click)="RoboticName()" style="cursor: pointer"><span class="glyphicon glyphicon-wrench"></span>
-        Create Robotic</a></li>
+      <li>
+        <a (click)="RoboticName()" style="cursor: pointer">
+          <span class="glyphicon glyphicon-wrench"></span>
+          Create Robotic</a>
+      </li>
     </ul>
   </div>
 </nav>
@@ -22,30 +28,32 @@
     </div>
     <div class="col-sm-4">
       <div align="center">
-        <img style="width: 70%; margin-bottom: 5%; margin-top: 10%"
-             [src]="ImgLogo">
+        <img style="width: 70%; margin-bottom: 5%; margin-top: 10%" [src]="ImgLogo">
       </div>
       <form action="" id="loginForm">
         <div class="form-group input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-user" style="cursor: pointer"
-                                               title="First Name"></i></span>
-          <input [(ngModel)]="Student.username" style="height: 50px"
-                 #username="ngModel" class="form-control" type="text" name='username'
-                 placeholder="First Name example: Somchai"/>
+          <span class="input-group-addon">
+            <i class="glyphicon glyphicon-user" style="cursor: pointer" title="First Name"></i>
+          </span>
+          <input [(ngModel)]="Student.username" style="height: 50px" #username="ngModel" class="form-control" type="text" name='username'
+            placeholder="First Name example: Somchai, สมชาย" />
         </div>
         <div class="form-group input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" style="cursor: pointer"
-                                               title="Date of Birth"></i></span>
-          <input [(ngModel)]="Student.date" style="height: 50px" name="date"
-                 placeholder="Date of Birth example: 17/01/1995"
-                 #date="ngModel" class="form-control" type="date" required/>
+          <span class="input-group-addon">
+            <i class="glyphicon glyphicon-list-alt" style="cursor: pointer" title="Date of Birth"></i>
+          </span>
+          <input [(ngModel)]="Student.date" style="height: 50px" name="date" placeholder="Date of Birth example: 17/01/1995" #date="ngModel"
+            class="form-control" type="date" required/>
         </div>
         <div class="form-group">
-          <button style="height: 50px" type="button" class="btn btn-def btn-danger btn-block" (click)="search()"><span
-            class="glyphicon glyphicon-search"></span> &nbsp;&nbsp; Search
+          <button style="height: 50px" type="button" class="btn btn-def btn-danger btn-block" (click)="search()">
+            <span class="glyphicon glyphicon-search"></span> &nbsp;&nbsp; Login
           </button>
         </div>
       </form>
+      <div align="center">
+        <h1 style="font-size: 50px; color: grey">Student Portfolio</h1>
+      </div>
       <!-- <div align="center" *ngIf="Profile.id != null">
         <h1>รายชื่อที่ค้นพบ</h1>
         <table class="table-hover">

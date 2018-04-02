@@ -71,7 +71,6 @@ export class CourselistComponent implements OnInit {
     private userService: UserService) {
     this.Img1 = '../../assets/images/001.jpg';
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    // console.clear();
   }
 
   deviceObjects = [
@@ -113,22 +112,9 @@ export class CourselistComponent implements OnInit {
   ngOnInit() {
     this.show = true;
     this.loading = false;
-    // setTimeout(() => {
-    //   this.loading = false;
-    //   this.show = true;
-    // }, 3000);
-
-    // if (this.courses !== undefined) {
-    //   this.getCourseList();
-    // }
-    // if (this.currentUser !== undefined) {
-    //   this.getUserList();
-    // }
     this.getCourses();
     this.getCourseList();
-    // this.getCourseNewType();
     this.getCourseRecommendType();
-    // this.getCourseHotType();
   }
 
   public searchItem(query) {
@@ -161,11 +147,6 @@ export class CourselistComponent implements OnInit {
     this.SearchAdvance.rbGroup = this.selectedDeviceObj.name;
     this.SearchAdvance.day = this.selectedDayObj.value;
     console.log('Day: ' + this.SearchAdvance.day);
-    // console.log(this.SearchAdvance);
-
-    // this.courseService.getSearchByDate(this.SearchAdvance.day, this.textPublic).subscribe(courseSearch => {
-    //   this.courseSearch = courseSearch;
-    // });
 
     if (this.SearchAdvance.free === true && this.SearchAdvance.Pname != null) {
       this.querySearch = true;
@@ -272,81 +253,6 @@ export class CourselistComponent implements OnInit {
     this.querySearch = false;
   }
 
-  // public Lego() {
-  //   this.myVars = false;
-  //   this.myVar = false;
-  //   this.lego = true;
-  //   this.household = false;
-  //   this.toy = false;
-  //   this.garden = false;
-  //   this.iot = false;
-  //   this.querySearch = false;
-  //   // console.log("Lego");
-  //   this.courseService.getCourseItemsByLegoPublic(this.LegoText, this.textPublic).subscribe(coursesLego => {
-  //     this.coursesLego = coursesLego;
-  //   });
-  // }
-  //
-  // public Household() {
-  //   this.myVars = false;
-  //   this.myVar = false;
-  //   this.lego = false;
-  //   this.household = true;
-  //   this.toy = false;
-  //   this.garden = false;
-  //   this.iot = false;
-  //   this.querySearch = false;
-  //   // console.log("Household");
-  //   this.courseService.getCourseItemsByHouseholdPublic(this.HouseholdText, this.textPublic).subscribe(coursesHousehold => {
-  //     this.coursesHousehold = coursesHousehold;
-  //   });
-  // }
-  //
-  // public Toy() {
-  //   this.myVars = false;
-  //   this.myVar = false;
-  //   this.lego = false;
-  //   this.household = false;
-  //   this.toy = true;
-  //   this.garden = false;
-  //   this.iot = false;
-  //   this.querySearch = false;
-  //   // console.log("Toy");
-  //   this.courseService.getCourseItemsByToyPublic(this.ToyText, this.textPublic).subscribe(coursesToy => {
-  //     this.coursesToy = coursesToy;
-  //   });
-  // }
-  //
-  // public Garden() {
-  //   this.myVars = false;
-  //   this.myVar = false;
-  //   this.lego = false;
-  //   this.household = false;
-  //   this.toy = false;
-  //   this.garden = true;
-  //   this.iot = false;
-  //   this.querySearch = false;
-  //   // console.log("Garden");
-  //   this.courseService.getCourseItemsByGardenPublic(this.GardenText, this.textPublic).subscribe(coursesGarden => {
-  //     this.coursesGarden = coursesGarden;
-  //   });
-  // }
-  //
-  // public IoT() {
-  //   this.myVars = false;
-  //   this.myVar = false;
-  //   this.lego = false;
-  //   this.household = false;
-  //   this.toy = false;
-  //   this.garden = false;
-  //   this.iot = true;
-  //   this.querySearch = false;
-  //   // console.log("IoT");
-  //   this.courseService.getCourseItemsByIoTPublic(this.IoTText, this.textPublic).subscribe(coursesIoT => {
-  //     this.coursesIoT = coursesIoT;
-  //   });
-  // }
-
   private getCourses() {
     this.courseService.getSearchObjectPay(this.textNull, this.textPublic).subscribe(coursesss => {
       this.coursesss = coursesss;
@@ -361,13 +267,6 @@ export class CourselistComponent implements OnInit {
     });
   }
 
-  // private getCourseNewType() {
-  //   this.courseService.getCoursenewType(this.newType, this.textPublic).subscribe(coursesNew => {
-  //     this.coursesNew = coursesNew;
-  //     // console.log(this.coursesNew);
-  //   });
-  // }
-
   private getCourseRecommendType() {
     this.courseService.getCourseRecommendType(this.recommendType, this.textPublic).subscribe(coursesRecommend => {
       this.coursesRecommend = coursesRecommend;
@@ -375,22 +274,9 @@ export class CourselistComponent implements OnInit {
     });
   }
 
-  // private getCourseHotType() {
-  //   this.courseService.getCourseHotType(this.hotType, this.textPublic).subscribe(coursesHot => {
-  //     this.coursesHot = coursesHot;
-  //     // console.log(this.coursesHot);
-  //   });
-  // }
-
   click(id) {
     this.router.navigate(['/CourseLists', id]);
   }
-
-  // private getUserList() {
-  //   this.userService.getAll().subscribe(users => {
-  //     this.users = users;
-  //   });
-  // }
 
   addToList(id) {
     if (this.currentUser == null) {

@@ -16,22 +16,27 @@
                 </div>
               </div>
 
-              <div class="panel panel-default">
-                <div class="panel-heading">เกี่ยวกับโปรเจค</div>
-                <div *ngIf="coursesPurchaseed.linkCourse != nullText" class="panel-body">
-                  <span>
-                    <p style="color: #b62415; font-size: 50px" class="fa fa-shopping-basket fa-lg"></p>
-                  </span>
-                  <a target="_blank" href="{{coursesPurchaseed.linkCourse}}" style="color:black;">ซื้ออุปกรณ์ที่เกี่ยวข้อง</a>
+              <div class="panel">
+                <!-- <div class="panel-heading">เกี่ยวกับโปรเจค</div> -->
+
+                <div align="center">
+                  <div *ngIf="coursesPurchaseed.linkCourse != nullText" class="panel-body">
+                    <span>
+                      <p style="color: #b62415; font-size: 30px" class="fa fa-shopping-basket fa-lg"></p>
+                    </span>
+                    <a target="_blank" href="{{coursesPurchaseed.linkCourse}}">ซื้ออุปกรณ์ที่เกี่ยวข้อง</a>
+                  </div>
                 </div>
 
                 <div class="panel-body" *ngIf="courses.price == empty">
                   <span>
                     <i class="fa fa-money"></i>
-                  </span> ฟรี
+                  </span> โปรเจคฟรี
                 </div>
+
                 <div align="center">
                   <div *ngIf="coursesPurchaseed.price != empty">
+                    <!-- <p>โปรเจคนี้มีระยะเวลา {{courses.courseAge}} เดือน</p> -->
                     <div [hidden]="coursesPurchaseed.showLock == zero" style="margin: 1%; padding: 1%">
                       <button name="buyButton" type="button" class="btn btn-danger btn-lg" (click)="buyCourse(coursesPurchaseed.countPurchase, coursesPurchaseed.id, user.balance,coursesPurchaseed.price,coursesPurchaseed.name, currentUser.id)">
                         เข้าเรียนใช้ {{coursesPurchaseed.price}} แต้ม
@@ -88,7 +93,7 @@
                 <!--=================================================================================================-->
 
                 <div class="panel panel-default" *ngIf="coursesPurchaseed.showLock == one">
-                  <div class="panel-heading">คอร์สเรียน
+                  <div class="panel-heading">เนื้อหาคอร์สเรียน
                   </div>
 
                   <body data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -111,7 +116,7 @@
                                     <div class="row col-sm-12">
 
                                       <div *ngIf="course.canPreview != truePreview">
-                                        <a type="text" data-toggle="modal" [attr.data-target]="'#myModal' + course.id" style="cursor: pointer;color: #404040" (click)="buyCourse(coursesPurchaseed.id, user.balance,coursesPurchaseed.price,coursesPurchaseed.name, currentUser.id)">
+                                        <a type="text" data-toggle="modal" [attr.data-target]="'#myModal' + course.id" style="cursor: pointer;color: #404040" (click)="buyCourse(coursesPurchaseed.countPurchase, coursesPurchaseed.id, user.balance,coursesPurchaseed.price,coursesPurchaseed.name, currentUser.id)">
                                           <span *ngIf="course.courseType == video" class="glyphicon glyphicon-facetime-video"></span>
                                           <span *ngIf="course.courseType == image" class="glyphicon glyphicon-picture"></span>
                                           <span *ngIf="course.courseType == text" class="glyphicon glyphicon-list-alt"></span>
@@ -205,13 +210,18 @@
                                               </div>
                                               <div align="center" [hidden]="course.courseType == image || course.courseType == text">
                                                 <div [hidden]="course.videoClips[0]?.id != undefined">
+
                                                   <div class="video">
-                                                    <iframe width="800" height="450" [src]="course.videoPath | safety" frameborder="0" allowfullscreen></iframe>
+                                                    <iframe [id]="course.videoPath" width="800" height="450" [src]="course.videoPath + '?enablejsapi=1' | safety" frameborder="0"
+                                                      allowfullscreen></iframe>
                                                   </div>
+
                                                   <div align="center">
-                                                    <button name="modalButton" style="cursor: pointer; margin-top: 4px" data-dismiss="modal" class="btn btn-md btn-danger" type="button">ปิดรูปภาพ X
+                                                    <button name="pauseButton" (click)="PauseYoutube(course.videoPath)" style="cursor: pointer; margin-top: 6px" data-dismiss="modal"
+                                                      class="btn btn-md btn-danger" type="button">ปิดวิดีโอยูทูป X
                                                     </button>
                                                   </div>
+
                                                 </div>
                                               </div>
                                               <div align="center" [hidden]="course.courseType == image || course.courseType == video">
@@ -366,13 +376,18 @@
                                                   </div>
                                                   <div align="center" [hidden]="course.courseType == image || course.courseType == text">
                                                     <div [hidden]="course.videoClips[0]?.id != undefined">
+
                                                       <div class="video">
-                                                        <iframe width="800" height="450" [src]="course.videoPath | safety" frameborder="0" allowfullscreen></iframe>
+                                                        <iframe [id]="course.videoPath" width="800" height="450" [src]="course.videoPath + '?enablejsapi=1' | safety" frameborder="0"
+                                                          allowfullscreen></iframe>
                                                       </div>
+
                                                       <div align="center">
-                                                        <button name="modalButton" style="cursor: pointer; margin-top: 6px" data-dismiss="modal" class="btn btn-md btn-danger" type="button">ปิดรูปภาพ X
+                                                        <button name="pauseButton" (click)="PauseYoutube(course.videoPath)" style="cursor: pointer; margin-top: 6px" data-dismiss="modal"
+                                                          class="btn btn-md btn-danger" type="button">ปิดวิดีโอยูทูป X
                                                         </button>
                                                       </div>
+
                                                     </div>
                                                   </div>
                                                   <div align="center" [hidden]="course.courseType == image || course.courseType == video">

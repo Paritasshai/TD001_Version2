@@ -1,5 +1,4 @@
 <app-header></app-header>
-<!--<hr style="border: solid 2px #dd1d0a; font-weight: 900">-->
 
 <div class="container" style="margin-top: 3%">
   <div class="row profile">
@@ -7,48 +6,20 @@
       <div class="well2">
         <!-- SIDEBAR USERPIC -->
         <div align="center">
-
-          <!-- <form (ngSubmit)="user(currentUser.id)">
-            <div class="row">
-
-              <div class="col-lg-4" *ngIf="usersId?.userImages[0].id == null">
-                <br>
-                <div>
-                  <input class="btn btn-danger btn-md" type="file" #fileInput/>
-                  <button type="button" (click)="upload(currentUser.id)">Upload</button>
-                </div>
-              </div>
-
-            </div>
-          </form> -->
-
-
           <img style="width: 200px; height: auto;" src="data:{{usersId?.userImages[0].contentType}};base64,{{usersId?.userImages[0].content}}">
-
-          <!-- <br>
-          <button class="btn btn-danger btn-md" style="width: 50%;" *ngIf="usersId?.userImages[0].id != null" (click)="DeleteImage(usersId?.userImages[0].id)">
-        Delete
-            </button> -->
         </div>
 
         <!-- END SIDEBAR USERPIC -->
         <!-- SIDEBAR USER TITLE -->
         <div class="profile-usertitle">
           <div class="profile-usertitle-name" style="padding: 5px">
-          
+
           </div>
           <div class="profile-usertitle-job" style="padding: 5px">
             {{usersId.instructorBio}}
           </div>
         </div>
-        <!-- END SIDEBAR USER TITLE -->
-        <!-- SIDEBAR BUTTONS -->
-        <!--<div class="profile-userbuttons">-->
-        <!--<button type="button" class="btn btn-success btn-sm">Follow</button>-->
-        <!--<button type="button" class="btn btn-danger btn-sm">Message</button>-->
-        <!--</div>-->
-        <!-- END SIDEBAR BUTTONS -->
-        <!-- SIDEBAR MENU -->
+
         <div class="profile-usermenu">
           <ul class="nav">
             <li class="active">
@@ -86,13 +57,14 @@
             <div class="thumbnail">
               <div class="crop" style="border: solid 1px #e59999;">
 
-                <img style="cursor: pointer" (click)="click(course.id)" class="img" src="{{ url + '/displayImage/' + course.imageCourses[0]?.id}}" alt="" />
+                <img style="cursor: pointer" (click)="click(course.id)" class="img" src="{{ url + '/displayImage/' + course.imageCourses[0]?.id}}"
+                  alt="" />
 
               </div>
               <div align="left" [hidden]="course.linkCourse == textNull">
-                <a style="cursor: pointer"><span
-                  style="font-size: 20px; color: #bf2b2a; float: right; margin-top: -115px; margin-right: 5px"
-                  class="glyphicon glyphicon glyphicon-shopping-cart"></span></a>
+                <a style="cursor: pointer">
+                  <span style="font-size: 20px; color: #bf2b2a; float: right; margin-top: -115px; margin-right: 5px" class="glyphicon glyphicon glyphicon-shopping-cart"></span>
+                </a>
               </div>
 
               <div class="caption" align="left">

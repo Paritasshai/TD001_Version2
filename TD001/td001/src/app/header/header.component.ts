@@ -4,7 +4,7 @@ import { AuthenticationService } from '../services/Authentication.service';
 import { User } from '../models/User';
 import { UserService } from '../services/User.service';
 import { Router } from '@angular/router';
-import {AppComponent} from '../app.component';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-header',
@@ -15,14 +15,15 @@ import {AppComponent} from '../app.component';
 export class HeaderComponent implements OnInit {
 
   url = AppComponent.API_URL;
-
+  coinImg: string;
   ImgLogo: string;
   loading = false;
   currentUser: User;
   status: any;
-  users: User[] = [];
+  users: any = {};
   SearchAdvance: any = {};
   textPublic = 'true';
+  show = true;
 
   constructor(private courseService: CourseService,
     private authenticationService: AuthenticationService,
@@ -30,27 +31,26 @@ export class HeaderComponent implements OnInit {
     private router: Router) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.ImgLogo = '../../assets/images/tamdaiLogo.png';
+    this.coinImg = '../../assets/images/coin.png';
   }
 
   ngOnInit() {
-    this.getUserList();
+    if (this.currentUser !== null) {
+      this.getUserId();
+      this.show = false;
+    }
   }
 
   logOut() {
     this.loading = true;
     console.log('Log Out');
-    setTimeout(() => {
-      this.authenticationService.logout();
-      window.location.reload();
-    }, 1000);
+    localStorage.removeItem('currentUser');
     this.router.navigate(['/home']);
   }
 
-  private getUserList() {
-    this.userService.getAll().subscribe(users => {
-      if (this.users !== undefined) {
-        this.users = users;
-      }
+  private getUserId() {
+    this.userService.getUserId(this.currentUser.id).subscribe(users => {
+      this.users = users;
     });
   }
 
@@ -58,7 +58,7 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/home']);
   }
 
-  profile() {
+  profile(id) {
     this.router.navigate(['/userProfile']);
   }
 

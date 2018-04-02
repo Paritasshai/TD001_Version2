@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import {BrowserModule, DomSanitizer} from '@angular/platform-browser';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 import { CourseService } from '../../services/CourseService';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../services/User.service';
@@ -22,6 +22,7 @@ export class CourseCustomerComponent implements OnInit {
 
   url = AppComponent.API_URL;
 
+  @ViewChild('iframe') iframe: ElementRef;
   @ViewChild('videoPlayer') videoplayer: any;
   jsonp: any;
   courses: any = [];
@@ -121,18 +122,23 @@ export class CourseCustomerComponent implements OnInit {
   }
 
   PauseYoutube(videoPath) {
-    console.log('Close Video Youtube : ' + videoPath);
-    const myVideo: HTMLIFrameElement = <HTMLIFrameElement>document.getElementById('player');
+    console.log('Close Video Youtube: ' + videoPath);
+    const frame: HTMLIFrameElement = <HTMLIFrameElement>document.getElementById(videoPath);
+    // console.log(myVideo);
+    // const frame = document.getElementById('player');
+    // console.log(frame);
+    frame.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
   }
 
   playPause(id) {
     console.log('Close Video : ' + id);
     // let inputFields = document.getElementsByClassName('settings') as HTMLInputElement
     const myVideo: HTMLVideoElement = <HTMLVideoElement>document.getElementById(id);
-    if (myVideo.paused)
+    if (myVideo.paused) {
       myVideo.pause();
-    else
+    } else {
       myVideo.pause();
+    }
   }
 
   onChangeNativeFs($event) {

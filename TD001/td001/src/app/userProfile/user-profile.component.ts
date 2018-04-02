@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {User} from '../models/User';
-import {UserService} from '../services/User.service';
-import {BankStatement} from '../models/BankStatement';
-import {BankStatementService} from '../services/BankStatementService';
+import { Component, OnInit } from '@angular/core';
+import { User } from '../models/User';
+import { UserService } from '../services/User.service';
+import { BankStatement } from '../models/BankStatement';
+import { BankStatementService } from '../services/BankStatementService';
 
 @Component({
   selector: 'app-top-up-page',
@@ -34,7 +34,7 @@ export class UserProfileComponent implements OnInit {
   show3 = false;
 
   constructor(private userService: UserService,
-              private bankStatementService: BankStatementService) {
+    private bankStatementService: BankStatementService) {
     this.ImageUserProfile = '../../assets/images/003.jpg';
     this.ImageUserCover = '../../assets/images/001.jpg';
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -59,7 +59,9 @@ export class UserProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getUserList();
+    if (this.currentUser !== null) {
+      this.getUserList();
+    }
     this.getBankStatementList();
   }
 

@@ -5,28 +5,18 @@ body {
 .row{
   width: 98%;
   margin: auto;
-  /* border: solid 1px chocolate; */
 }
 
-/* .card{
-  width: 18rem;
-  display: inline-block; */
-  /* border: solid 1px cadetblue; */
-  /* padding: 0.5em;
-  float: left;
-} */
-
 .box-border{
-  box-shadow: 0 0 2px 2px #cfcfcf; /*THIS does not work as expected*/
+  box-shadow: 0 0 2px 2px #cfcfcf;
   max-height: 100%;
 }
 
 .container-fluid{
   width: 100%;
-  box-shadow: 0 0 2px 2px #cfcfcf; /*THIS does not work as expected*/
+  box-shadow: 0 0 2px 2px #cfcfcf;
   border-radius: 2px;
   margin-top: 4%;
-  /*margin-top: -17px;*/
 }
 
 .boxes-design {
@@ -137,10 +127,6 @@ body {
   opacity: 1;
 }
 
-/*.list-group {*/
-  /*background-color: #cfcfcf;*/
-/*}*/
-
 .well-height {
   height: 40px;
 }
@@ -173,26 +159,16 @@ h2 {
   margin-top: -250px !important; /* Don't copy this */
 }
 
-/* .all-copy p {
-  -webkit-user-select: all;
-  -moz-user-select: all; 
-  -ms-user-select: all; 
-  user-select: all; 
-} */
-
-/* enable absolute positioning */
 .inner-addon {
   position: relative;
 }
 
-/* style glyph */
 .inner-addon .glyphicon {
   position: absolute;
   padding: 10px;
   pointer-events: none;
 }
 
-/* align glyph */
 .left-addon .glyphicon {
   left: 0px;
 }
@@ -201,7 +177,6 @@ h2 {
   right: 0px;
 }
 
-/* add padding  */
 .left-addon input {
   padding-left: 30px;
 }
@@ -331,7 +306,6 @@ h2 {
 
 .text {
   color: rgb(255, 255, 255);
-  /* text-shadow: -1px 0 wheat, 0 1px wheat, 1px 0 wheat, 0 -1px wheat; */
   font-size: 18px;
   position: absolute;
   top: 50%;

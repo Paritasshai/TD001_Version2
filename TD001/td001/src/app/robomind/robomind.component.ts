@@ -19,6 +19,7 @@ export class RobomindComponent implements OnInit {
   Student: any = {};
   ImgLogo: string;
   instructor = 'instructor';
+  www= 'http://www.robomindpbl.com/';
 
   constructor(private router: Router,
               private studentService: StudentService,

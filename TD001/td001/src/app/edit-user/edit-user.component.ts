@@ -1,10 +1,11 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {User} from '../models/User';
-import {UserService} from '../services/User.service';
-import {FileUploader} from 'ng2-file-upload';
-import {Http, RequestOptions, Headers} from '@angular/http';
-import {AppComponent} from '../app.component';
-import {Router} from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { User } from '../models/User';
+import { UserService } from '../services/User.service';
+import { FileUploader } from 'ng2-file-upload';
+import { Http, RequestOptions, Headers } from '@angular/http';
+import { AppComponent } from '../app.component';
+import { Router } from '@angular/router';
+import { AlertService } from '../alertContent/AlertService';
 
 const URL = AppComponent.API_URL;
 
@@ -21,10 +22,13 @@ export class EditUserComponent implements OnInit {
   userId: any;
   @ViewChild('fileInput') fileInput;
   User: any = {};
+  editShow = false;
+  editUserShow = true;
 
   constructor(private router: Router,
     private userService: UserService,
-              private http: Http) {
+    private http: Http,
+    private alertService: AlertService) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.getUserId = this.currentUser.id;
     console.log(this.getUserId);
@@ -76,11 +80,37 @@ export class EditUserComponent implements OnInit {
     });
   }
 
-  public DeleteImage(id) {
+  DeleteImage(id) {
     console.log(id);
     this.userId = this.currentUser.id;
     console.log(this.userId);
-    this.userService.deleteImage(id, this.userId).subscribe(
+
+    const that = this;
+    that.alertService.confirmThis('ลบรูปโปรไฟล์?',
+      function () {
+        console.log('Accept');
+        that.userService.deleteImage(id, that.userId).subscribe(
+          data => {
+            location.reload();
+          },
+          error => {
+            alert('Error');
+          });
+      }, function () {
+        console.log('Refuse');
+      });
+  }
+
+  update(getUserId, firstName, email, instructorBio) {
+    console.log(getUserId);
+    this.User.firstName = firstName;
+    console.log(this.User.firstName);
+    this.User.email = email;
+    console.log(this.User.email);
+    this.User.instructorBio = instructorBio;
+    console.log(this.User.instructorBio);
+
+    this.userService.updateUserProfile(getUserId, this.User.firstName, this.User.email, this.User.instructorBio, this.User).subscribe(
       data => {
         // alert("Delete Image Success");
         location.reload();
@@ -90,19 +120,14 @@ export class EditUserComponent implements OnInit {
       });
   }
 
-  update(instructorBio, getUserId) {
-    console.log(getUserId);
-    // console.log(instructorBio);
-    this.User.instructorBio = instructorBio;
-    console.log(this.User.instructorBio);
-    this.userService.updateInstructorBio(getUserId, this.User.instructorBio, this.User).subscribe(
-      data => {
-        // alert("Delete Image Success");
-        location.reload();
-      },
-      error => {
-        alert('Error');
-      });
+  editUser() {
+    this.editShow = true;
+    this.editUserShow = false;
+  }
+
+  out() {
+    this.editShow = false;
+    this.editUserShow = true;
   }
 
 }

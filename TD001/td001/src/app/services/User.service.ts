@@ -68,5 +68,9 @@ export class UserService {
     return this.http.put(AppComponent.API_URL + 'updateInstructorBio/' + '?getUserId=' + getUserId + '&' + 'instructorBio=' + instructorBio, user).map((response: Response) => response.json());
   }
 
+  updateUserProfile(getUserId, firstName, email, instructorBio: any, user: User) {
+    return this.http.put(AppComponent.API_URL + 'updateUserProfile/' + '?getUserId=' + getUserId + '&' + 'firstName=' + firstName + '&' + 'email=' + email + '&' + 'instructorBio=' + instructorBio, user).map((response: Response) => response.json());
+  }
+
 }
 
