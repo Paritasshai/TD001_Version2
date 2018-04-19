@@ -5,18 +5,22 @@
         <img [src]="ImgLogo" style="cursor: pointer; height: 30px; width: 110px; margin-top: -5px">
       </a>
     </div>
-    <ul class="nav navbar-nav navbar-right" [hidden]="!currentUser">
+    <!-- <ul class="nav navbar-nav navbar-right" [hidden]="!currentUser"> -->
+    <ul class="nav navbar-nav navbar-right">
       <li>
         <a (click)="RobomindCreate()" style="cursor: pointer">
           <span class="glyphicon glyphicon-new-window"></span>
           Create Student</a>
       </li>
-      <!--<li><a (click)="RobomindContent()" style="cursor: pointer"><span class="glyphicon glyphicon-link"></span>-->
-      <!--Create Content</a></li>-->
       <li>
         <a (click)="RoboticName()" style="cursor: pointer">
           <span class="glyphicon glyphicon-wrench"></span>
           Create Robotic</a>
+      </li>
+      <li>
+        <a (click)="RBlogin()" style="cursor: pointer">
+          <span class="glyphicon glyphicon-wrench"></span>
+          เข้าสู่ระบบ</a>
       </li>
     </ul>
   </div>

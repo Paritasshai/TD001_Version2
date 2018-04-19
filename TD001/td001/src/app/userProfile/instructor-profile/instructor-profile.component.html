@@ -6,7 +6,8 @@
       <div class="well2">
         <!-- SIDEBAR USERPIC -->
         <div align="center">
-          <img style="width: 200px; height: auto;" src="data:{{usersId?.userImages[0].contentType}};base64,{{usersId?.userImages[0].content}}">
+          <!-- <img style="width: 200px; height: auto;" src="data:{{usersId?.userImages[0].contentType}};base64,{{usersId?.userImages[0].content}}"> -->
+          <img style="width: 200px; height: auto;" src="{{ url + '/displayImageUser/' + usersId?.userImages[0]?.id}}" />
         </div>
 
         <!-- END SIDEBAR USERPIC -->

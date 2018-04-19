@@ -56,8 +56,8 @@
                       <div class="col-sm-12">
                         <div align="center">
                           <div class="circular--portrait">
-                            <img src="data:{{user?.userImages[0].contentType}};base64,{{user?.userImages[0].content}}" (click)="insProfile(user.id)"
-                              style="cursor: pointer">
+                              <img style="cursor: pointer" src="{{ url + '/displayImageUser/' + user.userImages[0]?.id}}" (click)="insProfile(user.id)" alt=""
+                    />
                           </div>
                           <p style="cursor: pointer" (click)="insProfile(courses.userId)" title="ดูโปรเจคทั้งหมด">
                             {{user.firstName}}</p>

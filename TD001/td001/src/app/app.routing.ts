@@ -34,7 +34,7 @@ const appRoutes: Routes = [
   {path: 'home', component: HomepageComponent},
   {path: 'login', component: LoginpageComponent},
   {path: 'signUp', component: SignuppageComponent},
-  {path: 'userProfile', component: UserProfileComponent},
+  {path: 'userProfile/:id', component: UserProfileComponent},
   {path: 'management', component: ManagementPageComponent},
   {path: 'forgotPassword', component: ForgotPasswordPageComponent},
   {path: 'topUpBank/:id', component: TopUpBankPageComponent},

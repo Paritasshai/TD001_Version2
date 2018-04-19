@@ -103,7 +103,6 @@ export class EditCourstIdComponent implements OnInit {
   }
 
   deleteImage(id) {
-
     this.courseId = this.Course.id;
     this.courseService.deleteImageCourse(id, this.courseId).subscribe(
       data => {

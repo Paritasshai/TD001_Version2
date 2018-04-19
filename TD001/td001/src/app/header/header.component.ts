@@ -59,7 +59,7 @@ export class HeaderComponent implements OnInit {
   }
 
   profile(id) {
-    this.router.navigate(['/userProfile']);
+    this.router.navigate(['/userProfile', id]);
   }
 
   insProfile(id) {

@@ -109,6 +109,7 @@
             <tr>
               <th>Content Date</th>
               <th>Mileage</th>
+              <th>Coach</th>
               <th>Robotic Group</th>
               <th>Robotic Name</th>
               <th>Picture</th>
@@ -120,6 +121,7 @@
             <tr *ngFor="let content of students?.contents | sortObject:'contentDate'">
               <td>{{content.contentDate | date: 'dd/MM/yyyy'}}</td>
               <td>{{content.stTime}}</td>
+              <td>{{content.stTeacher}}</td>
               <td>{{content.rbGroup}}</td>
               <td>{{content.rbName}}</td>
               <!-- [hidden]="content?.contentImgs[0].fileName != null" -->

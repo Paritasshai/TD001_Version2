@@ -54,7 +54,7 @@ export class UserManagementComponent implements OnInit {
     this.userService.updateUserStatus(id, this.statusName, this.User).subscribe(
       data => {
         alert('Success');
-        location.reload();
+        // location.reload();
       },
       error => {
         alert('Error');

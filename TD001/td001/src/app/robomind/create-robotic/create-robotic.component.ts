@@ -28,7 +28,8 @@ export class CreateRoboticComponent implements OnInit {
     {name: 'NXT Model Group 3'},
     {name: 'NXT Model Group 4'},
     {name: 'NXT Model Group 5'},
-    {name: 'Test'}
+    {name: 'Test'},
+    {name: 'Freestyle'}
   ];
   selectedDeviceObj = this.deviceObjects[0];
 

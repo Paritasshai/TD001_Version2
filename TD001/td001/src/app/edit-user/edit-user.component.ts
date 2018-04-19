@@ -6,6 +6,7 @@ import { Http, RequestOptions, Headers } from '@angular/http';
 import { AppComponent } from '../app.component';
 import { Router } from '@angular/router';
 import { AlertService } from '../alertContent/AlertService';
+import {ActivatedRoute} from '@angular/router';
 
 const URL = AppComponent.API_URL;
 
@@ -15,6 +16,8 @@ const URL = AppComponent.API_URL;
   styleUrls: ['./edit-user.component.css']
 })
 export class EditUserComponent implements OnInit {
+
+  url = AppComponent.API_URL;
 
   currentUser: User;
   users: User[] = [];
@@ -26,6 +29,7 @@ export class EditUserComponent implements OnInit {
   editUserShow = true;
 
   constructor(private router: Router,
+    private route: ActivatedRoute,
     private userService: UserService,
     private http: Http,
     private alertService: AlertService) {
@@ -38,41 +42,40 @@ export class EditUserComponent implements OnInit {
     this.getUserList();
     this.getUserId = this.currentUser.id;
     console.log(this.getUserId);
-
   }
 
-  public upload() {
-    const fileBrowser = this.fileInput.nativeElement;
-    if (fileBrowser.files && fileBrowser.files[0]) {
-      const formData = new FormData();
-      formData.append('files', fileBrowser.files[0]);
-      const xhr = new XMLHttpRequest();
-      xhr.open('POST', URL + 'add/ImageUser' + '?userId=' + this.getUserId, true);
-      xhr.onload = function () {
-        if (this['status'] === 200) {
-          const responseText = this['responseText'];
-          const files = JSON.parse(responseText);
-          location.reload();
-          // todo: emit event
-        } else {
-          // todo: error handling
-        }
-      };
-      xhr.send(formData);
-    }
+  // public upload() {
+  //   const fileBrowser = this.fileInput.nativeElement;
+  //   if (fileBrowser.files && fileBrowser.files[0]) {
+  //     const formData = new FormData();
+  //     formData.append('files', fileBrowser.files[0]);
+  //     const xhr = new XMLHttpRequest();
+  //     xhr.open('POST', URL + 'add/ImageUser' + '?userId=' + this.getUserId, true);
+  //     xhr.onload = function () {
+  //       if (this['status'] === 200) {
+  //         const responseText = this['responseText'];
+  //         const files = JSON.parse(responseText);
+  //         location.reload();
+  //         // todo: emit event
+  //       } else {
+  //         // todo: error handling
+  //       }
+  //     };
+  //     xhr.send(formData);
+  //   }
+  // }
+
+  public uploaderImage: FileUploader = new FileUploader({url: AppComponent.API_URL + 'add/ImageUser' + '?userId=' + this.route.snapshot.params['id']});
+  public hasBaseDropZoneOver = false;
+  public hasAnotherDropZoneOver = false;
+
+  public fileOverBase(e: any): void {
+    this.hasBaseDropZoneOver = e;
   }
 
-  // public uploaderImageUser: FileUploader = new FileUploader({url: URL + 'add/ImageUser/' + '?userId=' + this.getUserId});
-  // public hasBaseDropZoneOver = false;
-  // public hasAnotherDropZoneOver = false;
-  //
-  // public fileOverBase(e: any): void {
-  //   this.hasBaseDropZoneOver = e;
-  // }
-  //
-  // public fileOverAnother(e: any): void {
-  //   this.hasAnotherDropZoneOver = e;
-  // }
+  public fileOverAnother(e: any): void {
+    this.hasAnotherDropZoneOver = e;
+  }
 
   private getUserList() {
     this.userService.getAll().subscribe(users => {
@@ -112,8 +115,8 @@ export class EditUserComponent implements OnInit {
 
     this.userService.updateUserProfile(getUserId, this.User.firstName, this.User.email, this.User.instructorBio, this.User).subscribe(
       data => {
-        // alert("Delete Image Success");
-        location.reload();
+        alert('บันทึกเรียบร้อยแล้ว');
+        // location.reload();
       },
       error => {
         alert('Error');

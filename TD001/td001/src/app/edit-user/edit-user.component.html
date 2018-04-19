@@ -11,15 +11,16 @@
                 <div class="thumbnail">
                   <div class="containerImg">
 
-                    <img class="media-object img" src="data:{{user.userImages[0]?.contentType}};base64,{{user.userImages[0]?.content}}">
-
+                    <!-- <img class="media-object img" src="data:{{user.userImages[0]?.contentType}};base64,{{user.userImages[0]?.content}}"> -->
+                    <img class="img-responsive" style="cursor: pointer" src="{{ url + '/displayImageUser/' + user.userImages[0]?.id}}" alt=""
+                    />
                     <div [hidden]="user.userImages[0]?.id == null" class="overlay" style="cursor: pointer" (click)="DeleteImage(user.userImages[0]?.id)">
                       <div class="text">
                         <p>ลบรูปภาพ</p>
                       </div>
                     </div>
 
-                    <form (ngSubmit)="upload(user.id)">
+                    <!-- <form (ngSubmit)="upload(user.id)">
                       <div class="row">
                         <div class="col-sm-2" *ngIf="user.userImages[0]?.id == null">
                           <div>
@@ -28,7 +29,57 @@
                           </div>
                         </div>
                       </div>
-                    </form>
+                    </form> -->
+
+                    <input *ngIf="user.userImages[0]?.id == null" style="width: 250px;" class="btn btn-default" type="file" ng2FileSelect [uploader]="uploaderImage" accept="image/*"
+                    />
+                    <div class="col-md-12" style="margin-bottom: 5px">
+
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <!-- <th>Progress</th>
+                            <th>Status</th> -->
+                          </tr>
+                        </thead>
+                        <br>
+                        <tbody>
+                          <tr *ngFor="let item of uploaderImage.queue">
+                            <!-- <td><strong>{{ item?.file?.name }}</strong></td> -->
+                            <td *ngIf="uploaderImage.isHTML5" nowrap>{{ item?.file?.size/1024/1024/1024 | number:'.3' }} MB
+                            </td>
+                            <td *ngIf="uploaderImage.isHTML5">
+                              <div class="progress" style="margin-bottom: 0;">
+                                <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                              </div>
+                            </td>
+                            <td>
+                              Queue progress:
+                              <div class="progress">
+                                <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploaderImage.progress + '%' }"></div>
+                              </div>
+                            </td>
+                            <td class="text-center">
+                              <span *ngIf="item.isSuccess">
+                                <i class="glyphicon glyphicon-ok"></i>
+                              </span>
+                              <span *ngIf="item.isError">
+                                <i class="glyphicon glyphicon-remove"></i>
+                              </span>
+                            </td>
+                            <td nowrap>
+                              <button type="button" class="btn btn-success btn-xs" (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                                <span class="glyphicon glyphicon-upload"></span> Upload
+                              </button>
+                              <button type="button" class="btn btn-danger btn-xs" (click)="item.remove()">
+                                <span class="glyphicon glyphicon-trash"></span> Remove
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+                    </div>
 
                   </div>
                 </div>
