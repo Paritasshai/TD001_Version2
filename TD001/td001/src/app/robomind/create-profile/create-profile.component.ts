@@ -1,8 +1,8 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {Router} from '@angular/router';
-import {StudentService} from '../../services/StudentService';
-import {Student} from '../../../app/models/Student';
-import {User} from '../../models/User';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { StudentService } from '../../services/StudentService';
+import { Student } from '../../../app/models/Student';
+import { User } from '../../models/User';
 
 @Component({
   selector: 'app-create-profile',
@@ -17,9 +17,12 @@ export class CreateProfileComponent implements OnInit {
   ImgLogo: string;
   currentUser: User;
   today: any = Date.now();
+  loading = false;
+  user = 'user';
+  admin = 'admin';
 
   constructor(private router: Router,
-              private studentService: StudentService) {
+    private studentService: StudentService) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.ImgLogo = '../../assets/images/logo_web.png';
   }
@@ -66,6 +69,14 @@ export class CreateProfileComponent implements OnInit {
     this.studentService.getStudentList().subscribe(students => {
       this.students = students;
     });
+  }
+
+  logOutRobo() {
+    this.loading = true;
+    console.log('Log Out');
+    localStorage.removeItem('currentUser');
+    location.reload();
+    this.router.navigate(['/RobomindHome']);
   }
 
   edit(id) {

@@ -19,7 +19,10 @@ export class RobomindComponent implements OnInit {
   Student: any = {};
   ImgLogo: string;
   instructor = 'instructor';
+  user = 'user';
+  admin = 'admin';
   www= 'http://www.robomindpbl.com/';
+  loading = false;
 
   constructor(private router: Router,
               private studentService: StudentService,
@@ -31,6 +34,14 @@ export class RobomindComponent implements OnInit {
   ngOnInit() {
     this.getStudentList();
     this.getUserList();
+  }
+
+  logOutRobo() {
+    this.loading = true;
+    console.log('Log Out');
+    localStorage.removeItem('currentUser');
+    location.reload();
+    this.router.navigate(['/RobomindHome']);
   }
 
   search() {

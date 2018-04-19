@@ -19,7 +19,8 @@ export class UserManagementComponent implements OnInit {
     {id: 3, status: 'instructor'},
     {id: 4, status: 'lock'},
     {id: 5, status: 'inactive'},
-    {id: 6, status: 'admin'}
+    {id: 6, status: 'admin'},
+    {id: 7, status: 'user'}
   ];
 
   constructor(private userService: UserService) {

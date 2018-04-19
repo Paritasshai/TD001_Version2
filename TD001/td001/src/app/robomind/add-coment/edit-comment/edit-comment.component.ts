@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {StudentService} from '../../../services/StudentService';
-import {ActivatedRoute, Router} from '@angular/router';
-import {FileUploader} from 'ng2-file-upload';
-import {AppComponent} from '../../../app.component';
-import {User} from '../../../models/User';
+import { Component, OnInit } from '@angular/core';
+import { StudentService } from '../../../services/StudentService';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FileUploader } from 'ng2-file-upload';
+import { AppComponent } from '../../../app.component';
+import { User } from '../../../models/User';
 
 @Component({
   selector: 'app-edit-comment',
@@ -25,20 +25,23 @@ export class EditCommentComponent implements OnInit {
   rbName: any;
   show = false;
   groupSearch: any = [];
+  loading = false;
+  user = 'user';
+  admin = 'admin';
 
   deviceObjects = [
-    {name: 'Select Group'},
-    {name: 'EV3 Model Group 1'},
-    {name: 'EV3 Model Group 2'},
-    {name: 'EV3 Model Group 3'},
-    {name: 'EV3 Model Group 4'},
-    {name: 'EV3 Model Group 5'},
-    {name: 'NXT Model Group 1'},
-    {name: 'NXT Model Group 2'},
-    {name: 'NXT Model Group 3'},
-    {name: 'NXT Model Group 4'},
-    {name: 'NXT Model Group 5'},
-    {name: 'Test'}
+    { name: 'Select Group' },
+    { name: 'EV3 Model Group 1' },
+    { name: 'EV3 Model Group 2' },
+    { name: 'EV3 Model Group 3' },
+    { name: 'EV3 Model Group 4' },
+    { name: 'EV3 Model Group 5' },
+    { name: 'NXT Model Group 1' },
+    { name: 'NXT Model Group 2' },
+    { name: 'NXT Model Group 3' },
+    { name: 'NXT Model Group 4' },
+    { name: 'NXT Model Group 5' },
+    { name: 'Test' }
   ];
 
   selectedDeviceObj = this.deviceObjects[0];
@@ -46,6 +49,14 @@ export class EditCommentComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router, private studentService: StudentService) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.ImgLogo = '../../assets/images/logo_web.png';
+  }
+
+  logOutRobo() {
+    this.loading = true;
+    console.log('Log Out');
+    localStorage.removeItem('currentUser');
+    location.reload();
+    this.router.navigate(['/RobomindHome']);
   }
 
   onChangeObj(newObj) {
@@ -88,7 +99,7 @@ export class EditCommentComponent implements OnInit {
     });
   }
 
-  public uploaderImage: FileUploader = new FileUploader({url: AppComponent.API_URL + 'addContentImage/' + this.route.snapshot.params['id']});
+  public uploaderImage: FileUploader = new FileUploader({ url: AppComponent.API_URL + 'addContentImage/' + this.route.snapshot.params['id'] });
   public hasBaseDropZoneOver = false;
   public hasAnotherDropZoneOver = false;
 

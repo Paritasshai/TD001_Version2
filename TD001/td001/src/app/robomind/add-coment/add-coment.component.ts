@@ -1,8 +1,8 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {StudentService} from '../../services/StudentService';
-import {User} from '../../models/User';
-import {AppComponent} from '../../app.component';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { StudentService } from '../../services/StudentService';
+import { User } from '../../models/User';
+import { AppComponent } from '../../app.component';
 
 @Component({
   selector: 'app-add-coment',
@@ -31,28 +31,40 @@ export class AddComentComponent implements OnInit {
   groupSearch: any = [];
   showName = false;
   empty = 'null';
-  
+
+  loading = false;
+  user = 'user';
+  admin = 'admin';
+
   deviceObjects = [
-    {name: 'Select Group'},
-    {name: 'EV3 Model Group 1'},
-    {name: 'EV3 Model Group 2'},
-    {name: 'EV3 Model Group 3'},
-    {name: 'EV3 Model Group 4'},
-    {name: 'EV3 Model Group 5'},
-    {name: 'NXT Model Group 1'},
-    {name: 'NXT Model Group 2'},
-    {name: 'NXT Model Group 3'},
-    {name: 'NXT Model Group 4'},
-    {name: 'NXT Model Group 5'},
+    { name: 'Select Group' },
+    { name: 'EV3 Model Group 1' },
+    { name: 'EV3 Model Group 2' },
+    { name: 'EV3 Model Group 3' },
+    { name: 'EV3 Model Group 4' },
+    { name: 'EV3 Model Group 5' },
+    { name: 'NXT Model Group 1' },
+    { name: 'NXT Model Group 2' },
+    { name: 'NXT Model Group 3' },
+    { name: 'NXT Model Group 4' },
+    { name: 'NXT Model Group 5' },
   ];
 
   selectedDeviceObj = this.deviceObjects[0];
 
   constructor(private route: ActivatedRoute,
-              private router: Router,
-              private studentService: StudentService) {
+    private router: Router,
+    private studentService: StudentService) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.ImgLogo = '../../assets/images/logo_web.png';
+  }
+
+  logOutRobo() {
+    this.loading = true;
+    console.log('Log Out');
+    localStorage.removeItem('currentUser');
+    location.reload();
+    this.router.navigate(['/RobomindHome']);
   }
 
   onChangeObj(newObj) {
@@ -141,8 +153,8 @@ export class AddComentComponent implements OnInit {
     console.log(stStudentId);
     this.studentService.deleteContent(id, stStudentId)
       .subscribe(data => {
-          location.reload();
-        },
+        location.reload();
+      },
         error => {
 
         });

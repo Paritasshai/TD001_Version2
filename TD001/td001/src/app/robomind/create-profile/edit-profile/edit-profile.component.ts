@@ -32,6 +32,10 @@ export class EditProfileComponent implements OnInit {
   ImgLogo: string;
   currentUser: User;
 
+  loading = false;
+  user = 'user';
+  admin = 'admin';
+
   constructor(private route: ActivatedRoute,
               private router: Router,
               private studentService: StudentService) {
@@ -41,6 +45,14 @@ export class EditProfileComponent implements OnInit {
 
   ngOnInit() {
     this.getStudentId();
+  }
+
+  logOutRobo() {
+    this.loading = true;
+    console.log('Log Out');
+    localStorage.removeItem('currentUser');
+    location.reload();
+    this.router.navigate(['/RobomindHome']);
   }
 
   RobomindContent() {

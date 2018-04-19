@@ -20,6 +20,9 @@ export class ReviewProfileComponent implements OnInit {
   divComment = true;
   ImgLogo: string;
   currentUser: User;
+  loading = false;
+  user = 'user';
+  admin = 'admin';
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -32,6 +35,14 @@ export class ReviewProfileComponent implements OnInit {
     this.getStudentId();
     this.getContentList();
     this.divComment = false;
+  }
+
+  logOutRobo() {
+    this.loading = true;
+    console.log('Log Out');
+    localStorage.removeItem('currentUser');
+    location.reload();
+    this.router.navigate(['/RobomindHome']);
   }
 
   RobomindContent() {

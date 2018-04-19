@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
-import {User} from '../../models/User';
-import {StudentService} from '../../services/StudentService';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { User } from '../../models/User';
+import { StudentService } from '../../services/StudentService';
 
 @Component({
   selector: 'app-create-robotic',
@@ -15,21 +15,24 @@ export class CreateRoboticComponent implements OnInit {
   Robotic: any = {};
   RoboticLists: any = [];
   name: any;
+  loading = false;
+  user = 'user';
+  admin = 'admin';
 
   deviceObjects = [
-    {name: 'Select Group'},
-    {name: 'EV3 Model Group 1'},
-    {name: 'EV3 Model Group 2'},
-    {name: 'EV3 Model Group 3'},
-    {name: 'EV3 Model Group 4'},
-    {name: 'EV3 Model Group 5'},
-    {name: 'NXT Model Group 1'},
-    {name: 'NXT Model Group 2'},
-    {name: 'NXT Model Group 3'},
-    {name: 'NXT Model Group 4'},
-    {name: 'NXT Model Group 5'},
-    {name: 'Test'},
-    {name: 'Freestyle'}
+    { name: 'Select Group' },
+    { name: 'EV3 Model Group 1' },
+    { name: 'EV3 Model Group 2' },
+    { name: 'EV3 Model Group 3' },
+    { name: 'EV3 Model Group 4' },
+    { name: 'EV3 Model Group 5' },
+    { name: 'NXT Model Group 1' },
+    { name: 'NXT Model Group 2' },
+    { name: 'NXT Model Group 3' },
+    { name: 'NXT Model Group 4' },
+    { name: 'NXT Model Group 5' },
+    { name: 'Test' },
+    { name: 'Freestyle' }
   ];
   selectedDeviceObj = this.deviceObjects[0];
 
@@ -40,7 +43,7 @@ export class CreateRoboticComponent implements OnInit {
   }
 
   constructor(private router: Router,
-              private studentService: StudentService) {
+    private studentService: StudentService) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.ImgLogo = '../../assets/images/logo_web.png';
   }
@@ -49,6 +52,14 @@ export class CreateRoboticComponent implements OnInit {
     this.studentService.getRoboticLists().subscribe(RoboticLists => {
       this.RoboticLists = RoboticLists;
     });
+  }
+
+  logOutRobo() {
+    this.loading = true;
+    console.log('Log Out');
+    localStorage.removeItem('currentUser');
+    location.reload();
+    this.router.navigate(['/RobomindHome']);
   }
 
   RobomindContent() {

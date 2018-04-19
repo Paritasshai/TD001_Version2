@@ -5,8 +5,17 @@
         <img [src]="ImgLogo" style="cursor: pointer; height: 30px; width: 110px; margin-top: -5px">
       </a>
     </div>
-    <!-- <ul class="nav navbar-nav navbar-right" [hidden]="!currentUser"> -->
+
     <ul class="nav navbar-nav navbar-right">
+      <li *ngIf="!currentUser">
+        <a href="#" data-toggle="modal" data-target="#squarespaceModalLogin">เข้าสู่ระบบ</a>
+      </li>
+      <li *ngIf="currentUser">
+        <a (click)="logOutRobo()">
+          <span class="fa fa-sign-out"></span> ออกจากระบบ</a>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right" *ngIf="currentUser != null && (currentUser.status == user || currentUser.status == admin)">
       <li>
         <a (click)="RobomindCreate()" style="cursor: pointer">
           <span class="glyphicon glyphicon-new-window"></span>
@@ -17,12 +26,8 @@
           <span class="glyphicon glyphicon-wrench"></span>
           Create Robotic</a>
       </li>
-      <li>
-        <a (click)="RBlogin()" style="cursor: pointer">
-          <span class="glyphicon glyphicon-wrench"></span>
-          เข้าสู่ระบบ</a>
-      </li>
     </ul>
+
   </div>
 </nav>
 
@@ -56,7 +61,7 @@
         </div>
       </form>
       <div align="center">
-        <h1 style="font-size: 50px; color: grey">Student Portfolio</h1>
+        <div style="font-size: 50px; color: grey">Student Portfolio</div>
       </div>
       <!-- <div align="center" *ngIf="Profile.id != null">
         <h1>รายชื่อที่ค้นพบ</h1>
@@ -79,3 +84,4 @@
     </div>
   </div>
 </div>
+<app-loginpage></app-loginpage>
